@@ -2,7 +2,7 @@
 
 ## Piezoelectric Bottle Launcher
 <figure>
-  <video src="Images/bottlelauncher.mov" controls width="800" loop muted></video>
+  <video src="Images/bottlelauncher.jpg" controls width="800" loop muted></video>
 </figure>
 
 ## Piezoelectric cannon
