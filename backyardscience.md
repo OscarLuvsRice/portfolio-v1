@@ -17,5 +17,5 @@
 
 ## Sugar rocket 2024
 <figure>
-  <video src="Images/sugarrocket.mov" controls width="800" loop muted></video>
+  <video src="Images/rocket.mov" controls width="800" loop muted></video>
 </figure>
