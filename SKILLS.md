@@ -1,4 +1,4 @@
-#*I will constantly updating as my skill set grows.*
+# *I will constantly updating as my skill set grows.*
 
 ## I currrently know...
 
