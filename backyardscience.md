@@ -11,6 +11,9 @@
 </figure>
 
 ## Blow dart gun
+<figure>
+  <img src="Images/dartgun.png" controls width="800" loop muted></img>
+</figure>
 
 ## Sugar rocket
 <figure>
