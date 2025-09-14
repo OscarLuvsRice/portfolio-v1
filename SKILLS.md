@@ -2,7 +2,7 @@
 
 # I currrently know...
 
-## Soldering
+## [Soldering](SOLDERING.md)
 - I am very comfortable with soldering PCBs, wires, or DIYs.
 
 ## Chinese
