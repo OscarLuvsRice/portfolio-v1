@@ -5,8 +5,8 @@
 Completion time: 1 hour
 
 <figure style="display: block; width: fit-content; margin: auto;">
-  <img src="Images/fanbladecar.jpg" alt="Fan blade Car" width="1000">
-  <figcaption style="display: block; text-align: left;">Learnt simple circuitry and basic wire soldering</figcaption>
+  <img src="Images/fanbladecar.jpg" alt="Fan blade Car" width="500">
+  <figcaption style="display: block; text-align: centre;">Learnt simple circuitry and basic wire soldering</figcaption>
 </figure>
 
 <br>
