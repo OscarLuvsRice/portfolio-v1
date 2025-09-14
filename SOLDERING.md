@@ -1,12 +1,26 @@
 # Soldering 
 
+**Fan Blade Car 11/8/2025**
+
+Completion time: 1 hour
+
+<figure style="display: block; width: fit-content; margin: auto;">
+  <img src="Images/fanbladecar.jpg" alt="Fan blade Car" width="500">
+  <figcaption style="display: block; text-align: centre;">Learnt simple circuitry and basic wire soldering</figcaption>
+</figure>
+
+<br>
+<br>
+<br>
+<br>
+
 **Solder Fume Hood 15/8/2025**
 
 Completion time: 30mins
 
 <figure style="display: block; width: fit-content; margin: auto;">
   <img src="Images/fumehood.jpg" alt="DIY Fume Hood" width="500">
-  <figcaption style="display: block; text-align: centre;">Built it in preparation for Soldering, this apparatus sucks in solder fume and the carbon filter on the other end filters out the harmful chemicals.</figcaption>
+  <figcaption style="display: block; text-align: centre;">Built it in preparation for more soldering, this apparatus sucks in solder fume and the carbon filter on the other end filters out the harmful chemicals.</figcaption>
 </figure>
 
 <br>
