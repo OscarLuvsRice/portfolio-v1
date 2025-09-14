@@ -5,6 +5,9 @@
 ## Soldering
 - I am very comfortable with soldering PCBs, wires, or DIYs.
 
+## Chinese
+- I am very fluent in Mandarin, feasible enough to translate for others.
+
 
 
 
