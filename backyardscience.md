@@ -1,8 +1,8 @@
 # Backyard science projects 
 
 ## Piezoelectric Bottle Launcher
-<figure>
-  <video src="Images/bottlelauncher.jpg" controls width="800" loop muted></video>
+<figure style="display: block; width: fit-content; margin: auto;">
+  <img src="Images/bottlelauncher.jpg" alt="Bottle Launcher" width="500">
 </figure>
 
 ## Piezoelectric cannon
