@@ -9,6 +9,9 @@ Completion time: 30mins
   <figcaption>Built it in preparation for Soldering, this apparatus sucks in solder fume and the carbon filter on the other end filters out the harmful chemicals.</figcaption>
 </figure>
 
+
+
+
 **Ceramic Filament Display 26/8/2025**
 
 ~*60 parts* Completion time: 2 hours
