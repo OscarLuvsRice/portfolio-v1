@@ -4,13 +4,8 @@
 
 Completion time: 30mins
 
-<figure>
-  <img src="Images/fumehood.jpg" alt="DIY Fume Hood" width="500">
-  <figcaption>Built it in preparation for Soldering, this apparatus sucks in solder fume and the carbon filter on the other end filters out the harmful chemicals.</figcaption>
-</figure>
-
-<br>
-<br>
+ <img src="Images/fumehood.jpg" alt="DIY Fume Hood" width="500">
+Built it in preparation for Soldering, this apparatus sucks in solder fume and the carbon filter on the other end filters out the harmful chemicals.
 
 
 **Ceramic Filament Display 26/8/2025**
