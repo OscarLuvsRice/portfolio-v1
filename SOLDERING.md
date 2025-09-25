@@ -44,4 +44,15 @@ Completion time: 30mins
   </figure>
 </div>  
 
+**Electromagnetic Cannon 23/9/2025**
+
+~*60 parts* Completion time: 4 hours
+
+<div align="center">
+  <figure>
+    <img src="Images/ECannon.jpg" alt="Electromagnetic Cannon" width="500">
+    <figcaption style="display: block; text-align: centre;">This project really tested my ability to execute safety precautions, as a single mistake can cause me to get shocked.</figcaption>
+  </figure>
+</div>  
+
 
