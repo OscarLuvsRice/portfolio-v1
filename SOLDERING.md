@@ -46,7 +46,7 @@ Completion time: 30mins
 
 **Electromagnetic Cannon 23/9/2025**
 
-~*60 parts* Completion time: 4 hours
+~*35 parts* Completion time: 4 hours
 
 <div align="center">
   <figure>
