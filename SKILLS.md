@@ -8,6 +8,9 @@
 ## Chinese
 - I am very fluent in Mandarin, feasible enough to translate for others.
 
+## [Computer Assisted Design (CAD)](CAD.md)
+- I am currently learning Fusion360
+
 
 
 
