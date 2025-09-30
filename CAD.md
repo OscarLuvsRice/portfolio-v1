@@ -19,7 +19,7 @@ Completion time: 30 minutes
 
 <div align="center">
   <figure>
-    <img src="Images/bluebottlecad.png" alt="Blue Bottle" width="400">
+    <img src="Images/bluebottlecad.png" alt="Blue Bottle" width="600">
     <figcaption style="display: block; text-align: center;">My attempt of designing my bottle in f360 </figcaption>
   </figure>
 </div>
