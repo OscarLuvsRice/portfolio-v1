@@ -7,7 +7,7 @@ Completion time: 30 minutes
 
 <div align="center">
   <figure>
-    <img src="Images/bluebottle.png" alt="Blue Bottle" width="400">
+    <img src="Images/bluebottle.jpg" alt="Blue Bottle" width="400">
     <figcaption style="display: block; text-align: center;">My Blue Bottle</figcaption>
   </figure>
 </div>
