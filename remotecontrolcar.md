@@ -37,3 +37,11 @@ Through this project, we explored **circuit wiring, steering design, sketching, 
 - Scissor
 - Pencil
 - Sketching book
+
+- ---
+
+<div align="center">
+  <img src="Images/sketch.jpg" alt="Sketch" width="600"/>
+  <p><em>rough sketches of steering system designs.</em></p>
+</div>
+
