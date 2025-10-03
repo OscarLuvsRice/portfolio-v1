@@ -85,8 +85,5 @@ Each problem required troubleshooting and iteration, which provided valuable han
 ---
 
 ## 🎥 Demo Video
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=2iG5XZ101lU"></a>
-   <br>
-  <em>Click the thumbnail to watch the RC car demo on YouTube.</em>
-</p>
+[▶️ Watch on YouTube](https://www.youtube.com/watch?v=2iG5XZ101lU)
+
