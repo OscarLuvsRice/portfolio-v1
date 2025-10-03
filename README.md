@@ -5,6 +5,7 @@ This repo contains some of the stuff that I've done with the intention of develo
 
 [SKILLS](SKILLS.md)
 
+[PROJECTS](projects.md)
 
 [CONTACTS](CONTACTS.md)
 
