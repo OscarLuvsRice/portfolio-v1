@@ -57,3 +57,8 @@ Through this project, we explored **circuit wiring, steering design, sketching, 
   <img src="Images/v2.jpg" alt="steering v2" width="600"/>
   <p><em>version 2 of steering system, improved with more space and easy to implement, howver failed due to motor unable to produce enoygh torque when being placed too far in the back.</em></p>
 </div>
+
+<div align="center">
+  <img src="Images/v3.jpg" alt="steering v3" width="600"/>
+  <p><em>version 3 of steering system, improved from v2, added suppports, made everything more compact and effcicient, put motor closer to ensure enough torque</em></p>
+</div>
