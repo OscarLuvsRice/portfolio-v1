@@ -45,3 +45,15 @@ Through this project, we explored **circuit wiring, steering design, sketching, 
   <p><em>rough sketches of steering system designs.</em></p>
 </div>
 
+<br>
+<br>
+
+<div align="center">
+  <img src="Images/v1.jpg" alt="steering v1" width="600"/>
+  <p><em>version 1 of steering system, failed due to invalid dimension and insufficient space to implement.</em></p>
+</div>
+
+<div align="center">
+  <img src="Images/v2.jpg" alt="steering v2" width="600"/>
+  <p><em>version 2 of steering system, improved with more space and easy to implement, howver failed due to motor unable to produce enoygh torque when being placed too far in the back.</em></p>
+</div>
