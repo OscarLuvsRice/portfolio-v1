@@ -62,3 +62,25 @@ Through this project, we explored **circuit wiring, steering design, sketching, 
   <img src="Images/v3.jpg" alt="steering v3" width="600"/>
   <p><em>version 3 of steering system, improved from v2, added suppports, made everything more compact and effcicient, put motor closer to ensure enough torque</em></p>
 </div>
+
+---
+
+## 🧩 Challenges & Problems Faced
+
+During the build process, we encountered some challenges.  
+Each problem required troubleshooting and iteration, which provided valuable hands-on learning.
+
+### ⚡ Steering Issues
+- **Problem:** The steering motor unable to produce enough torque to overcome friction.  
+- **Cause:** 2 AA battery does not produce enough voltage.  
+- **Solution:** Soldered two battery holders in series, so that the car has 4 AA batteries (6V), which maxes out the motors potential, which turned out to be successful.  
+
+---
+
+### 🖥️ Unable to turn on
+- **Problem:** The receiver fails to turn on.  
+- **Cause:** AFter checking all related conections, we found out that the V+ wire had poor connection.
+- **Solution:** We resoldered the V+ wire and made sure all wires had proper protection and are well secured. 
+
+---
+
