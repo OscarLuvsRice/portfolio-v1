@@ -5,7 +5,7 @@ Me and my friend like thingies that move, so it becomes natural for us to build 
 This project fulfilled our interest and also improved our problem solving and creative thinking, especially in the engineering field.
 it also enchanced our hands-on experience with tools.
 
-The RC car is controlled via an 27 MHz 4CH RC module(transmitter and receiver), with a wood chassis, plastic over and used double battereies to power 2 dc motors.  
+The RC car is controlled via an 27 MHz 4CH RC module(transmitter and receiver), with a wood chassis, plastic cover and used double batteries to power 2 dc motors.  
 Through this project, we explored **circuit wiring, steering design, sketching, experimenting design and troubleshooting hardware problems**.  
 
 **Outcome:** A fully functional RC car capable of forward/reverse driving, turning.
@@ -60,7 +60,7 @@ Through this project, we explored **circuit wiring, steering design, sketching, 
 
 <div align="center">
   <img src="Images/v3.jpg" alt="steering v3" width="600"/>
-  <p><em>version 3 of steering system, improved from v2, added suppports, made everything more compact and effcicient, put motor closer to ensure enough torque</em></p>
+  <p><em>version 3 of steering system, improved from v2, added suppports, made everything more compact and effcicient, put motor closer to ensure enough torque.</em></p>
 </div>
 
 ---
