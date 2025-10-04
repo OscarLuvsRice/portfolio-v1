@@ -26,7 +26,7 @@ Through this project, we explored **circuit wiring, steering design, sketching, 
 - Plastic Cover
 - 4 × Wheels with rubber tires  
 - Axles 
-- Heat shrnk tubing 
+- Heat shrink tubing 
 - Screws, nuts, and nails  
 
 ### Tools & Software
