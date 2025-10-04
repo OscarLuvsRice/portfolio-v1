@@ -29,7 +29,7 @@ Through this project, we explored **circuit wiring, steering design, sketching, 
 - Heat shrink tubing 
 - Screws, nuts, and nails  
 
-### Tools & Software
+### Tools 
 - Soldering iron   
 - Hot glue gun   
 - Pliers
