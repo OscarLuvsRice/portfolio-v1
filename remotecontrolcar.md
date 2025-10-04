@@ -79,7 +79,7 @@ Each problem required troubleshooting and iteration, which provided valuable han
 
 ### 🖥️ Unable to turn on
 - **Problem:** The receiver fails to turn on.  
-- **Cause:** AFter checking all related conections, we found out that the V+ wire had poor connection.
+- **Cause:** After checking all related conections, we found out that the V+ wire had poor connection.
 - **Solution:** We resoldered the V+ wire and made sure all wires had proper protection and are well secured. 
 
 ---
