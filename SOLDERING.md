@@ -55,4 +55,14 @@ Completion time: 30mins
   </figure>
 </div>  
 
+**Bluetooth Speaker 17/11/2025**
+
+~*25 parts* Completion time: 2 hours
+
+<div align="center">
+  <figure>
+    <img src="Images/speaker.jpg" alt="Bluetooth Speaker" width="500">
+    <figcaption style="display: block; text-align: centre;">The assembly of this speaker further enchanced my soldering skills.</figcaption>
+  </figure>
+</div>  
 
