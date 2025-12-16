@@ -23,4 +23,16 @@ Completion time: 30 minutes
   </figure>
 </div>
 
+**Horizontal Stand Display 30/9/2025**
+
+Completion time: 10 minutes
+
+<br>
+
+<div align="center">
+  <figure>
+    <img src="Images/wukongstand.jpg" alt="Wukong Stand" width="400">
+    <figcaption style="display: block; text-align: center;">Fit quite well for my mini wukong staff imo</figcaption>
+  </figure>
+</div>
 
