@@ -23,6 +23,11 @@ Completion time: 30 minutes
   </figure>
 </div>
 
+<br>
+<br>
+<br>
+
+
 **Horizontal Stand Display 30/9/2025**
 
 Completion time: 10 minutes
