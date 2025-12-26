@@ -41,3 +41,20 @@ Completion time: 10 minutes
   </figure>
 </div>
 
+<br>
+<br>
+<br>
+
+**Bookshelf 26/12/2025**
+
+Completion time: 45 minutes
+
+<br>
+
+<div align="center">
+  <figure>
+    <img src="Images/bookshelf.jpg" alt="Bookshelf" width="400">
+    <figcaption style="display: block; text-align: center;">Literally perfect for all my fromsoftware books.</figcaption>
+  </figure>
+</div>
+
