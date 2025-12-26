@@ -46,7 +46,7 @@ I adapted this idea into my bookshelf and it was a lot more simple.
 # FINAL
 
 <div align="center">
-  <img src="Images/actualbookshelf.jpg" alt="Sketch" width="600"/>
+  <img src="Images/finalbookshelf.jpg" alt="Sketch" width="600"/>
   <p><em>Looked just as expected, the joint still works but it was a bit hard to connect, had to half connect one side and then just push it hard to make it fit in,  after connection it stays really stable.</em></p>
 </div>
 ---
