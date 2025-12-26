@@ -1,90 +1,56 @@
-# Bookshelf 📚🔧
+# Bookshelf for my Fromsoftware books 📚🔧
 
 ## 📌 Overview
-Me and my friend like thingies that move, so it becomes natural for us to build a RC car.
-This project fulfilled our interest and also improved our problem solving and creative thinking, especially in the engineering field.
-it also enchanced our hands-on experience with tools.
+I bought about 1000 yuan (212 aud) worth of Fromsoftware Books, and i need a bookshelf for it. At the start i was browsing online for cool bookshelf, but all of them are either too complicated for my old, not so high quality seconded handed ender 3 pro, too small or i just dont like the style. So i just ended desining a really simple book shelf that is also big enough to fit all my books. The bookshelf is split into two halves, with a simple joint mechanism to connect the two.
+  
+Through this small project, I developed critical thinking through measurements and designing, I also had an introduction on tolerance and joint mechanism.  
 
-The RC car is controlled via an 27 MHz 4CH RC module(transmitter and receiver), with a wood chassis, plastic cover and used double batteries to power 2 dc motors.  
-Through this project, we explored **circuit wiring, steering design, sketching, experimenting design and troubleshooting hardware problems**.  
+**Outcome:** A bookshelf that is big enough for my books!
 
-**Outcome:** A fully functional RC car capable of forward/reverse driving, turning.
+---
+<div align="center">
+  <img src="Images/bookshelfbrainstorm1.png" alt="Sketch" width="600"/>
+  <img src="Images/bookshelfbrainstorm2.png" alt="Sketch" width="600"/>
+  <p><em>rough brainstorm of the bookshelf design.</em></p>
+</div>
+
+
 
 ---
 
-## 🛠️ Materials & Components
-### Electronics
-- 27Mhz 4CH RC transmitter
-- 27Mhz 4CH RC receiver
-- 3-6V DC motors  
-- Wires    
-- AA Batteries  
 
-### Mechanical
-- Wood Chasis
-- Cardboard
-- Plastic Cover
-- 4 × Wheels with rubber tires  
-- Axles 
-- Heat shrink tubing 
-- Screws, nuts, and nails  
 
-### Tools 
-- Soldering iron   
-- Hot glue gun   
-- Pliers
-- Multipurpose wire stripper.
-- Scissor
-- Pencil
-- Sketching book
 
-- ---
+## 💡 Joint Mechanism
+
+I took inspiration of this random bookshelf design on makerworld, it uses this joint mechanism (i dont know the name of this)
 
 <div align="center">
-  <img src="Images/sketch.jpg" alt="Sketch" width="600"/>
-  <p><em>rough sketches of steering system designs.</em></p>
+  <img src="Images/joint1.png" alt="Sketch" width="600"/>
+  <p><em>This is the one im talking about.</em></p>
 </div>
 
 <br>
 <br>
 
-<div align="center">
-  <img src="Images/v1.jpg" alt="steering v1" width="600"/>
-  <p><em>version 1 of steering system, failed due to invalid dimension and insufficient space to implement.</em></p>
-</div>
+I adapted this idea into my bookshelf and it was a lot more simple.
 
 <div align="center">
-  <img src="Images/v2.jpg" alt="steering v2" width="600"/>
-  <p><em>version 2 of steering system, improved with more space and easy to implement, howver failed due to motor unable to produce enough torque when being placed too far in the back.</em></p>
+  <img src="Images/testjoint.jpg" alt="Sketch" width="600"/>
+  <p><em>Making sure it works first so I did a test print, and it worked well.</em></p>
 </div>
+
+<br>
+<br>
+
+# FINAL
 
 <div align="center">
-  <img src="Images/v3.jpg" alt="steering v3" width="600"/>
-  <p><em>version 3 of steering system, improved from v2, added supports, made everything more compact and effcicient, put motor closer to ensure enough torque.</em></p>
+  <img src="Images/actualbookshelf.jpg" alt="Sketch" width="600"/>
+  <p><em>Looked just as expected, the joint still works but it was a bit hard to connect, had to half connect one side and then just push it hard to make it fit in,  after connection it stays really stable.</em></p>
 </div>
-
 ---
 
-## 🧩 Challenges & Problems Faced
 
-During the build process, we encountered some challenges.  
-Each problem required troubleshooting and iteration, which provided valuable hands-on learning.
-
-### ⚡ Steering Issues
-- **Problem:** The steering motor unable to produce enough torque to overcome friction.  
-- **Cause:** 2 AA battery does not produce enough voltage.  
-- **Solution:** Soldered two battery holders in series, so that the car has 4 AA batteries (6V), which maxes out the motors potential, which turned out to be successful.  
-
----
-
-### 🖥️ Unable to turn on
-- **Problem:** The receiver fails to turn on.  
-- **Cause:** After checking all related conections, we found out that the V+ wire had poor connection.
-- **Solution:** We resoldered the V+ wire and made sure all wires had proper protection and are well secured. 
-
----
-
-## 🎥 Demo Video
-[▶️ Watch on YouTube](https://www.youtube.com/watch?v=2iG5XZ101lU)
 
 
