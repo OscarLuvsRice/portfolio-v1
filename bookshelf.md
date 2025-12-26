@@ -43,6 +43,15 @@ I adapted this idea into my bookshelf and it was a lot more simple.
 <br>
 <br>
 
+## In addition...
+
+<div align="center">
+  <img src="Images/bookshelfextension.png" alt="Sketch" width="600"/>
+  <p><em>Now you can infinitely extend the bookshelf yea!!.</em></p>
+</div>
+
+<br>
+
 # FINAL
 
 <div align="center">
