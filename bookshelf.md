@@ -46,7 +46,7 @@ I adapted this idea into my bookshelf and it was a lot more simple.
 ## In addition...
 
 <div align="center">
-  <img src="Images/bookshelfextension.png" alt="Sketch" width="600"/>
+  <img src="Images/middle.png" alt="Sketch" width="600"/>
   <p><em>Now you can infinitely extend the bookshelf yea!!.</em></p>
 </div>
 
