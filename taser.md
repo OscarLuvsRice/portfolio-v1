@@ -92,7 +92,7 @@ To make sure all the components can fit into the case, I started by individually
 
 <div align="center">
   <img src="Images/taserv2.png" alt="taserv2" width="600"/>
-  <p><em>Version 2 of the taser, hole problem imporved using offsets and projection, strength fixed by increasing thickness and infill% of print, also made probe circles better.</em></p>
+  <p><em>Version 2 of the taser, hole problem improved using offsets and projection, strength fixed by increasing thickness and infill% of print, also made probe circles better.</em></p>
 </div>
 
 ### Problems of v2
