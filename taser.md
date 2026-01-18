@@ -131,6 +131,10 @@ To make sure all the components can fit into the case, I started by individually
 </figure>
 The v3 taser works.
 
+---
+
+## STEP 4 FINALE
+
 Still designed the v4 of the taser case, which is the final version.
 <div align="center">
   <img src="Images/taserv4.png" alt="taserv4" width="600"/>
