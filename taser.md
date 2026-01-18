@@ -70,7 +70,7 @@ To make sure all the components can fit into the case, I started by individually
 ## In addition I did some brainstorming while waiting for the parts to arrive.
 
 <div align="center">
-  <img src="Images/taserbrainstorm.png" alt="brainstorm" width="600"/>
+  <img src="Images/brainstorm.png" alt="brainstorm" width="600"/>
   <p><em>some random brainstorm</em></p>
 </div>
 
