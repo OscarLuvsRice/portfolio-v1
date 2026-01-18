@@ -126,11 +126,12 @@ To make sure all the components can fit into the case, I started by individually
 <br>
 -Solution:Using my knowledge of activation energy, I don't have access to a stronger resistor so I swapped red with green, which requires a higher activation energy. This solves the overflow of power.
 
-<figure>
-  <video src="Images/tasertest.mov" controls width="800" loop muted></video>
-</figure>
-The v3 taser works.
+<br>
+<br>
 
+<video src="Images/tasertest." title="Taser test" controls width="600">
+</video>
+The v3 taser works.
 ---
 
 ## STEP 4 FINALE
