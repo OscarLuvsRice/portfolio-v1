@@ -129,7 +129,7 @@ To make sure all the components can fit into the case, I started by individually
 <br>
 <br>
 
-<video src="Images/tasertest." title="Taser test" controls width="600">
+<video src="Images/tasertest.mov" title="Taser test" controls width="600">
 </video>
 The v3 taser works.
 
