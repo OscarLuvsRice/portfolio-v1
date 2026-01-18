@@ -132,6 +132,7 @@ To make sure all the components can fit into the case, I started by individually
 <video src="Images/tasertest." title="Taser test" controls width="600">
 </video>
 The v3 taser works.
+
 ---
 
 ## STEP 4 FINALE
