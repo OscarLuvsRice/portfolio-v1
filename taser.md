@@ -56,12 +56,12 @@ To make sure all the components can fit into the case, I started by individually
 </div>
 
 <div align="center">
-  <img src="Images/tp4056.jpg" alt="steerin" width="600"/>
+  <img src="Images/tp4056.png" alt="tp4056" width="600"/>
   <p><em>TP4056</em></p>
 </div>
 
 <div align="center">
-  <img src="Images/onoff.jpg" alt="onoff" width="600"/>
+  <img src="Images/onoff.png" alt="onoff" width="600"/>
   <p><em>On and Off Switch, I also modelled the push button</em></p>
 </div>
 
