@@ -129,6 +129,9 @@ To make sure all the components can fit into the case, I started by individually
 <br>
 <br>
 
+## 🎥 Demo Video
+[▶️ Watch on YouTube](https://youtube.com/shorts/yTjaJlfPVyQ)
+
 
 
 ---
