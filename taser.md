@@ -79,7 +79,7 @@ To make sure all the components can fit into the case, I started by individually
 ## STEP 2: Printing and Testing
 
 <div align="center">
-  <img src="Images/taserv1.png" alt="taserv1" width="600"/>
+  <img src="Images/taserv1.jpg" alt="taserv1" width="600"/>
   <p><em>Version 1 of the taser.</em></p>
 </div>
 
@@ -105,7 +105,7 @@ To make sure all the components can fit into the case, I started by individually
 <br>
 
 <div align="center">
-  <img src="Images/taserv3.png" alt="taserv3" width="600"/>
+  <img src="Images/taserv3.jpg" alt="taserv3" width="600"/>
   <p><em>Version 3 of the taser, Probe circles location optimised, infill increase to 50%. Button position is more ergonomic. Threaded insertion designed. Cover designed. LED hole designed.</em></p>
 </div>
 
