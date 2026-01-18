@@ -118,6 +118,8 @@ To make sure all the components can fit into the case, I started by individually
 ### 🧩 Obstacles faced
 -**Problem:** the safety switch feature wouldn't work.
 -**Solution:**I learned on the spot the that the side you solder the push buttons pins matters a lot. I initially soldered incorrectly which allowed the transfomer to bypass the safety switch. That was solved by soldering correction.
+
+<br>
 <br>
 -**Problem:**The red LED would die because the resistor isn't strong enough to bring down the power of 3.7V
 -**Solution:**Using my knowledge of activation energy, I don't have access to a stronger resistor so I swapped red with green, which requires a higher activation energy. This solves the overflow of power.
