@@ -1,6 +1,6 @@
 # Oscar's DIY Portfolio
 
-Hello, I'm Oscar 👋 I'm currently a year 12 student and I'm asipiring to study Engineering (not sure which branch yet)at Monash University.  
+Hello, I'm Oscar 👋 I'm first year engineering student here in Monash.  
 This repo contains some of the stuff that I've done with the intention of developing technical skills. 
 
 [SKILLS](SKILLS.md)
