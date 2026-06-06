@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oscar's DIY Portfolio</title>
+    <title>Oscar // Engineering Portfolio</title>
     
-    <!-- Import a sleek, modern tech font from Google Fonts -->
+    <!-- High-tech geometric and clean reading fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* 1. PURPLE DESIGN SYSTEM VARIABLES */
+        /* DESIGN SYSTEM VARIABLES */
         :root {
-            --bg-color: #0b0813;       /* Deep obsidian purple background */
-            --card-bg: #161224;        /* Dark violet-slate for cards */
-            --text-main: #f3f0ff;      /* Bright lavender-white for headings */
-            --text-muted: #9d92c6;     /* Muted silvery-purple for descriptions */
-            --accent: #c084fc;         /* Vibrant neon purple for highlights */
-            --border-color: #2b2244;   /* Subtle deep purple card borders */
+            --bg-main: #07040f;        /* Deep obsidian space */
+            --bg-card: #110924;        /* Dark amethyst matrix */
+            --bg-card-hover: #180d33;  /* Elevated purple accent */
+            --border: #251647;         /* High-contrast structural border */
+            --text-pure: #ffffff;      /* Headings */
+            --text-read: #e1dbec;      /* High-readability body copy */
+            --text-dim: #8c7fa6;       /* System metrics and labels */
+            --neon-glow: #bc76ff;      /* Primary electric violet pulse */
+            --neon-subtle: #6366f1;    /* Secondary deep indigo shift */
         }
 
-        /* 2. BASE STYLES */
+        /* RESET & BASE MATRIX */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -30,152 +33,354 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg-main);
+            color: var(--text-read);
             line-height: 1.6;
-            padding: 3rem 1.5rem;
+            padding: 4rem 2rem;
             display: flex;
             justify-content: center;
-            align-items: center;
             min-height: 100vh;
         }
 
-        /* Keeps your portfolio neatly centered on wide screens */
-        .container {
-            max-width: 800px;
+        .workspace {
+            max-width: 900px;
             width: 100%;
         }
 
-        /* 3. HERO / HEADER SECTION */
-        header {
-            margin-bottom: 3.5rem;
+        /* TERMINAL HEADER HEADER */
+        .terminal-header {
+            border: 1px solid var(--border);
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--neon-glow), var(--neon-subtle));
+        }
+
+        .status-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--neon-glow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: rgba(188, 118, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid rgba(188, 118, 255, 0.2);
         }
 
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            /* Sleek Purple-to-Indigo gradient text */
-            background: linear-gradient(to right, #c084fc, #6366f1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-pure);
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
         }
 
-        .subtitle {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-family: monospace;
+        .manifesto {
+            font-size: 1.1rem;
+            color: var(--text-read);
+            max-width: 720px;
             margin-bottom: 1.5rem;
         }
 
-        .bio {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            border-left: 3px solid var(--accent);
-            padding-left: 1.2rem;
-            max-width: 600px;
-        }
-
-        /* 4. THE CARD GRID */
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* 5. CARD STYLING & ANIMATIONS */
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.75rem;
-            text-decoration: none;
-            color: var(--text-main);
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        /* METADATA STRIP */
+        .meta-strip {
             display: flex;
-            flex-direction: column;
+            gap: 2rem;
+            flex-wrap: wrap;
+            border-top: 1px dashed var(--border);
+            padding-top: 1.25rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-dim);
         }
 
-        /* Interactive Hover State */
-        .card:hover {
-            transform: translateY(-5px); 
-            border-color: var(--accent);
-            box-shadow: 0 10px 25px rgba(192, 132, 252, 0.15); /* Purple glow */
+        .meta-strip span strong {
+            color: var(--neon-glow);
         }
 
-        .card h2 {
+        /* DASHBOARD GRID SECTIONS */
+        .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: var(--text-pure);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--border);
+        }
+
+        /* NAVIGATION GRID */
+        .nav-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .nav-node {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            text-decoration: none;
+            color: var(--text-pure);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Adds an arrow next to the card title */
-        .card h2::after {
-            content: '→';
-            transition: transform 0.2s ease;
-        }
-
-        .card:hover h2::after {
-            transform: translateX(4px); 
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* 6. FOOTER */
-        footer {
-            margin-top: 5rem;
-            text-align: center;
+        .nav-node span {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        .nav-node:hover {
+            background-color: var(--bg-card-hover);
+            border-color: var(--neon-glow);
+            transform: translateX(4px);
+            box-shadow: -4px 0 15px rgba(188, 118, 255, 0.1);
+        }
+
+        .nav-node:hover span {
+            color: var(--neon-glow);
+        }
+
+        /* FEATURED LAB FEEDS (PROJECT SHOWCASE) */
+        .project-feed {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .project-log {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.2s ease;
+        }
+
+        .project-log:hover {
+            border-color: rgba(188, 118, 255, 0.4);
+            box-shadow: 0 8px 30px rgba(7, 4, 15, 0.5);
+        }
+
+        .log-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .log-id {
+            color: var(--neon-glow);
+            font-weight: 700;
+        }
+
+        .log-tag {
+            color: var(--text-dim);
+            background-color: rgba(37, 22, 71, 0.5);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .project-log h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            color: var(--text-pure);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-log p {
+            color: var(--text-read);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* TECH BADGE WRAPPER */
+        .tech-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            background-color: rgba(7, 4, 10, 0.4);
+            border: 1px solid var(--border);
+            color: var(--text-read);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* DECORATIVE EQUATION BLOCK */
+        .equation-block {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(7, 4, 15, 0.6);
+            border-left: 2px solid var(--neon-subtle);
+            padding: 0.75rem;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* SYSTEM FOOTER */
+        footer {
+            margin-top: 6rem;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 2rem 1rem; }
+            h1 { font-size: 2.2rem; }
+            .meta-strip { gap: 1rem; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Oscar’s DIY Portfolio</h1>
-            <p class="subtitle">portfolio-v1 // main_branch</p>
-            <p class="bio">
-                Hello, I’m Oscar 👋 I’m a first-year engineering student here at Monash.
-                This repository features the projects, builds, and experiments I’m working on to develop my technical skills.
+    <div class="workspace">
+        
+        <!-- MAIN CONTROLLER SECTION -->
+        <header class="terminal-header">
+            <div class="status-badge">System Status: Active Build</div>
+            <h1>Oscar's Engineering Lab</h1>
+            <p class="manifesto">
+                First-year Engineering student. Documenting functional design iterations, rapid hardware prototyping, 
+                applied physics calculations, and structural fabrications.
             </p>
+            
+            <div class="meta-strip">
+                <span>// LOCATION: <strong>Monash University</strong></span>
+                <span>// CORE_FOCUS: <strong>Mechanical & Electronics</strong></span>
+                <span>// DEPLOYMENT: <strong>v1.0.0-purple</strong></span>
+            </div>
         </header>
 
-        <!-- Main Navigation Grid -->
-        <main class="nav-grid">
-            <a href="/portfolio-v1/SKILLS.html" class="card">
-                <h2>SKILLS</h2>
-                <p>Technical competencies, software toolsets, and fabrication methods I use.</p>
-            </a>
+        <!-- SUBPAGE MAP INDEX -->
+        <section>
+            <h2 class="section-title">Directory Nodes</h2>
+            <nav class="nav-matrix">
+                <a href="/portfolio-v1/SKILLS.html" class="nav-node">SKILLS <span>01 //</span></a>
+                <a href="/portfolio-v1/project.html" class="nav-node">PROJECTS <span>02 //</span></a>
+                <a href="/portfolio-v1/CONTACTS.html" class="nav-node">CONTACTS <span>03 //</span></a>
+                <a href="/portfolio-v1/backyardscience.html" class="nav-node">BACKYARD SCI <span>04 //</span></a>
+            </nav>
+        </section>
 
-            <a href="/portfolio-v1/project.html" class="card">
-                <h2>PROJECTS</h2>
-                <p>A showcase of my engineering designs, calculations, and active physical builds.</p>
-            </a>
+        <!-- LIVE PROJECT FEED OVERVIEW -->
+        <section>
+            <h2 class="section-title">Active Project Logs</h2>
+            <div class="project-feed">
+                
+                <!-- LOG ENTRY 01 -->
+                <article class="project-log">
+                    <div class="log-meta">
+                        <span class="log-id">LOG_001 // AEROSPACE_RECOVERY</span>
+                        <span class="log-tag">In Progress</span>
+                    </div>
+                    <h3>High-Altitude Recovery Systems</h3>
+                    <p>
+                        Designing and validating deceleration systems for experimental hardware deployment. 
+                        Focus includes aerodynamic drag validation, mathematical kinetic tracking, and structural stress-testing under peak opening velocities.
+                    </p>
+                    <div class="equation-block">
+                        <!-- Structural safety margin syntax -->
+                        Factor of Safety: FS = F_ultimate / F_allowable
+                    </div>
+                    <div class="tech-tags">
+                        <span class="badge">Aerodynamics</span>
+                        <span class="badge">Structural Mechanics</span>
+                        <span class="badge">Applied Mathematics</span>
+                    </div>
+                </article>
 
-            <a href="/portfolio-v1/CONTACTS.html" class="card">
-                <h2>CONTACTS</h2>
-                <p>Reach out for collaborations, technical discussion, or network connections.</p>
-            </a>
+                <!-- LOG ENTRY 02 -->
+                <article class="project-log">
+                    <div class="log-meta">
+                        <span class="log-id">LOG_002 // PROPULSION</span>
+                        <span class="log-tag">Active Prototype</span>
+                    </div>
+                    <h3>Solid Rocketry Combustion</h3>
+                    <p>
+                        Investigating chemical composition formulations for alternative solid propellants. 
+                        Analyzing burn rate geometry, chamber pressures, and exhaust mechanics through chemical and kinetic verification models.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="badge">Propulsion Chemistry</span>
+                        <span class="badge">Solid Fuel Rockets</span>
+                        <span class="badge">Thermal Analysis</span>
+                    </div>
+                </article>
 
-            <a href="/portfolio-v1/backyardscience.html" class="card">
-                <h2>BACKYARD SCIENCE</h2>
-                <p>Just for fun. Unconventional experiments, quick prototypes, and informal side-quests.</p>
-            </a>
-        </main>
+                <!-- LOG ENTRY 03 -->
+                <article class="project-log">
+                    <div class="log-meta">
+                        <span class="log-id">LOG_003 // FABRICATION</span>
+                        <span class="log-tag">Completed / Maintained</span>
+                    </div>
+                    <h3>Mechanical Design & Applied Analysis</h3>
+                    <p>
+                        Developing custom technical components from concept sketches to functional tangible units. 
+                        Using precision 3D modeling pipelines to refine clearances, optimize assembly workflows, and solve complex electrical network meshes.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="badge">3D CAD Modeling</span>
+                        <span class="badge">3D Printing / PLA</span>
+                        <span class="badge">Circuit Analysis</span>
+                    </div>
+                </article>
 
+            </div>
+        </section>
+
+        <!-- CONSOLE FOOTER -->
         <footer>
-            <p>© 2026 Oscar. Built with HTML & CSS.</p>
+            <div class="footer-status">SYS_STATUS: OPTIMAL</div>
+            <div class="footer-copyright">© 2026 OSCAR. STYLED VIA CUSTOM RAW CSS.</div>
         </footer>
+
     </div>
 
 </body>
