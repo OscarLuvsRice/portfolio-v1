@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar // Technical Skills</title>
+    
+    <!-- Premium clean fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* PASSIONATE PURPLE THEME VARIABLES */
+        :root {
+            --bg-main: #06030e;        /* Dark obsidian purple night */
+            --bg-card: #120b24;        /* Rich velvet purple for structural cards */
+            --bg-card-hover: #191032;  /* Slightly brighter purple for hover reactions */
+            --border: #261947;         /* Defined, clean border line */
+            --text-title: #ffffff;     /* Crisp white for core headings */
+            --text-body: #e3ddec;      /* Bright, high-readability text */
+            --text-muted: #8d80a8;     /* Soft purple-grey for details */
+            --accent-purple: #c084fc;  /* Neon electric lavender */
+            --accent-blue: #6366f1;    /* Deep cosmic indigo */
+        }
+
+        /* RESET & BASE LAYOUT */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            line-height: 1.6;
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        /* BACK BUTTON */
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .back-home:hover {
+            color: var(--accent-purple);
+            transform: translateX(-4px);
+        }
+
+        /* HEADER BLOCK */
+        header {
+            margin-bottom: 3.5rem;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-title);
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 span {
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        /* SKILLS CATEGORY GRID */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .skills-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.25s ease;
+        }
+
+        .skills-card:hover {
+            border-color: var(--accent-purple);
+            background-color: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .skills-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-title);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* PILL/BADGE STYLING */
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-body);
+            background: rgba(38, 25, 71, 0.4);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .skills-card:hover .badge {
+            border-color: rgba(192, 132, 252, 0.2);
+        }
+
+        .badge:hover {
+            border-color: var(--accent-purple) !important;
+            color: var(--accent-purple);
+            background: rgba(192, 132, 252, 0.05);
+        }
+
+        /* MINIMAL FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            body { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- BACK TO HOME NAVIGATION -->
+        <a href="index.html" class="back-home">← return_home</a>
+
+        <!-- HEADER BLOCK -->
+        <header>
+            <h1>Technical <span>Toolkit</span>.</h1>
+            <p class="subtitle">A running directory of hardware, software protocols, and engineering frameworks utilized across my builds.</p>
+        </header>
+
+        <!-- THREE PILLAR SKILLS GRID -->
+        <main class="skills-grid">
+            
+            <!-- PILLAR 1: FIRMWARE & SYSTEMS -->
+            <div class="skills-card">
+                <h3>Firmware & Control</h3>
+                <div class="badge-list">
+                    <span class="badge">C / C++</span>
+                    <span class="badge">Arduino Architecture</span>
+                    <span class="badge">Microcontrollers</span>
+                    <span class="badge">Sensor Integration</span>
+                    <span class="badge">H-Bridge Drivetrains</span>
+                    <span class="badge">I2C / SPI Protocols</span>
+                </div>
+            </div>
+
+            <!-- PILLAR 2: DESIGN & FABRICATION -->
+            <div class="skills-card">
+                <h3>Design & Fabrication</h3>
+                <div class="badge-list">
+                    <span class="badge">3D Modeling (CAD)</span>
+                    <span class="badge">SketchUp</span>
+                    <span class="badge">3D Printing (Slicing)</span>
+                    <span class="badge">PLA Filament Optimization</span>
+                    <span class="badge">Hardware Assembly</span>
+                    <span class="badge">Rapid Prototyping</span>
+                </div>
+            </div>
+
+            <!-- PILLAR 3: ANALYSIS & COMPUTATION -->
+            <div class="skills-card">
+                <h3>Analysis & Methods</h3>
+                <div class="badge-list">
+                    <span class="badge">Applied Mathematics</span>
+                    <span class="badge">Differential Equations</span>
+                    <span class="badge">Circuit Analysis</span>
+                    <span class="badge">Nodal Analysis</span>
+                    <span class="badge">Factor of Safety (FoS)</span>
+                    <span class="badge">Mechanical Validation</span>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- CONSOLE FOOTER -->
+        <footer>
+            <p>© 2026 Oscar. Compiled tracking frameworks.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
