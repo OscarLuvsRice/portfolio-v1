@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/portfolio-v1/style.css">
-
 # Computer Assisted Design (CAD)
 #### Date in ascending order
 
