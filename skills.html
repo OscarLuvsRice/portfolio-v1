@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oscar // Technical Skills</title>
     
-    <!-- Premium clean fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -165,7 +164,7 @@
             transform: scale(1.03);
         }
 
-        /* VISUAL ASSET / PLACEHOLDER SIDE */
+        /* VISUAL ASSET CONTAINER */
         .card-media {
             flex: 0.8;
             width: 100%;
@@ -175,7 +174,7 @@
             position: relative;
             border: 1px dashed var(--border);
             
-            /* Cool Cyber Blueprint Grid Background */
+            /* Technical Blueprint Grid Background */
             background-image: 
                 linear-gradient(rgba(192, 132, 252, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(192, 132, 252, 0.03) 1px, transparent 1px);
@@ -190,7 +189,7 @@
             transition: all 0.3s ease;
         }
 
-        /* If a real image is added inside .card-media container */
+        /* Auto-formats custom images if added later over top of SVGs */
         .card-media img {
             width: 100%;
             height: 100%;
@@ -198,7 +197,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 2;
+            z-index: 5;
         }
 
         .workbench-card:hover .card-media {
@@ -206,14 +205,14 @@
             background-color: rgba(25, 16, 50, 0.4);
         }
 
-        /* Tech detailing inside empty placeholders */
+        /* Tech detailing labels */
         .placeholder-tag {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--accent-purple);
             letter-spacing: 1px;
-            z-index: 1;
+            z-index: 3;
         }
 
         .placeholder-subtext {
@@ -221,7 +220,7 @@
             font-size: 0.68rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            z-index: 1;
+            z-index: 3;
         }
 
         /* MINIMAL FOOTER */
@@ -234,7 +233,7 @@
             color: var(--text-muted);
         }
 
-        /* RESPONSIVE DESIGN FOR SMALLER SCREENS */
+        /* RESPONSIVE DESIGN FOR SMARTPHONES/TABLETS */
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             body { padding: 2rem 1rem; }
@@ -247,19 +246,15 @@
 
     <div class="container">
         
-        <!-- BACK TO HOME NAVIGATION -->
         <a href="index.html" class="back-home">← return_home</a>
 
-        <!-- HEADER BLOCK -->
         <header>
             <h1>Technical <span>Toolkit</span>.</h1>
             <p class="subtitle">A categorized matrix of software suites, simulation environments, hardware prototyping, and engineering systems I operate.</p>
         </header>
 
-        <!-- THREE PILLAR WORKBENCH STACK -->
         <main class="workbench-stack">
             
-            <!-- CATEGORY 1: CAD & SIMULATION -->
             <div class="workbench-card">
                 <div class="card-info">
                     <h3>Design, Simulation & PLM</h3>
@@ -268,62 +263,86 @@
                         <span class="badge">Fusion 360</span>
                         <span class="badge">Creo Parametric</span>
                         <span class="badge">TinkerCad</span>
-                        <span class="badge">OpenRocket (Simulation)</span>
+                        <span class="badge">OpenRocket</span>
                         <span class="badge">Ansys (FEA)</span>
                         <span class="badge">Windchill Workspace</span>
                     </div>
                 </div>
-                <!-- IMAGE PLACEHOLDER 1 -->
                 <div class="card-media">
-                    <!-- Paste your real img tag here later, example: -->
-                    <!-- <img src="Images/cad-rendering.png" alt="CAD Work"> -->
+                    <svg viewBox="0 0 300 200" style="width:100%; height:100%; position:absolute; top:0; left:0; pointer-events:none;">
+                        <path d="M150 40 L230 80 L150 120 L70 80 Z" fill="none" stroke="var(--accent-purple)" stroke-width="1.5" stroke-dasharray="4,2"/>
+                        <path d="M70 80 L70 145 L150 185 L150 120 Z" fill="none" stroke="var(--accent-purple)" stroke-width="1.5"/>
+                        <path d="M230 80 L230 145 L150 185" fill="none" stroke="var(--accent-purple)" stroke-width="1.5"/>
+                        <line x1="50" y1="80" x2="50" y2="145" stroke="var(--accent-blue)" stroke-width="1" stroke-dasharray="3,3"/>
+                        <line x1="45" y1="80" x2="55" y2="80" stroke="var(--accent-blue)" stroke-width="1"/>
+                        <line x1="45" y1="145" x2="55" y2="145" stroke="var(--accent-blue)" stroke-width="1"/>
+                        <text x="35" y="118" fill="var(--accent-blue)" font-family="monospace" font-size="9" transform="rotate(-90 35 118)">Δz: 65.00mm</text>
+                        <circle cx="150" cy="120" r="4" fill="none" stroke="var(--accent-blue)" stroke-width="1"/>
+                        <line x1="150" y1="110" x2="150" y2="130" stroke="var(--accent-blue)" stroke-width="1"/>
+                        <line x1="140" y1="120" x2="160" y2="120" stroke="var(--accent-blue)" stroke-width="1"/>
+                    </svg>
                     <span class="placeholder-tag">// CAD_&_SIM_WORKSPACE</span>
-                    <span class="placeholder-subtext">Awaiting Asset Upload</span>
+                    <span class="placeholder-subtext">Vector Blueprint Render Active</span>
                 </div>
             </div>
 
-            <!-- CATEGORY 2: DIGITAL INTEGRATION & PROGRAMMING -->
             <div class="workbench-card">
                 <div class="card-info">
                     <h3>Firmware & Embedded Software</h3>
-                    <p class="category-desc">Developing control algorithms, debugging logic loops, and compiling deployment instructions for microcontrollers.</p>
+                    <p class="category-desc">Developing scripts, configuring IDE runtimes, and mapping software execution across hobby logic architectures.</p>
                     <div class="badge-list">
                         <span class="badge">Basic Python</span>
-                        <span class="badge">Arduino IDE Architecture</span>
-                        <span class="badge">Microcontroller Logic</span>
+                        <span class="badge">Arduino IDE</span>
+                        <span class="badge">Hobby Electronics Logic</span>
                     </div>
                 </div>
-                <!-- IMAGE PLACEHOLDER 2 -->
                 <div class="card-media">
-                    <!-- <img src="Images/firmware-setup.png" alt="Firmware Code"> -->
+                    <svg viewBox="0 0 300 200" style="width:100%; height:100%; position:absolute; top:0; left:0; pointer-events:none;">
+                        <rect x="115" y="65" width="70" height="70" rx="6" fill="none" stroke="var(--accent-blue)" stroke-width="2"/>
+                        <rect x="123" y="73" width="54" height="54" rx="2" fill="rgba(99, 102, 241, 0.05)" stroke="var(--accent-blue)" stroke-width="1" stroke-dasharray="2,2"/>
+                        <path d="M100 75 h15 M100 85 h15 M100 95 h15 M100 105 h15 M100 115 h15" stroke="var(--accent-blue)" stroke-width="1.5"/>
+                        <path d="M185 75 h15 M185 85 h15 M185 95 h15 M185 105 h15 M185 115 h15" stroke="var(--accent-blue)" stroke-width="1.5"/>
+                        <path d="M125 50 v15 M135 50 v15 M145 50 v15 M155 50 v15 M165 50 v15" stroke="var(--accent-blue)" stroke-width="1.5"/>
+                        <path d="M125 135 v15 M135 135 v15 M145 135 v15 M155 135 v15 M165 135 v15" stroke="var(--accent-blue)" stroke-width="1.5"/>
+                        <path d="M100 85 L60 85 L40 105" fill="none" stroke="var(--text-muted)" stroke-width="1.2" opacity="0.5"/>
+                        <circle cx="40" cy="105" r="3" fill="var(--accent-purple)"/>
+                        <path d="M185 115 L225 115 L245 95 L270 95" fill="none" stroke="var(--text-muted)" stroke-width="1.2" opacity="0.5"/>
+                        <circle cx="270" cy="95" r="3" fill="var(--accent-purple)"/>
+                    </svg>
                     <span class="placeholder-tag">// LOGIC_EMBEDDED.EXE</span>
-                    <span class="placeholder-subtext">Awaiting Asset Upload</span>
+                    <span class="placeholder-subtext">Microarchitecture Bus Map</span>
                 </div>
             </div>
 
-            <!-- CATEGORY 3: PHYSICAL LAB WORK & MANUFACTURING -->
             <div class="workbench-card">
                 <div class="card-info">
                     <h3>Fabrication, Electronics & Prototyping</h3>
-                    <p class="category-desc">Hands-on rapid manufacturing pipelines, hardware assembly, and manual component wiring loops.</p>
+                    <p class="category-desc">Hands-on manufacturing, mechanical assembly preparation, model slicing pipelines, and hardware component soldering.</p>
                     <div class="badge-list">
-                        <span class="badge">3D Printing Assembly</span>
+                        <span class="badge">3D Printing</span>
                         <span class="badge">3D Model Slicing</span>
-                        <span class="badge">Soldering Station Operations</span>
-                        <span class="badge">Hobby Electronics Diagnostics</span>
+                        <span class="badge">Soldering</span>
+                        <span class="badge">Hobby Electronics Assembly</span>
                     </div>
                 </div>
-                <!-- IMAGE PLACEHOLDER 3 -->
                 <div class="card-media">
-                    <!-- <img src="Images/bench-wiring.png" alt="Physical Assembly"> -->
+                    <svg viewBox="0 0 300 200" style="width:100%; height:100%; position:absolute; top:0; left:0; pointer-events:none;">
+                        <ellipse cx="150" cy="155" rx="85" ry="18" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+                        <path d="M115 150 C115 110 135 65 150 45 C165 65 185 110 185 150 Z" fill="none" stroke="var(--accent-purple)" stroke-width="1.5"/>
+                        <line x1="120" y1="130" x2="180" y2="130" stroke="var(--accent-purple)" stroke-width="1" opacity="0.6"/>
+                        <line x1="127" y1="110" x2="173" y2="110" stroke="var(--accent-purple)" stroke-width="1" opacity="0.6"/>
+                        <line x1="135" y1="90" x2="165" y2="90" stroke="var(--accent-purple)" stroke-width="1" opacity="0.6"/>
+                        <line x1="142" y1="70" x2="158" y2="70" stroke="var(--accent-purple)" stroke-width="1" opacity="0.6"/>
+                        <path d="M144 10 L156 10 L153 38 L150 45 L147 38 Z" fill="var(--accent-blue)"/>
+                        <circle cx="150" cy="45" r="2.5" fill="#ffffff"/>
+                    </svg>
                     <span class="placeholder-tag">// FABRICATION_LAB.SYS</span>
-                    <span class="placeholder-subtext">Awaiting Asset Upload</span>
+                    <span class="placeholder-subtext">Additive Manufacturing Diagnostic</span>
                 </div>
             </div>
 
         </main>
 
-        <!-- CONSOLE FOOTER -->
         <footer>
             <p>© 2026 Oscar. Hand-compiled skill registries.</p>
         </footer>
