@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oscar // Portfolio</title>
     
-    <!-- Premium geometric and modern body fonts -->
+    <!-- Premium clean fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
-        /* DESIGN SYSTEM VARIABLES */
+        /* PASSIONATE PURPLE THEME VARIABLES */
         :root {
-            --bg-main: #07040f;        /* Deep obsidian purple */
-            --bg-card: #110924;        /* Dark violet-slate */
-            --bg-card-hover: #160d2f;  /* Slightly lighter violet on hover */
-            --border: #231742;         /* Sleek, subtle structural border */
-            --text-pure: #ffffff;      /* Headings */
-            --text-read: #dfd9e7;      /* High-readability body text */
-            --text-dim: #8476a0;       /* Subtitles and tags */
-            --accent: #bc76ff;         /* Vibrant neon purple */
-            --accent-subtle: #6366f1;  /* Deep indigo gradient transition */
+            --bg-main: #06030e;        /* Dark obsidian purple night */
+            --bg-card: #120b24;        /* Rich velvet purple for structural cards */
+            --bg-card-hover: #191032;  /* Slightly brighter purple for hover reactions */
+            --border: #261947;         /* Defined, clean border line */
+            --text-title: #ffffff;     /* Crisp white for core headings */
+            --text-body: #e3ddec;      /* Bright, high-readability text */
+            --text-muted: #8d80a8;     /* Soft purple-grey for details */
+            --accent-purple: #c084fc;  /* Neon electric lavender */
+            --accent-blue: #6366f1;    /* Deep cosmic indigo */
+            --linkedin-blue: #0077b5;  /* Official LinkedIn Accent */
         }
 
-        /* BASE MATRIX SETTING */
+        /* RESET & BASE LAYOUT */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -34,7 +35,7 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-main);
-            color: var(--text-read);
+            color: var(--text-body);
             line-height: 1.6;
             padding: 4rem 2rem;
             display: flex;
@@ -42,203 +43,265 @@
             min-height: 100vh;
         }
 
-        .portfolio-wrapper {
+        .container {
             max-width: 850px;
             width: 100%;
         }
 
-        /* CLEAN HEADER BLOCK */
+        /* 1. ENTHUSIASTIC & PASSIONATE HEADER */
         header {
-            border: 1px solid var(--border);
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 3.5rem;
         }
 
-        /* Sleek accent line across the top */
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, var(--accent), var(--accent-subtle));
+        .wave-emoji {
+            font-size: 1.6rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
         }
 
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             font-weight: 700;
-            color: var(--text-pure);
-            letter-spacing: -0.5px;
-            margin-bottom: 0.75rem;
+            color: var(--text-title);
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
         }
 
-        .bio {
-            font-size: 1.05rem;
-            color: var(--text-read);
-            max-width: 680px;
-            margin-bottom: 1.5rem;
+        /* Gradient phrase highlighting true passion */
+        h1 span {
+            background: linear-gradient(to right, var(--accent-purple), #a855f7, var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* SUBHEADER TECH LABELS */
-        .header-meta {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            border-top: 1px solid var(--border);
-            padding-top: 1.25rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-dim);
+        .passionate-bio {
+            font-size: 1.15rem;
+            color: var(--text-body);
+            max-width: 720px;
+            line-height: 1.7;
         }
 
-        .header-meta span strong {
-            color: var(--accent);
-            font-weight: 500;
+        .passionate-bio strong {
+            color: var(--accent-purple);
+            font-weight: 600;
         }
 
-        /* SECTION HEADERS */
-        .section-title {
+        /* 2. DIRECTORY NAVIGATION LINKS */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .nav-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            text-decoration: none;
+            color: var(--text-title);
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
-            color: var(--text-pure);
-            margin-bottom: 1.25rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-card .arrow {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-card:hover {
+            background-color: var(--bg-card-hover);
+            border-color: var(--accent-purple);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(192, 132, 252, 0.08);
+        }
+
+        .nav-card:hover .arrow {
+            transform: translateX(4px);
+            color: var(--accent-purple);
+        }
+
+        /* SECTION UTILITIES */
+        .section-header {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             gap: 1rem;
         }
 
-        .section-title::after {
+        .section-header::after {
             content: '';
             flex-grow: 1;
             height: 1px;
             background-color: var(--border);
         }
 
-        /* NAVIGATION LINKS */
-        .nav-links {
+        /* 3. TWO-COLUMN FEATURED PROJECTS GRID */
+        .projects-twin-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin-bottom: 3.5rem;
-        }
-
-        .nav-item {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.25rem;
-            text-decoration: none;
-            color: var(--text-pure);
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 1.05rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.2s ease;
-        }
-
-        .nav-item span {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            font-weight: 400;
-        }
-
-        .nav-item:hover {
-            background-color: var(--bg-card-hover);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(188, 118, 255, 0.08);
-        }
-
-        .nav-item:hover span {
-            color: var(--accent);
-        }
-
-        /* FEATURED PROJECTS SHOWCASE */
-        .featured-grid {
-            display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 1.5rem;
+            margin-bottom: 4rem;
         }
 
-        .project-card {
+        .placeholder-card {
             background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.2s ease;
-        }
-
-        .project-card:hover {
-            border-color: rgba(188, 118, 255, 0.4);
-            background-color: var(--bg-card-hover);
-            box-shadow: 0 8px 25px rgba(7, 4, 15, 0.4);
-        }
-
-        .card-header {
+            border: 2px dashed var(--border); /* Dashed lines clearly indicate incoming builds */
+            border-radius: 16px;
+            padding: 2.2rem;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: center;
+            min-height: 280px;
+            transition: all 0.25s ease;
+        }
+
+        .placeholder-card:hover {
+            border-color: rgba(192, 132, 252, 0.4);
+            background-color: rgba(25, 16, 50, 0.3);
+        }
+
+        .card-top h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            color: var(--text-title);
             margin-bottom: 0.75rem;
         }
 
-        .featured-tag {
+        .card-top p {
+            color: var(--text-body);
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        .status-tag {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
-            color: var(--accent);
-            font-weight: 500;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-
-        .project-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.35rem;
-            color: var(--text-pure);
-            margin-bottom: 0.75rem;
-        }
-
-        .project-card p {
-            color: var(--text-read);
-            font-size: 0.95rem;
-            margin-bottom: 1.25rem;
-        }
-
-        /* FORMULA EMBED STYLE */
-        .formula-box {
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(7, 4, 15, 0.4);
-            border-left: 2px solid var(--accent-subtle);
-            padding: 0.75rem 1rem;
-            margin-bottom: 1.25rem;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            border-radius: 0 4px 4px 0;
-        }
-
-        /* TECH BADGES */
-        .tag-group {
             display: flex;
+            align-items: center;
             gap: 0.5rem;
-            flex-wrap: wrap;
+            margin-top: 1.5rem;
         }
 
-        .tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            background-color: rgba(7, 4, 10, 0.3);
+        /* Small pulsing dot for active projects */
+        .status-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-purple);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* 4. VISUALLY APPEALING LINKEDIN FEATURE CARD */
+        .linkedin-feature-box {
+            background: linear-gradient(135deg, rgba(18, 11, 36, 1) 0%, rgba(30, 16, 62, 1) 100%);
             border: 1px solid var(--border);
-            color: var(--text-read);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Subtle glowing background accent blur */
+        .linkedin-feature-box::after {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--linkedin-blue);
+            filter: blur(80px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .linkedin-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar-placeholder {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--text-title);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-info h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            color: var(--text-title);
+            margin-bottom: 0.15rem;
+        }
+
+        .profile-info p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .linkedin-pitch {
+            color: var(--text-body);
+            font-size: 1.05rem;
+            max-width: 600px;
+        }
+
+        .linkedin-btn {
+            align-self: flex-start;
+            background-color: var(--text-title);
+            color: var(--bg-main);
+            padding: 0.8rem 1.6rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .linkedin-btn svg {
+            fill: currentColor;
+            width: 16px;
+            height: 16px;
+        }
+
+        .linkedin-btn:hover {
+            background-color: var(--accent-purple);
+            color: var(--text-title);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(192, 132, 252, 0.3);
         }
 
         /* MINIMAL FOOTER */
@@ -246,114 +309,98 @@
             margin-top: 5rem;
             border-top: 1px solid var(--border);
             padding-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-dim);
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 680px) {
+            h1 { font-size: 2.4rem; }
             body { padding: 2rem 1rem; }
-            h1 { font-size: 2.2rem; }
-            .header-meta { gap: 1rem; }
-            footer { flex-direction: column; gap: 1rem; text-align: center; }
+            .linkedin-feature-box { padding: 1.75rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="portfolio-wrapper">
+    <div class="container">
         
-        <!-- HEADER -->
+        <!-- HEADER BLOCK -->
         <header>
-            <h1>Oscar // Engineering</h1>
-            <p class="bio">
-                Engineering student at Monash University. Focusing on functional design iterations, mechanical 
-                fabrication, and circuit analysis.
+            <span class="wave-emoji">👋</span>
+            <h1>Hey, I'm Oscar. I love <span>building things</span> and solving complex problems.</h1>
+            <p class="passionate-bio">
+                I am a first-year engineering student working at the intersection of <strong>mechanical design</strong> and <strong>electronics prototyping</strong>. 
+                This portfolio is an active workspace where I document my physical builds, custom fabrications, and the mathematical equations that make them run.
             </p>
-            
-            <div class="header-meta">
-                <span>// Focus: <strong>Mechanical & Electronics</strong></span>
-                <span>// Environment: <strong>GitHub Pages</strong></span>
-            </div>
         </header>
 
-        <!-- NAVIGATION -->
-        <section style="margin-bottom: 3rem;">
-            <h2 class="section-title">Navigation</h2>
-            <nav class="nav-links">
-                <a href="/portfolio-v1/SKILLS.html" class="nav-item">Skills <span>→</span></a>
-                <a href="/portfolio-v1/project.html" class="nav-item">Projects <span>→</span></a>
-                <a href="/portfolio-v1/CONTACTS.html" class="nav-item">Contact <span>→</span></a>
-                <a href="/portfolio-v1/backyardscience.html" class="nav-item">Backyard Sci <span>→</span></a>
-            </nav>
-        </section>
+        <!-- DIRECTORY NAVIGATION -->
+        <nav class="nav-grid">
+            <a href="/portfolio-v1/SKILLS.html" class="nav-card">Skills <span class="arrow">→</span></a>
+            <a href="/portfolio-v1/project.html" class="nav-card">Projects <span class="arrow">→</span></a>
+            <a href="/portfolio-v1/CONTACTS.html" class="nav-card">Contact <span class="arrow">→</span></a>
+            <a href="/portfolio-v1/backyardscience.html" class="nav-card">Backyard Sci <span class="arrow">→</span></a>
+        </nav>
 
-        <!-- FEATURED SHOWCASE -->
+        <!-- TWO FEATURED PROJECTS PLACEHOLDERS -->
         <section>
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="featured-grid">
+            <h2 class="section-header">Featured Builds</h2>
+            <div class="projects-twin- Twin-grid projects-twin-grid">
                 
-                <!-- FEATURED 01 -->
-                <article class="project-card">
-                    <div class="card-header">
-                        <span class="featured-tag">Featured Project</span>
+                <!-- PLACEHOLDER PROJECT 1 -->
+                <div class="placeholder-card">
+                    <div class="card-top">
+                        <h3>Featured Project One</h3>
+                        <p>
+                            A detailed overview of your core engineering deliverable. Describe what you built, the mechanical or structural challenges you overcame, and what software pipeline or hardware you used.
+                        </p>
                     </div>
-                    <h3>Aerospace Recovery & Deceleration</h3>
-                    <p>
-                        Designing and analyzing deployment recovery rigs. Focus includes validating structural safety factors, kinetic tracking calculations, and testing components under peak structural load conditions.
-                    </p>
-                    <div class="formula-box">
-                        Factor of Safety: FS = F_ultimate / F_allowable
-                    </div>
-                    <div class="tag-group">
-                        <span class="badge tag">Aerodynamics</span>
-                        <span class="badge tag">Structural Analysis</span>
-                        <span class="badge tag">Applied Math</span>
-                    </div>
-                </article>
+                    <div class="status-tag">Status // Operational Analysis</div>
+                </div>
 
-                <!-- FEATURED 02 -->
-                <article class="project-card">
-                    <div class="card-header">
-                        <span class="featured-tag">Featured Project</span>
+                <!-- PLACEHOLDER PROJECT 2 -->
+                <div class="placeholder-card">
+                    <div class="card-top">
+                        <h3>Featured Project Two</h3>
+                        <p>
+                            A second core layout showcase. Great spot to present custom electronic designs, hardware integrations, fabrication procedures, or data-driven mathematical validation graphs.
+                        </p>
                     </div>
-                    <h3>Solid Propulsion Combustion</h3>
-                    <p>
-                        Analyzing chemical formulation burns and chamber geometry pressure changes for alternative solid propellant models. Validating theoretical exhaust velocities through kinetic verification.
-                    </p>
-                    <div class="tag-group">
-                        <span class="badge tag">Propulsion</span>
-                        <span class="badge tag">Thermodynamics</span>
-                        <span class="badge tag">Chemistry</span>
-                    </div>
-                </article>
-
-                <!-- FEATURED 03 -->
-                <article class="project-card">
-                    <div class="card-header">
-                        <span class="featured-tag">Featured Project</span>
-                    </div>
-                    <h3>Mechanical Design & Modeling</h3>
-                    <p>
-                        Creating precise custom mechanical builds from rough layout concepts to structured assemblies. Refining clearances through 3D printing workflows and solving complex hardware problems.
-                    </p>
-                    <div class="tag-group">
-                        <span class="badge tag">3D CAD Modeling</span>
-                        <span class="badge tag">Prototyping / PLA</span>
-                        <span class="badge tag">Circuit Mesh</span>
-                    </div>
-                </article>
+                    <div class="status-tag">Status // Design Iteration</div>
+                </div>
 
             </div>
         </section>
 
-        <!-- FOOTER -->
+        <!-- DETAILED VISUAL LINKEDIN FEATURE CARD -->
+        <section style="margin-bottom: 2rem;">
+            <h2 class="section-header">Networking</h2>
+            <div class="linkedin-feature-box">
+                <div class="linkedin-header">
+                    <div class="avatar-placeholder">O</div>
+                    <div class="profile-info">
+                        <h4>Oscar</h4>
+                        <p>Engineering Student // Monash University</p>
+                    </div>
+                </div>
+                
+                <p class="linkedin-pitch">
+                    I'm always looking to connect with other developers, fabricators, and engineers. If you want to talk hardware design, rapid component prototyping, or look over project specifications together, let’s connect!
+                </p>
+
+                <!-- Button with official embedded LinkedIn SVG logo vector -->
+                <a href="https://www.linkedin.com/in/oscar-li-14785518a/" target="_blank" class="linkedin-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    Let's Connect on LinkedIn
+                </a>
+            </div>
+        </section>
+
+        <!-- CONSOLE FOOTER -->
         <footer>
-            <div>Monash University</div>
-            <div>© 2026 Oscar. Built with HTML & CSS.</div>
+            <p>© 2026 Oscar. Hand-styled via custom HTML & CSS layout.</p>
         </footer>
 
     </div>
