@@ -186,6 +186,16 @@
             line-height: 1.6;
         }
 
+        /* Styling for the new project showcase images */
+        .project-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--border);
+        }
+
         .status-tag {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
@@ -242,19 +252,13 @@
             gap: 1rem;
         }
 
-        .avatar-placeholder {
+        /* Formatted profile image styling */
+        .linkedin-avatar {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: var(--text-title);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.15);
         }
 
         .profile-info h4 {
@@ -295,7 +299,7 @@
             fill: currentColor;
             width: 16px;
             height: 16px;
-        }
+            }
 
         .linkedin-btn:hover {
             background-color: var(--accent-purple);
@@ -346,11 +350,13 @@
         <!-- TWO FEATURED PROJECTS PLACEHOLDERS -->
         <section>
             <h2 class="section-header">Featured Builds</h2>
-            <div class="projects-twin- Twin-grid projects-twin-grid">
+            <div class="projects-twin-grid">
                 
                 <!-- PLACEHOLDER PROJECT 1 -->
                 <div class="placeholder-card">
                     <div class="card-top">
+                        <!-- FEATURED IMAGE ONE -->
+                        <img src="project1-image.jpg" alt="Featured Project One Preview" class="project-img">
                         <h3>Featured Project One</h3>
                         <p>
                             A detailed overview of your core engineering deliverable. Describe what you built, the mechanical or structural challenges you overcame, and what software pipeline or hardware you used.
@@ -362,6 +368,8 @@
                 <!-- PLACEHOLDER PROJECT 2 -->
                 <div class="placeholder-card">
                     <div class="card-top">
+                        <!-- FEATURED IMAGE TWO -->
+                        <img src="project2-image.jpg" alt="Featured Project Two Preview" class="project-img">
                         <h3>Featured Project Two</h3>
                         <p>
                             A second core layout showcase. Great spot to present custom electronic designs, hardware integrations, fabrication procedures, or data-driven mathematical validation graphs.
@@ -378,7 +386,8 @@
             <h2 class="section-header">Networking</h2>
             <div class="linkedin-feature-box">
                 <div class="linkedin-header">
-                    <div class="avatar-placeholder">O</div>
+                    <!-- NEW LINKEDIN PROFILE PICTURE REPLACING INTERACTION BLANK CIRCLE -->
+                    <img src="your-linkedin-avatar.jpg" alt="Oscar Profile Picture" class="linkedin-avatar">
                     <div class="profile-info">
                         <h4>Oscar</h4>
                         <p>Engineering Student // Monash University</p>
