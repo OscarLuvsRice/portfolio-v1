@@ -1,5 +1,7 @@
 # Backyard science projects 
 
+yea so i cant be fucked formatting it (sorry lol), but here is a bunch of shit ive done before I even considered engineering seriously
+
 ## Piezoelectric Bottle Launcher 2024
 <figure style="display: block; width: fit-content; margin: auto;">
   <img src="Images/bottlelauncher.jpg" alt="Bottle Launcher" width="500">
