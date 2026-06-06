@@ -43,7 +43,7 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
             width: 100%;
         }
 
@@ -67,7 +67,7 @@
 
         /* HEADER BLOCK */
         header {
-            margin-bottom: 3.5rem;
+            margin-bottom: 4rem;
         }
 
         h1 {
@@ -92,38 +92,51 @@
             max-width: 600px;
         }
 
-        /* SKILLS CATEGORY GRID */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        /* WORKBENCH ROW LAYOUT */
+        .workbench-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
             margin-bottom: 4rem;
         }
 
-        .skills-card {
+        .workbench-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.25s ease;
+            border-radius: 20px;
+            padding: 2.2rem;
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .skills-card:hover {
-            border-color: var(--accent-purple);
+        .workbench-card:hover {
+            border-color: rgba(192, 132, 252, 0.4);
             background-color: var(--bg-card-hover);
             transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .skills-card h3 {
+        /* CARD CONTENT SIDE */
+        .card-info {
+            flex: 1.2;
+        }
+
+        .card-info h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: var(--text-title);
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
+            margin-bottom: 0.5rem;
         }
 
-        /* PILL/BADGE STYLING */
+        .card-info .category-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* PILL BADGES */
         .badge-list {
             display: flex;
             flex-wrap: wrap;
@@ -136,19 +149,79 @@
             color: var(--text-body);
             background: rgba(38, 25, 71, 0.4);
             border: 1px solid var(--border);
-            padding: 0.4rem 0.8rem;
+            padding: 0.45rem 0.85rem;
             border-radius: 8px;
             transition: all 0.2s ease;
         }
 
-        .skills-card:hover .badge {
-            border-color: rgba(192, 132, 252, 0.2);
+        .workbench-card:hover .badge {
+            border-color: rgba(192, 132, 252, 0.15);
         }
 
         .badge:hover {
             border-color: var(--accent-purple) !important;
             color: var(--accent-purple);
             background: rgba(192, 132, 252, 0.05);
+            transform: scale(1.03);
+        }
+
+        /* VISUAL ASSET / PLACEHOLDER SIDE */
+        .card-media {
+            flex: 0.8;
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px dashed var(--border);
+            
+            /* Cool Cyber Blueprint Grid Background */
+            background-image: 
+                linear-gradient(rgba(192, 132, 252, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(192, 132, 252, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-color: rgba(6, 3, 14, 0.6);
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        /* If a real image is added inside .card-media container */
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .workbench-card:hover .card-media {
+            border-color: var(--accent-purple);
+            background-color: rgba(25, 16, 50, 0.4);
+        }
+
+        /* Tech detailing inside empty placeholders */
+        .placeholder-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            letter-spacing: 1px;
+            z-index: 1;
+        }
+
+        .placeholder-subtext {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            z-index: 1;
         }
 
         /* MINIMAL FOOTER */
@@ -161,9 +234,12 @@
             color: var(--text-muted);
         }
 
-        @media (max-width: 600px) {
+        /* RESPONSIVE DESIGN FOR SMALLER SCREENS */
+        @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             body { padding: 2rem 1rem; }
+            .workbench-card { flex-direction: column; align-items: stretch; gap: 1.5rem; padding: 1.5rem; }
+            .card-media { height: 160px; }
         }
     </style>
 </head>
@@ -177,48 +253,71 @@
         <!-- HEADER BLOCK -->
         <header>
             <h1>Technical <span>Toolkit</span>.</h1>
-            <p class="subtitle">A running directory of hardware, software protocols, and engineering frameworks utilized across my builds.</p>
+            <p class="subtitle">A categorized matrix of software suites, simulation environments, hardware prototyping, and engineering systems I operate.</p>
         </header>
 
-        <!-- THREE PILLAR SKILLS GRID -->
-        <main class="skills-grid">
+        <!-- THREE PILLAR WORKBENCH STACK -->
+        <main class="workbench-stack">
             
-            <!-- PILLAR 1: FIRMWARE & SYSTEMS -->
-            <div class="skills-card">
-                <h3>Firmware & Control</h3>
-                <div class="badge-list">
-                    <span class="badge">C / C++</span>
-                    <span class="badge">Arduino Architecture</span>
-                    <span class="badge">Microcontrollers</span>
-                    <span class="badge">Sensor Integration</span>
-                    <span class="badge">H-Bridge Drivetrains</span>
-                    <span class="badge">I2C / SPI Protocols</span>
+            <!-- CATEGORY 1: CAD & SIMULATION -->
+            <div class="workbench-card">
+                <div class="card-info">
+                    <h3>Design, Simulation & PLM</h3>
+                    <p class="category-desc">Translating concepts into strict mechanical architectures, handling product lifecycle management, and validating physics constraints.</p>
+                    <div class="badge-list">
+                        <span class="badge">Fusion 360</span>
+                        <span class="badge">Creo Parametric</span>
+                        <span class="badge">TinkerCad</span>
+                        <span class="badge">OpenRocket (Simulation)</span>
+                        <span class="badge">Ansys (FEA)</span>
+                        <span class="badge">Windchill Workspace</span>
+                    </div>
+                </div>
+                <!-- IMAGE PLACEHOLDER 1 -->
+                <div class="card-media">
+                    <!-- Paste your real img tag here later, example: -->
+                    <!-- <img src="Images/cad-rendering.png" alt="CAD Work"> -->
+                    <span class="placeholder-tag">// CAD_&_SIM_WORKSPACE</span>
+                    <span class="placeholder-subtext">Awaiting Asset Upload</span>
                 </div>
             </div>
 
-            <!-- PILLAR 2: DESIGN & FABRICATION -->
-            <div class="skills-card">
-                <h3>Design & Fabrication</h3>
-                <div class="badge-list">
-                    <span class="badge">3D Modeling (CAD)</span>
-                    <span class="badge">SketchUp</span>
-                    <span class="badge">3D Printing (Slicing)</span>
-                    <span class="badge">PLA Filament Optimization</span>
-                    <span class="badge">Hardware Assembly</span>
-                    <span class="badge">Rapid Prototyping</span>
+            <!-- CATEGORY 2: DIGITAL INTEGRATION & PROGRAMMING -->
+            <div class="workbench-card">
+                <div class="card-info">
+                    <h3>Firmware & Embedded Software</h3>
+                    <p class="category-desc">Developing control algorithms, debugging logic loops, and compiling deployment instructions for microcontrollers.</p>
+                    <div class="badge-list">
+                        <span class="badge">Basic Python</span>
+                        <span class="badge">Arduino IDE Architecture</span>
+                        <span class="badge">Microcontroller Logic</span>
+                    </div>
+                </div>
+                <!-- IMAGE PLACEHOLDER 2 -->
+                <div class="card-media">
+                    <!-- <img src="Images/firmware-setup.png" alt="Firmware Code"> -->
+                    <span class="placeholder-tag">// LOGIC_EMBEDDED.EXE</span>
+                    <span class="placeholder-subtext">Awaiting Asset Upload</span>
                 </div>
             </div>
 
-            <!-- PILLAR 3: ANALYSIS & COMPUTATION -->
-            <div class="skills-card">
-                <h3>Analysis & Methods</h3>
-                <div class="badge-list">
-                    <span class="badge">Applied Mathematics</span>
-                    <span class="badge">Differential Equations</span>
-                    <span class="badge">Circuit Analysis</span>
-                    <span class="badge">Nodal Analysis</span>
-                    <span class="badge">Factor of Safety (FoS)</span>
-                    <span class="badge">Mechanical Validation</span>
+            <!-- CATEGORY 3: PHYSICAL LAB WORK & MANUFACTURING -->
+            <div class="workbench-card">
+                <div class="card-info">
+                    <h3>Fabrication, Electronics & Prototyping</h3>
+                    <p class="category-desc">Hands-on rapid manufacturing pipelines, hardware assembly, and manual component wiring loops.</p>
+                    <div class="badge-list">
+                        <span class="badge">3D Printing Assembly</span>
+                        <span class="badge">3D Model Slicing</span>
+                        <span class="badge">Soldering Station Operations</span>
+                        <span class="badge">Hobby Electronics Diagnostics</span>
+                    </div>
+                </div>
+                <!-- IMAGE PLACEHOLDER 3 -->
+                <div class="card-media">
+                    <!-- <img src="Images/bench-wiring.png" alt="Physical Assembly"> -->
+                    <span class="placeholder-tag">// FABRICATION_LAB.SYS</span>
+                    <span class="placeholder-subtext">Awaiting Asset Upload</span>
                 </div>
             </div>
 
@@ -226,7 +325,7 @@
 
         <!-- CONSOLE FOOTER -->
         <footer>
-            <p>© 2026 Oscar. Compiled tracking frameworks.</p>
+            <p>© 2026 Oscar. Hand-compiled skill registries.</p>
         </footer>
 
     </div>
