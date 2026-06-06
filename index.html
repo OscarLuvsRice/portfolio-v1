@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oscar // Engineering Portfolio</title>
+    <title>Oscar // Portfolio</title>
     
-    <!-- High-tech geometric and clean reading fonts -->
+    <!-- Premium geometric and modern body fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         /* DESIGN SYSTEM VARIABLES */
         :root {
-            --bg-main: #07040f;        /* Deep obsidian space */
-            --bg-card: #110924;        /* Dark amethyst matrix */
-            --bg-card-hover: #180d33;  /* Elevated purple accent */
-            --border: #251647;         /* High-contrast structural border */
+            --bg-main: #07040f;        /* Deep obsidian purple */
+            --bg-card: #110924;        /* Dark violet-slate */
+            --bg-card-hover: #160d2f;  /* Slightly lighter violet on hover */
+            --border: #231742;         /* Sleek, subtle structural border */
             --text-pure: #ffffff;      /* Headings */
-            --text-read: #e1dbec;      /* High-readability body copy */
-            --text-dim: #8c7fa6;       /* System metrics and labels */
-            --neon-glow: #bc76ff;      /* Primary electric violet pulse */
-            --neon-subtle: #6366f1;    /* Secondary deep indigo shift */
+            --text-read: #dfd9e7;      /* High-readability body text */
+            --text-dim: #8476a0;       /* Subtitles and tags */
+            --accent: #bc76ff;         /* Vibrant neon purple */
+            --accent-subtle: #6366f1;  /* Deep indigo gradient transition */
         }
 
-        /* RESET & BASE MATRIX */
+        /* BASE MATRIX SETTING */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -42,87 +42,75 @@
             min-height: 100vh;
         }
 
-        .workspace {
-            max-width: 900px;
+        .portfolio-wrapper {
+            max-width: 850px;
             width: 100%;
         }
 
-        /* TERMINAL HEADER HEADER */
-        .terminal-header {
+        /* CLEAN HEADER BLOCK */
+        header {
             border: 1px solid var(--border);
             background-color: var(--bg-card);
             border-radius: 12px;
-            padding: 2rem;
+            padding: 2.5rem;
             margin-bottom: 3rem;
             position: relative;
             overflow: hidden;
         }
 
-        .terminal-header::before {
+        /* Sleek accent line across the top */
+        header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(to right, var(--neon-glow), var(--neon-subtle));
-        }
-
-        .status-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--neon-glow);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            display: inline-block;
-            background: rgba(188, 118, 255, 0.1);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            border: 1px solid rgba(188, 118, 255, 0.2);
+            background: linear-gradient(to right, var(--accent), var(--accent-subtle));
         }
 
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
             color: var(--text-pure);
-            letter-spacing: -1px;
-            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.75rem;
         }
 
-        .manifesto {
-            font-size: 1.1rem;
+        .bio {
+            font-size: 1.05rem;
             color: var(--text-read);
-            max-width: 720px;
+            max-width: 680px;
             margin-bottom: 1.5rem;
         }
 
-        /* METADATA STRIP */
-        .meta-strip {
+        /* SUBHEADER TECH LABELS */
+        .header-meta {
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
-            border-top: 1px dashed var(--border);
+            border-top: 1px solid var(--border);
             padding-top: 1.25rem;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
             color: var(--text-dim);
         }
 
-        .meta-strip span strong {
-            color: var(--neon-glow);
+        .header-meta span strong {
+            color: var(--accent);
+            font-weight: 500;
         }
 
-        /* DASHBOARD GRID SECTIONS */
+        /* SECTION HEADERS */
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--text-pure);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 1rem;
         }
 
         .section-title::after {
@@ -132,15 +120,15 @@
             background-color: var(--border);
         }
 
-        /* NAVIGATION GRID */
-        .nav-matrix {
+        /* NAVIGATION LINKS */
+        .nav-links {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
             margin-bottom: 3.5rem;
         }
 
-        .nav-node {
+        .nav-item {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
@@ -149,40 +137,39 @@
             color: var(--text-pure);
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
+            font-size: 1.05rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.2s ease;
         }
 
-        .nav-node span {
+        .nav-item span {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-dim);
             font-weight: 400;
         }
 
-        .nav-node:hover {
+        .nav-item:hover {
             background-color: var(--bg-card-hover);
-            border-color: var(--neon-glow);
-            transform: translateX(4px);
-            box-shadow: -4px 0 15px rgba(188, 118, 255, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(188, 118, 255, 0.08);
         }
 
-        .nav-node:hover span {
-            color: var(--neon-glow);
+        .nav-item:hover span {
+            color: var(--accent);
         }
 
-        /* FEATURED LAB FEEDS (PROJECT SHOWCASE) */
-        .project-feed {
+        /* FEATURED PROJECTS SHOWCASE */
+        .featured-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
 
-        .project-log {
+        .project-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -190,76 +177,73 @@
             transition: all 0.2s ease;
         }
 
-        .project-log:hover {
+        .project-card:hover {
             border-color: rgba(188, 118, 255, 0.4);
-            box-shadow: 0 8px 30px rgba(7, 4, 15, 0.5);
+            background-color: var(--bg-card-hover);
+            box-shadow: 0 8px 25px rgba(7, 4, 15, 0.4);
         }
 
-        .log-meta {
+        .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.75rem;
+        }
+
+        .featured-tag {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .log-id {
-            color: var(--neon-glow);
-            font-weight: 700;
-        }
-
-        .log-tag {
-            color: var(--text-dim);
-            background-color: rgba(37, 22, 71, 0.5);
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-        }
-
-        .project-log h3 {
+        .project-card h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: var(--text-pure);
             margin-bottom: 0.75rem;
         }
 
-        .project-log p {
+        .project-card p {
             color: var(--text-read);
             font-size: 0.95rem;
             margin-bottom: 1.25rem;
         }
 
-        /* TECH BADGE WRAPPER */
-        .tech-tags {
+        /* FORMULA EMBED STYLE */
+        .formula-box {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(7, 4, 15, 0.4);
+            border-left: 2px solid var(--accent-subtle);
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* TECH BADGES */
+        .tag-group {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
         }
 
-        .badge {
+        .tag {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
-            background-color: rgba(7, 4, 10, 0.4);
+            background-color: rgba(7, 4, 10, 0.3);
             border: 1px solid var(--border);
             color: var(--text-read);
             padding: 0.25rem 0.6rem;
             border-radius: 4px;
         }
 
-        /* DECORATIVE EQUATION BLOCK */
-        .equation-block {
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(7, 4, 15, 0.6);
-            border-left: 2px solid var(--neon-subtle);
-            padding: 0.75rem;
-            margin: 1rem 0;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        /* SYSTEM FOOTER */
+        /* MINIMAL FOOTER */
         footer {
-            margin-top: 6rem;
+            margin-top: 5rem;
             border-top: 1px solid var(--border);
             padding-top: 2rem;
             display: flex;
@@ -273,112 +257,103 @@
         @media (max-width: 600px) {
             body { padding: 2rem 1rem; }
             h1 { font-size: 2.2rem; }
-            .meta-strip { gap: 1rem; }
+            .header-meta { gap: 1rem; }
             footer { flex-direction: column; gap: 1rem; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="workspace">
+    <div class="portfolio-wrapper">
         
-        <!-- MAIN CONTROLLER SECTION -->
-        <header class="terminal-header">
-            <div class="status-badge">System Status: Active Build</div>
-            <h1>Oscar's Engineering Lab</h1>
-            <p class="manifesto">
-                First-year Engineering student. Documenting functional design iterations, rapid hardware prototyping, 
-                applied physics calculations, and structural fabrications.
+        <!-- HEADER -->
+        <header>
+            <h1>Oscar // Engineering</h1>
+            <p class="bio">
+                Engineering student at Monash University. Focusing on functional design iterations, mechanical 
+                fabrication, and circuit analysis.
             </p>
             
-            <div class="meta-strip">
-                <span>// LOCATION: <strong>Monash University</strong></span>
-                <span>// CORE_FOCUS: <strong>Mechanical & Electronics</strong></span>
-                <span>// DEPLOYMENT: <strong>v1.0.0-purple</strong></span>
+            <div class="header-meta">
+                <span>// Focus: <strong>Mechanical & Electronics</strong></span>
+                <span>// Environment: <strong>GitHub Pages</strong></span>
             </div>
         </header>
 
-        <!-- SUBPAGE MAP INDEX -->
-        <section>
-            <h2 class="section-title">Directory Nodes</h2>
-            <nav class="nav-matrix">
-                <a href="/portfolio-v1/SKILLS.html" class="nav-node">SKILLS <span>01 //</span></a>
-                <a href="/portfolio-v1/project.html" class="nav-node">PROJECTS <span>02 //</span></a>
-                <a href="/portfolio-v1/CONTACTS.html" class="nav-node">CONTACTS <span>03 //</span></a>
-                <a href="/portfolio-v1/backyardscience.html" class="nav-node">BACKYARD SCI <span>04 //</span></a>
+        <!-- NAVIGATION -->
+        <section style="margin-bottom: 3rem;">
+            <h2 class="section-title">Navigation</h2>
+            <nav class="nav-links">
+                <a href="/portfolio-v1/SKILLS.html" class="nav-item">Skills <span>→</span></a>
+                <a href="/portfolio-v1/project.html" class="nav-item">Projects <span>→</span></a>
+                <a href="/portfolio-v1/CONTACTS.html" class="nav-item">Contact <span>→</span></a>
+                <a href="/portfolio-v1/backyardscience.html" class="nav-item">Backyard Sci <span>→</span></a>
             </nav>
         </section>
 
-        <!-- LIVE PROJECT FEED OVERVIEW -->
+        <!-- FEATURED SHOWCASE -->
         <section>
-            <h2 class="section-title">Active Project Logs</h2>
-            <div class="project-feed">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="featured-grid">
                 
-                <!-- LOG ENTRY 01 -->
-                <article class="project-log">
-                    <div class="log-meta">
-                        <span class="log-id">LOG_001 // AEROSPACE_RECOVERY</span>
-                        <span class="log-tag">In Progress</span>
+                <!-- FEATURED 01 -->
+                <article class="project-card">
+                    <div class="card-header">
+                        <span class="featured-tag">Featured Project</span>
                     </div>
-                    <h3>High-Altitude Recovery Systems</h3>
+                    <h3>Aerospace Recovery & Deceleration</h3>
                     <p>
-                        Designing and validating deceleration systems for experimental hardware deployment. 
-                        Focus includes aerodynamic drag validation, mathematical kinetic tracking, and structural stress-testing under peak opening velocities.
+                        Designing and analyzing deployment recovery rigs. Focus includes validating structural safety factors, kinetic tracking calculations, and testing components under peak structural load conditions.
                     </p>
-                    <div class="equation-block">
-                        <!-- Structural safety margin syntax -->
+                    <div class="formula-box">
                         Factor of Safety: FS = F_ultimate / F_allowable
                     </div>
-                    <div class="tech-tags">
-                        <span class="badge">Aerodynamics</span>
-                        <span class="badge">Structural Mechanics</span>
-                        <span class="badge">Applied Mathematics</span>
+                    <div class="tag-group">
+                        <span class="badge tag">Aerodynamics</span>
+                        <span class="badge tag">Structural Analysis</span>
+                        <span class="badge tag">Applied Math</span>
                     </div>
                 </article>
 
-                <!-- LOG ENTRY 02 -->
-                <article class="project-log">
-                    <div class="log-meta">
-                        <span class="log-id">LOG_002 // PROPULSION</span>
-                        <span class="log-tag">Active Prototype</span>
+                <!-- FEATURED 02 -->
+                <article class="project-card">
+                    <div class="card-header">
+                        <span class="featured-tag">Featured Project</span>
                     </div>
-                    <h3>Solid Rocketry Combustion</h3>
+                    <h3>Solid Propulsion Combustion</h3>
                     <p>
-                        Investigating chemical composition formulations for alternative solid propellants. 
-                        Analyzing burn rate geometry, chamber pressures, and exhaust mechanics through chemical and kinetic verification models.
+                        Analyzing chemical formulation burns and chamber geometry pressure changes for alternative solid propellant models. Validating theoretical exhaust velocities through kinetic verification.
                     </p>
-                    <div class="tech-tags">
-                        <span class="badge">Propulsion Chemistry</span>
-                        <span class="badge">Solid Fuel Rockets</span>
-                        <span class="badge">Thermal Analysis</span>
+                    <div class="tag-group">
+                        <span class="badge tag">Propulsion</span>
+                        <span class="badge tag">Thermodynamics</span>
+                        <span class="badge tag">Chemistry</span>
                     </div>
                 </article>
 
-                <!-- LOG ENTRY 03 -->
-                <article class="project-log">
-                    <div class="log-meta">
-                        <span class="log-id">LOG_003 // FABRICATION</span>
-                        <span class="log-tag">Completed / Maintained</span>
+                <!-- FEATURED 03 -->
+                <article class="project-card">
+                    <div class="card-header">
+                        <span class="featured-tag">Featured Project</span>
                     </div>
-                    <h3>Mechanical Design & Applied Analysis</h3>
+                    <h3>Mechanical Design & Modeling</h3>
                     <p>
-                        Developing custom technical components from concept sketches to functional tangible units. 
-                        Using precision 3D modeling pipelines to refine clearances, optimize assembly workflows, and solve complex electrical network meshes.
+                        Creating precise custom mechanical builds from rough layout concepts to structured assemblies. Refining clearances through 3D printing workflows and solving complex hardware problems.
                     </p>
-                    <div class="tech-tags">
-                        <span class="badge">3D CAD Modeling</span>
-                        <span class="badge">3D Printing / PLA</span>
-                        <span class="badge">Circuit Analysis</span>
+                    <div class="tag-group">
+                        <span class="badge tag">3D CAD Modeling</span>
+                        <span class="badge tag">Prototyping / PLA</span>
+                        <span class="badge tag">Circuit Mesh</span>
                     </div>
                 </article>
 
             </div>
         </section>
 
-        <!-- CONSOLE FOOTER -->
+        <!-- FOOTER -->
         <footer>
-            <div class="footer-status">SYS_STATUS: OPTIMAL</div>
-            <div class="footer-copyright">© 2026 OSCAR. STYLED VIA CUSTOM RAW CSS.</div>
+            <div>Monash University</div>
+            <div>© 2026 Oscar. Built with HTML & CSS.</div>
         </footer>
 
     </div>
