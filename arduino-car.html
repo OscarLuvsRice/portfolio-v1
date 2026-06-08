@@ -144,6 +144,134 @@
             opacity: 0.9;
         }
 
+        /* INTERACTIVE TIMELINE SYSTEM */
+        .timeline-wrapper {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .timeline-header {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .timeline-header span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-purple);
+            background: rgba(192, 132, 252, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* Navigation Slider Track */
+        .timeline-nav {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        /* Center joining line */
+        .timeline-nav::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 5%;
+            width: 90%;
+            height: 2px;
+            background-color: var(--border);
+            z-index: 1;
+        }
+
+        .timeline-node {
+            position: relative;
+            z-index: 2;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+        }
+
+        .node-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--bg-main);
+            border: 2px solid var(--border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .node-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 0.6rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        /* Active & Completed Node States */
+        .timeline-node.active .node-circle {
+            border-color: var(--accent-purple);
+            color: var(--text-title);
+            box-shadow: 0 0 15px rgba(192, 132, 252, 0.4);
+            background-color: var(--bg-card-hover);
+        }
+
+        .timeline-node.active .node-label {
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        /* Content window panels */
+        .timeline-pane {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .timeline-pane.active {
+            display: block;
+        }
+
+        .pane-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .pane-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-title);
+            margin-bottom: 0.8rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* IMAGE CONTEXT CONTAINER */
         .image-container {
             width: 100%;
@@ -235,6 +363,8 @@
             .spec-layout { grid-template-columns: 1fr; gap: 2.5rem; }
             .telemetry-sidebar { position: static; }
             body { padding: 2rem 1rem; }
+            .timeline-nav::before { display: none; }
+            .timeline-nav { flex-direction: row; flex-wrap: wrap; gap: 1rem; justify-content: center; }
         }
     </style>
 </head>
@@ -266,9 +396,74 @@
                 </div>
 
                 <section>
+                    <h2>Development Timeline</h2>
+                    <p>Tracked and cross-referenced from live diagnostic logging environments. Click through each stage below to display specific milestones.</p>
+                    
+                    <div class="timeline-wrapper">
+                        <div class="timeline-header">
+                            <h3>Build Logs Architecture</h3>
+                            <span>CHANNEL // DEV-TRACKER</span>
+                        </div>
+
+                        <div class="timeline-nav">
+                            <button class="timeline-node active" onclick="switchStage(0)">
+                                <div class="node-circle">01</div>
+                                <div class="node-label">Sourcing</div>
+                            </button>
+                            <button class="timeline-node" onclick="switchStage(1)">
+                                <div class="node-circle">02</div>
+                                <div class="node-label">Chassis</div>
+                            </button>
+                            <button class="timeline-node" onclick="switchStage(2)">
+                                <div class="node-circle">03</div>
+                                <div class="node-label">Sensors</div>
+                            </button>
+                            <button class="timeline-node" onclick="switchStage(3)">
+                                <div class="node-circle">04</div>
+                                <div class="node-label">Firmware</div>
+                            </button>
+                            <button class="timeline-node" onclick="switchStage(4)">
+                                <div class="node-circle">05</div>
+                                <div class="node-label">Testing</div>
+                            </button>
+                        </div>
+
+                        <div id="pane-0" class="timeline-pane active">
+                            <div class="pane-meta">PHASE 01 // ARCHITECTURE & COMPONENT SELECTION</div>
+                            <h4 class="pane-title">Sourcing & Breadboard Validation</h4>
+                            <p>Initial design parameters established. Acquired core processing componentry including the ATmega328P microcontroller board, HC-SR04 ultrasonic node, and L298N driver block. Drafted basic pinouts and power mapping profiles on test rails.</p>
+                        </div>
+
+                        <div id="pane-1" class="timeline-pane">
+                            <div class="pane-meta">PHASE 02 // STRUCTURAL FABRICATION</div>
+                            <h4 class="pane-title">Mechanical Integration & Assembly</h4>
+                            <p>Assembled the dual-tier structural layout platform. Wired twin brushed DC motor systems into dedicated axle assemblies and fixed down basic tracking hardware. Mounted isolation cells to decouple logical power lines from magnetic actuator feedback spikes.</p>
+                        </div>
+
+                        <div id="pane-2" class="timeline-pane">
+                            <div class="pane-meta">PHASE 03 // MECHATRONIC CALIBRATION</div>
+                            <h4 class="pane-title">Sensory Rig Deployment</h4>
+                            <p>Mounted an SG90 rotational micro-servo to the front chassis peak, providing a full 180-degree physical scanning sweep field. Attached the HC-SR04 ultrasonic element to the servo head assembly and configured clean logic channels for trigger and echo connections.</p>
+                        </div>
+
+                        <div id="pane-3" class="timeline-pane">
+                            <div class="pane-meta">PHASE 04 // LOGIC OPTIMIZATION</div>
+                            <h4 class="pane-title">Firmware Pipeline Implementation</h4>
+                            <p>Wrote custom real-time sensor loops. Integrated discrete state behaviors protecting basic linear trajectories. Finished writing the directional parsing calculation algorithm that halts forward operations to scan right and left sweeps when obstacles are detected.</p>
+                        </div>
+
+                        <div id="pane-4" class="timeline-pane">
+                            <div class="pane-meta">PHASE 05 // SYSTEM FIELD TRIAL</div>
+                            <h4 class="pane-title">Final Field Calibration</h4>
+                            <p>Ran extensive diagnostic arena tests to tweak spatial detection ranges. Refined threshold parameters down to optimal values to avoid wall clipping during tight turns. Core platform optimization completed—autonomous tracking stable.</p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section>
                     <h2>Hardware Architecture</h2>
                     <p>The mechanical footprint utilizes a multi-tiered structural platform driven by dual DC motors. The computational brain consists of an ATmega328P microcontroller running customized firmware loop priorities.</p>
-                    <p>To detect environmental boundaries, an HC-SR04 ultrasonic sensor is mounted to an front-facing SG90 servo motor. This enables a physical "scanning sweep" of 180 degrees whenever a forward path constraint is logged, calculating spatial vectors before firing directional motor commands.</p>
                 </section>
 
                 <section>
@@ -289,7 +484,6 @@
     <span class="terminal-var">myservo</span>.<span class="terminal-var">write</span>(90);  <span class="terminal-comment">// Return to center baseline</span>
 }
                     </div>
-                    <p>When the front sensor registers an object closer than the configured safety threshold, the vehicle holds position, initializes a panoramic scan to compare left/right path vacancies, and prioritizes the motor spin toward the vector possessing the maximum clearance margin.</p>
                 </section>
 
             </div>
@@ -335,6 +529,22 @@
         </footer>
 
     </div>
+
+    <script>
+        function switchStage(stageIndex) {
+            // Get all buttons and text panels
+            const nodes = document.querySelectorAll('.timeline-node');
+            const panes = document.querySelectorAll('.timeline-pane');
+            
+            // Clear out prior active markers
+            nodes.forEach(node => node.classList.remove('active'));
+            panes.forEach(pane => pane.classList.remove('active'));
+            
+            // Map active classes over selected identifiers
+            nodes[stageIndex].classList.add('active');
+            document.getElementById(`pane-${stageIndex}`).classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
