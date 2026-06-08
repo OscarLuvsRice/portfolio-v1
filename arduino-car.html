@@ -488,39 +488,18 @@
 
                 <div id="deck-pane-1" class="stage-pane">
                     <div class="pane-routing-tag">PHASE_02 // CIRCUITS_&_CAD_MAPPING</div>
-                    <h2 class="pane-headline-main">Virtual Circuit Drafting & Wiring Architecture</h2>
-                    <p>To avoid spatial layout collisions or copper trace overloads during vehicle turns, the layout schematics and physical footprints were entirely pre-planned and arranged in visual component software before wiring up the real board layout.</p>
+                    <h2 class="pane-headline-main">Visualing electronics.</h2>
+                    <p>Before designing the chassis striaght away, a good thing to do is to CAD out the electronics so you know the components you are dealing with. Doing so minimises problems that might be harder to solve in the later stages.</p>
                     
-                    <h3>Spatial Pin Allocations Matrix</h3>
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>Hardware Module</th>
-                                <th>Microcontroller I/O Terminal</th>
-                                <th>Signal Function</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>HC-SR04 Ultrasonic</td>
-                                <td>Digital Pin 12 (Trig) / Pin 11 (Echo)</td>
-                                <td>High-frequency sonic burst loop parsing</td>
-                            </tr>
-                            <tr>
-                                <td>SG90 Micro Servo</td>
-                                <td>Digital Pin 10 (PWM enabled)</td>
-                                <td>Angle step positioning execution (0°-180°)</td>
-                            </tr>
-                            <tr>
-                                <td>L298N Motor Driver</td>
-                                <td>Pins 5, 6, 7, 8 (Logic Gates)</td>
-                                <td>Dual-bridge directional polarity switching</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3>Here are my CAD designs</h3>
+                    <div class="check-grid">
+                        <figure>
+                          <img src="18650.png" alt="Lithium Ion 18650 Battery">
+                          <figcaption>Simple design of the 18650 Lithium Ion Battery.</figcaption>
+                        </figure>
+                    </div>
 
-                    <h3>CAD Clearance Verification</h3>
-                    <p>Special attention during layout checking was paid to trace separation. High-draw inductive ground paths from the DC motors were isolated cleanly to prevent backward current spikes from damaging internal registry values on the core ATmega microprocessor bus line.</p>
+                    
                 </div>
 
                 <div id="deck-pane-2" class="stage-pane">
