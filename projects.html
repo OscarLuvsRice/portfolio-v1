@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oscar // Project Registry</title>
     
-    <!-- Premium clean fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -118,6 +117,7 @@
             gap: 2rem;
         }
 
+        /* INTERACTIVE LINK CARDS */
         .project-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
@@ -125,6 +125,8 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            text-decoration: none;
+            color: inherit;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -222,17 +224,23 @@
             gap: 1.5rem;
         }
 
+        /* INTERACTIVE ARCHIVE LINKS */
         .archive-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 14px;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
             transition: all 0.2s ease;
         }
 
         .archive-card:hover {
             border-color: rgba(192, 132, 252, 0.3);
             background-color: var(--bg-card-hover);
+            transform: translateY(-2px);
         }
 
         .archive-media {
@@ -299,20 +307,16 @@
 
     <div class="container">
         
-        <!-- NAVIGATION ROOT LINK -->
         <a href="index.html" class="back-home">← return_home</a>
 
-        <!-- SYSTEM HEADER -->
         <header>
             <h1>My <span>Projects</span>.</h1>
-            <p class="subtitle">Here are all my projects (Date: Latest to earliest)</p>
+            <p class="subtitle">A complete engineering registry chronologically cataloged from latest optimization downward.</p>
         </header>
 
-        <!-- PRIMARY ENGINEERING PROJECT SYSTEM -->
         <main class="projects-grid">
             
-            <!-- 1. OBSTACLE AVOIDING ARDUINO CAR -->
-            <article class="project-card">
+            <a href="arduino-car.html" class="project-card">
                 <div class="card-media">
                     <img src="Images/carassembly.png" alt="Arduino Car" class="project-img">
                 </div>
@@ -324,10 +328,9 @@
                     <h3>Obstacle Avoiding Arduino Car (2026)</h3>
                     <p>An autonomous car that features real-time sensor processing loops and adaptive obstacle-avoidance logic algorithms.</p>
                 </div>
-            </article>
+            </a>
 
-            <!-- 2. PROJECT REMUS -->
-            <article class="project-card">
+            <a href="remus.html" class="project-card">
                 <div class="card-media">
                     <img src="Images/remus.png" alt="Project Remus" class="project-img">
                 </div>
@@ -337,12 +340,11 @@
                 </div>
                 <div class="card-body">
                     <h3>Project Remus (2026)</h3>
-                    <p>4 inch airframe, target apogee of 9,000ft, Critical design review presented, currently being manufactured, projected to launch in semester 2</p>
+                    <p>4 inch airframe, target apogee of 9,000ft, Critical design review presented, currently being manufactured, projected to launch in semester 2.</p>
                 </div>
-            </article>
+            </a>
 
-            <!-- 3. TASER -->
-            <article class="project-card">
+            <a href="taser.html" class="project-card">
                 <div class="card-media">
                     <img src="Images/tasers.jpg" alt="Taser" class="project-img">
                 </div>
@@ -352,12 +354,11 @@
                 </div>
                 <div class="card-body">
                     <h3>Taser</h3>
-                    <p>An exploration into step-up voltage networks, localized charge storage configurations, and arc-gap electrical discharge hardware validation safely contained inside custom structural housing, great for self defense!</p>
+                    <p>An exploration into step-up voltage networks, localized charge storage configurations, and arc-gap electrical discharge hardware validation safely contained inside custom structural housing.</p>
                 </div>
-            </article>
+            </a>
 
-            <!-- 4. SIMPLE BOOKSHELF -->
-            <article class="project-card">
+            <a href="bookshelf.html" class="project-card">
                 <div class="card-media">
                     <img src="Images/bookshelf.jpg" alt="bookshelf" class="project-img">
                 </div>
@@ -367,15 +368,13 @@
                 </div>
                 <div class="card-body">
                     <h3>Simple PLA bookshelf</h3>
-                    <p>Just a simple bookshelf that stores all my books</p>
+                    <p>Just a simple bookshelf that stores all my books.</p>
                 </div>
-            </article>
+            </a>
 
-            <!-- 5. REMOTE CAR -->
-            <article class="project-card">
+            <a href="remote-car.html" class="project-card">
                 <div class="card-media">
                     <img src="Images/v3.jpg" alt="remote car" class="project-img">
-                    </svg>
                 </div>
                 <div class="card-meta">
                     <span class="telemetry-tag">RF LOGIC // HARDWARE INTEGRATION</span>
@@ -383,53 +382,48 @@
                 </div>
                 <div class="card-body">
                     <h3>RF Remote-Controlled Vehicle</h3>
-                    <p>Remote car built from scraps, capable of turning, forward and reverse. Works well at a extremely cheap price</p>
+                    <p>Remote car built from scraps, capable of turning, forward and reverse. Works well at an extremely cheap price.</p>
                 </div>
-            </article>
+            </a>
 
         </main>
 
-        <!-- SECONDARY RAPID PROTOTYPING & HIGHLIGHT ARCHIVE -->
         <h2 class="section-divider">Gallery of other small builds</h2>
         
         <section class="archives-grid">
             
-            <!-- SOLDER KITS -->
-            <article class="archive-card">
+            <a href="ceramic-display.html" class="archive-card">
                 <div class="archive-media">
                     <img src="Images/CFD.jpg" alt="Ceramic Filament Display" class="project-img">
                 </div>
                 <div class="archive-body">
                     <h4>Ceramic Filament Display</h4>
-                    <p>Its a cool looking clock</p>
+                    <p>Its a cool looking clock.</p>
                 </div>
-            </article>
+            </a>
 
-            <!-- SMALL DESIGNS -->
-            <article class="archive-card">
+            <a href="em-cannon.html" class="archive-card">
                 <div class="archive-media">
                     <img src="Images/ECannon.jpg" alt="Electromagnetic Cannon" class="project-img">
                 </div>
                 <div class="archive-body">
                     <h4>Electromagnetic Cannon</h4>
-                    <p>CANNON, sparky in real life</p>
+                    <p>CANNON, sparky in real life.</p>
                 </div>
-            </article>
+            </a>
 
-            <!-- GENERAL HARDWARE LAB LABELS -->
-            <article class="archive-card">
+            <a href="speaker-project.html" class="archive-card">
                 <div class="archive-media">
                     <img src="Images/speaker.jpg" alt="Speaker" class="project-img">
                 </div>
                 <div class="archive-body">
                     <h4>Bluetooth Speaker</h4>
-                    <p>Its a speaker, its got bluetooth, i gave it away tho to a teacher (Ms Kaur)</p>
+                    <p>Its a speaker, its got bluetooth, i gave it away tho to a teacher (Ms Kaur).</p>
                 </div>
-            </article>
+            </a>
 
         </section>
 
-        <!-- FOOTER ROOT -->
         <footer>
             <p>© 2026 Oscar. Compiled system repositories.</p>
         </footer>
