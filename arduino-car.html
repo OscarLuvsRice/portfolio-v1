@@ -37,15 +37,17 @@
             background-color: var(--bg-main);
             color: var(--text-body);
             line-height: 1.6;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             display: flex;
             justify-content: center;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 960px;
+            max-width: 1140px;
             width: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         /* BACK BUTTON */
@@ -57,8 +59,9 @@
             text-decoration: none;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             transition: color 0.2s ease, transform 0.2s ease;
+            width: fit-content;
         }
 
         .back-registry:hover {
@@ -68,16 +71,16 @@
 
         /* HEADER BLOCK */
         header {
-            margin-bottom: 3.5rem;
+            margin-bottom: 3rem;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 2rem;
+            padding-bottom: 1.5rem;
         }
 
         .project-meta-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .system-id {
@@ -107,169 +110,208 @@
             line-height: 1.2;
         }
 
-        /* GRID LAYOUT: DOCUMENTATION + TELEMETRY */
-        .spec-layout {
+        /* SPLIT WORKSPACE INTERFACE */
+        .workspace-grid {
             display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: 3rem;
+            grid-template-columns: 260px 1fr;
+            gap: 4rem;
             align-items: start;
+            flex-grow: 1;
         }
 
-        /* DOCUMENTATION CONTENT */
-        .doc-content section {
-            margin-bottom: 3rem;
+        /* STICKY LEFT-HAND TIMELINE CONTAINER */
+        .timeline-sidebar-left {
+            position: sticky;
+            top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .doc-content h2 {
+        .sidebar-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            color: var(--text-title);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        .doc-content h2::before {
-            content: '//';
-            color: var(--accent-purple);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.2rem;
-        }
-
-        .doc-content p {
-            font-size: 1rem;
-            color: var(--text-body);
-            margin-bottom: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* INTERACTIVE TIMELINE SYSTEM */
-        .timeline-wrapper {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2.5rem 0;
-        }
-
-        .timeline-header {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
-            color: var(--text-title);
-            margin-bottom: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .timeline-header span {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--accent-purple);
-            background: rgba(192, 132, 252, 0.1);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-        }
-
-        /* Navigation Slider Track */
-        .timeline-nav {
-            display: flex;
-            justify-content: space-between;
+        /* Dynamic Progress Track System */
+        .vertical-track {
             position: relative;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding-left: 1.5rem;
         }
 
-        /* Center joining line */
-        .timeline-nav::before {
+        /* Passive alignment spine line */
+        .vertical-track::before {
             content: '';
             position: absolute;
-            top: 25px;
-            left: 5%;
-            width: 90%;
-            height: 2px;
+            top: 10px;
+            left: 3px;
+            width: 2px;
+            height: calc(100% - 20px);
             background-color: var(--border);
             z-index: 1;
         }
 
-        .timeline-node {
-            position: relative;
+        /* Active filling pipeline bar driven by JS */
+        .track-progress-fill {
+            position: absolute;
+            top: 10px;
+            left: 3px;
+            width: 2px;
+            height: 0%; /* Dynamic allocation */
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+            box-shadow: 0 0 10px rgba(192, 132, 252, 0.6);
             z-index: 2;
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 60px;
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .node-circle {
-            width: 50px;
-            height: 50px;
+        /* Step Button Logic */
+        .stage-trigger {
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .trigger-dot {
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background-color: var(--bg-main);
             border: 2px solid var(--border);
+            margin-top: 0.45rem;
+            margin-left: -1.45rem; /* Center right over the track line */
+            transition: all 0.3s ease;
+        }
+
+        .trigger-meta {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            transition: all 0.3s ease;
+            flex-direction: column;
         }
 
-        .node-label {
+        .trigger-id {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.68rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            text-transform: uppercase;
-            margin-top: 0.6rem;
-            white-space: nowrap;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        /* Active & Completed Node States */
-        .timeline-node.active .node-circle {
+        .trigger-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        /* Trigger Hover Interactions */
+        .stage-trigger:hover .trigger-name {
+            color: var(--text-body);
+        }
+
+        /* Active Step Configurations */
+        .stage-trigger.active .trigger-dot {
             border-color: var(--accent-purple);
+            background-color: var(--accent-purple);
+            box-shadow: 0 0 10px var(--accent-purple);
+        }
+
+        .stage-trigger.active .trigger-id {
+            color: var(--accent-blue);
+        }
+
+        .stage-trigger.active .trigger-name {
             color: var(--text-title);
-            box-shadow: 0 0 15px rgba(192, 132, 252, 0.4);
-            background-color: var(--bg-card-hover);
+            font-weight: 700;
         }
 
-        .timeline-node.active .node-label {
-            color: var(--accent-purple);
-            font-weight: 600;
+        /* RIGHT-HAND DYNAMIC STAGE BAY Panels */
+        .stage-display-panel {
+            background-color: rgba(18, 11, 36, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            min-height: 500px;
         }
 
-        /* Content window panels */
-        .timeline-pane {
+        .stage-pane {
             display: none;
-            animation: fadeIn 0.4s ease forwards;
+            animation: paneShift 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        .timeline-pane.active {
+        .stage-pane.active {
             display: block;
         }
 
-        .pane-meta {
+        .pane-header-group {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .pane-sys-tag {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 0.4rem;
         }
 
-        .pane-title {
+        .pane-main-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             color: var(--text-title);
-            margin-bottom: 0.8rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* SYSTEM BLOCK MARKERS Inside Document Sections */
+        .stage-pane h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            color: var(--text-title);
+            margin: 2rem 0 0.8rem 0;
+        }
+
+        .stage-pane p {
+            font-size: 1rem;
+            color: var(--text-body);
+            margin-bottom: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* COMPACT ORDERED BULLET LOGS (Discord Message Style) */
+        .log-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .log-item {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .log-item::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
         }
 
         /* IMAGE CONTEXT CONTAINER */
@@ -277,9 +319,9 @@
             width: 100%;
             background-color: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 14px;
             overflow: hidden;
-            margin: 1.5rem 0 2.5rem 0;
+            margin: 1.5rem 0;
         }
 
         .image-container img {
@@ -289,7 +331,7 @@
             object-fit: cover;
         }
 
-        /* TERMINAL / CODE EMBED BOX */
+        /* TERMINAL BLOCKS */
         .terminal-block {
             background-color: var(--bg-terminal);
             border: 1px solid var(--border);
@@ -307,44 +349,9 @@
         .terminal-keyword { color: var(--accent-purple); }
         .terminal-var { color: #a5b4fc; }
 
-        /* TELEMETRY SIDEBAR */
-        .telemetry-sidebar {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.8rem;
-            position: sticky;
-            top: 2rem;
-        }
-
-        .telemetry-sidebar h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            color: var(--text-title);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1.2rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.6rem;
-        }
-
-        .spec-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .spec-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-
-        .spec-value {
-            font-size: 0.95rem;
-            color: var(--text-body);
-            font-weight: 500;
+        @keyframes paneShift {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* FOOTER */
@@ -358,13 +365,17 @@
             color: var(--text-muted);
         }
 
-        /* RESPONSIVE LAYOUT */
-        @media (max-width: 850px) {
-            .spec-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-            .telemetry-sidebar { position: static; }
+        /* RESPONSIVE RENDERING COMPRESSION */
+        @media (max-width: 880px) {
+            .workspace-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .sidebar-title { display: none; }
+            .timeline-sidebar-left { position: static; width: 100%; }
+            .vertical-track { flex-direction: row; flex-wrap: wrap; justify-content: space-between; padding-left: 0; gap: 1rem;}
+            .vertical-track::before, .track-progress-fill { display: none; }
+            .trigger-dot { display: none; }
+            .stage-trigger { background-color: var(--bg-card); padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--border); }
+            .stage-trigger.active { border-color: var(--accent-purple); }
             body { padding: 2rem 1rem; }
-            .timeline-nav::before { display: none; }
-            .timeline-nav { flex-direction: row; flex-wrap: wrap; gap: 1rem; justify-content: center; }
         }
     </style>
 </head>
@@ -376,99 +387,126 @@
 
         <header>
             <div class="project-meta-top">
-                <span class="system-id">SYS_LOG // AUTONOMOUS_NAV_ROVER</span>
+                <span class="system-id">TRACKER // AUTONOMOUS_NAV_CAR</span>
                 <span class="status-badge">[COMPLETED]</span>
             </div>
             <h1>Obstacle Avoiding Arduino Car</h1>
         </header>
 
-        <main class="spec-layout">
+        <div class="workspace-grid">
             
-            <div class="doc-content">
+            <aside class="timeline-sidebar-left">
+                <div class="sidebar-title">Pipeline Logs</div>
                 
-                <section>
-                    <h2>Overview</h2>
-                    <p>This project focused on constructing an autonomous mobile vehicle capable of navigating unknown physical environments without human intervention. By deploying a real-time rangefinding system on a pivoting chassis, the vehicle constantly polls spatial depths to map its path and dynamically re-route around obstacles.</p>
-                </section>
+                <nav class="vertical-track">
+                    <div class="track-progress-fill" id="pipeline-fill"></div>
 
-                <div class="image-container">
-                    <img src="Images/carassembly.png" alt="Obstacle Avoiding Car Structural Assembly">
+                    <button class="stage-trigger active" onclick="jumpToStage(0)">
+                        <div class="trigger-dot"></div>
+                        <div class="trigger-meta">
+                            <span class="trigger-id">LOG_01</span>
+                            <span class="trigger-name">Sourcing & Pre-wire</span>
+                        </div>
+                    </button>
+
+                    <button class="stage-trigger" onclick="jumpToStage(1)">
+                        <div class="trigger-dot"></div>
+                        <div class="trigger-meta">
+                            <span class="trigger-id">LOG_02</span>
+                            <span class="trigger-name">Chassis Assembly</span>
+                        </div>
+                    </button>
+
+                    <button class="stage-trigger" onclick="jumpToStage(2)">
+                        <div class="trigger-dot"></div>
+                        <div class="trigger-meta">
+                            <span class="trigger-id">LOG_03</span>
+                            <span class="trigger-name">Sensor Calibration</span>
+                        </div>
+                    </button>
+
+                    <button class="stage-trigger" onclick="jumpToStage(3)">
+                        <div class="trigger-dot"></div>
+                        <div class="trigger-meta">
+                            <span class="trigger-id">LOG_04</span>
+                            <span class="trigger-name">Firmware Integration</span>
+                        </div>
+                    </button>
+
+                    <button class="stage-trigger" onclick="jumpToStage(4)">
+                        <div class="trigger-dot"></div>
+                        <div class="trigger-meta">
+                            <span class="trigger-id">LOG_05</span>
+                            <span class="trigger-name">Arena Tests</span>
+                        </div>
+                    </button>
+                </nav>
+            </aside>
+
+            <main class="stage-display-panel">
+
+                <div id="stage-pane-0" class="stage-pane active">
+                    <div class="pane-header-group">
+                        <div class="pane-sys-tag">PHASE_01 // COMPONENT_HARVEST</div>
+                        <h2 class="pane-main-title">Sourcing & Initial Circuit Mapping</h2>
+                    </div>
+                    <p>Before launching straight into the physical chassis build, the component parameters had to be completely locked down and vetted on a breadboard array. The goal was maintaining clean, decoupled power links.</p>
+                    
+                    <h3>Acquired Hardware Manifest</h3>
+                    <ul class="log-list">
+                        <li class="log-item">Microprocessor: Arduino Uno Board configuration core (ATmega328P).</li>
+                        <li class="log-item">Actuation Blocks: Dual 6V high-torque brushed yellow geared DC motors.</li>
+                        <li class="log-item">H-Bridge Isolation Driver: L298N module module to handle raw inductive reverse EMF.</li>
+                        <li class="log-item">Telemetry Nodes: HC-SR04 ultrasonic transducer transceiver module.</li>
+                    </ul>
+                    
+                    <h3>Engineering Notes</h3>
+                    <p>Initial desk validation flagged major electrical noise. When connecting both motor modules onto the structural logical ground line without optocoupler isolation, sudden acceleration steps caused heavy logic drops inside the ATmega controller core, forcing random restarts. Solved this early by dedicating separate power line rails for logic and raw motor tracking blocks.</p>
                 </div>
 
-                <section>
-                    <h2>Development Timeline</h2>
-                    <p>Tracked and cross-referenced from live diagnostic logging environments. Click through each stage below to display specific milestones.</p>
-                    
-                    <div class="timeline-wrapper">
-                        <div class="timeline-header">
-                            <h3>Build Logs Architecture</h3>
-                            <span>CHANNEL // DEV-TRACKER</span>
-                        </div>
-
-                        <div class="timeline-nav">
-                            <button class="timeline-node active" onclick="switchStage(0)">
-                                <div class="node-circle">01</div>
-                                <div class="node-label">Sourcing</div>
-                            </button>
-                            <button class="timeline-node" onclick="switchStage(1)">
-                                <div class="node-circle">02</div>
-                                <div class="node-label">Chassis</div>
-                            </button>
-                            <button class="timeline-node" onclick="switchStage(2)">
-                                <div class="node-circle">03</div>
-                                <div class="node-label">Sensors</div>
-                            </button>
-                            <button class="timeline-node" onclick="switchStage(3)">
-                                <div class="node-circle">04</div>
-                                <div class="node-label">Firmware</div>
-                            </button>
-                            <button class="timeline-node" onclick="switchStage(4)">
-                                <div class="node-circle">05</div>
-                                <div class="node-label">Testing</div>
-                            </button>
-                        </div>
-
-                        <div id="pane-0" class="timeline-pane active">
-                            <div class="pane-meta">PHASE 01 // ARCHITECTURE & COMPONENT SELECTION</div>
-                            <h4 class="pane-title">Sourcing & Breadboard Validation</h4>
-                            <p>Initial design parameters established. Acquired core processing componentry including the ATmega328P microcontroller board, HC-SR04 ultrasonic node, and L298N driver block. Drafted basic pinouts and power mapping profiles on test rails.</p>
-                        </div>
-
-                        <div id="pane-1" class="timeline-pane">
-                            <div class="pane-meta">PHASE 02 // STRUCTURAL FABRICATION</div>
-                            <h4 class="pane-title">Mechanical Integration & Assembly</h4>
-                            <p>Assembled the dual-tier structural layout platform. Wired twin brushed DC motor systems into dedicated axle assemblies and fixed down basic tracking hardware. Mounted isolation cells to decouple logical power lines from magnetic actuator feedback spikes.</p>
-                        </div>
-
-                        <div id="pane-2" class="timeline-pane">
-                            <div class="pane-meta">PHASE 03 // MECHATRONIC CALIBRATION</div>
-                            <h4 class="pane-title">Sensory Rig Deployment</h4>
-                            <p>Mounted an SG90 rotational micro-servo to the front chassis peak, providing a full 180-degree physical scanning sweep field. Attached the HC-SR04 ultrasonic element to the servo head assembly and configured clean logic channels for trigger and echo connections.</p>
-                        </div>
-
-                        <div id="pane-3" class="timeline-pane">
-                            <div class="pane-meta">PHASE 04 // LOGIC OPTIMIZATION</div>
-                            <h4 class="pane-title">Firmware Pipeline Implementation</h4>
-                            <p>Wrote custom real-time sensor loops. Integrated discrete state behaviors protecting basic linear trajectories. Finished writing the directional parsing calculation algorithm that halts forward operations to scan right and left sweeps when obstacles are detected.</p>
-                        </div>
-
-                        <div id="pane-4" class="timeline-pane">
-                            <div class="pane-meta">PHASE 05 // SYSTEM FIELD TRIAL</div>
-                            <h4 class="pane-title">Final Field Calibration</h4>
-                            <p>Ran extensive diagnostic arena tests to tweak spatial detection ranges. Refined threshold parameters down to optimal values to avoid wall clipping during tight turns. Core platform optimization completed—autonomous tracking stable.</p>
-                        </div>
-
+                <div id="stage-pane-1" class="stage-pane">
+                    <div class="pane-header-group">
+                        <div class="pane-sys-tag">PHASE_02 // STRUCTURAL_FAB</div>
+                        <h2 class="pane-main-title">Chassis Construction & Drivetrain</h2>
                     </div>
-                </section>
+                    <p>With basic components verified, work shifted into framing up the physical mobile footprint of the vehicle assembly.</p>
+                    
+                    <div class="image-container">
+                        <img src="Images/carassembly.png" alt="Structural Frame Overlay">
+                    </div>
 
-                <section>
-                    <h2>Hardware Architecture</h2>
-                    <p>The mechanical footprint utilizes a multi-tiered structural platform driven by dual DC motors. The computational brain consists of an ATmega328P microcontroller running customized firmware loop priorities.</p>
-                </section>
+                    <h3>Structural Assembly Notes</h3>
+                    <ul class="log-list">
+                        <li class="log-item">Secured the twin DC motor modules to the bottom clear acrylic baseplate tracking line.</li>
+                        <li class="log-item">Aligned rear trailing caster wheels to optimize quick multi-directional spin transitions.</li>
+                        <li class="log-item">Positioned the L298N driver board centrally to maintain uniform copper tracing distances across both drivetrain terminals.</li>
+                    </ul>
+                    <p>Everything was centered properly to maintain stable weight management during quick pivot rotations when correcting directional tracking around tight obstacles.</p>
+                </div>
 
-                <section>
-                    <h2>Firmware Logic Pipeline</h2>
-                    <p>The software loop is engineered to maintain a fast execution lifecycle. The controller handles a state machine that switches between nominal linear movement, deceleration safety checking, distance parsing, and directional orientation corrections.</p>
+                <div id="stage-pane-2" class="stage-pane">
+                    <div class="pane-header-group">
+                        <div class="pane-sys-tag">PHASE_03 // MECHATRONIC_SENSING</div>
+                        <h2 class="pane-main-title">Sensory Rig & Servo Sweeper Setup</h2>
+                    </div>
+                    <p>An autonomous rover cannot re-route correctly if it only monitors a fixed, narrow tunnel directly ahead. This build phase added dynamic environmental awareness.</p>
+                    
+                    <h3>Integration Milestones</h3>
+                    <ul class="log-list">
+                        <li class="log-item">Mounted an SG90 micro-servo directly down onto the front structural nose block.</li>
+                        <li class="log-item">Aligned sensor bracket to set home coordinate calibration precisely to 90 degrees (Dead Center alignment).</li>
+                        <li class="log-item">Interfaced the HC-SR04 bracket directly onto the servo spline assembly horn.</li>
+                    </ul>
+                    <h3>Spatial Geometry Mechanics</h3>
+                    <p>By pairing ultrasonic depth measuring routines alongside rotational sweep scripts, the vehicle can survey a wide arc area without changing its primary footprint path vector alignment.</p>
+                </div>
+
+                <div id="stage-pane-3" class="stage-pane">
+                    <div class="pane-header-group">
+                        <div class="pane-sys-tag">PHASE_04 // FIRMWARE_COMPILE</div>
+                        <h2 class="pane-main-title">Firmware Pipeline & Scanning Scripts</h2>
+                    </div>
+                    <p>This deployment phase involved flashing the core operational firmware state machine onto the ATmega controller processor.</p>
                     
                     <div class="terminal-block">
 <span class="terminal-comment">// Distance check subroutine loop</span>
@@ -484,45 +522,30 @@
     <span class="terminal-var">myservo</span>.<span class="terminal-var">write</span>(90);  <span class="terminal-comment">// Return to center baseline</span>
 }
                     </div>
-                </section>
 
-            </div>
-
-            <aside class="telemetry-sidebar">
-                <h3>System Telemetry</h3>
-                
-                <div class="spec-group">
-                    <span class="spec-label">Deployment Year</span>
-                    <span class="spec-value">2026</span>
+                    <h3>State Logic Protocol</h3>
+                    <p>When the center sonar sweep flags an object closer than the danger line threshold, the firmware triggers a brief tracking freeze sequence. It spins right and left vectors sequentially, computes which field coordinate offers maximum path vacancy, and shifts motor tracks to that heading.</p>
                 </div>
 
-                <div class="spec-group">
-                    <span class="spec-label">Core Architecture</span>
-                    <span class="spec-value">Arduino (ATmega328P)</span>
+                <div id="stage-pane-4" class="stage-pane">
+                    <div class="pane-header-group">
+                        <div class="pane-sys-tag">PHASE_05 // FIELD_DIAGNOSTICS</div>
+                        <h2 class="pane-main-title">Arena Trials & Spatial Optimization</h2>
+                    </div>
+                    <p>The final phase was all about fine-tuning real-world behavior and tweaking obstacle margins inside closed test runs.</p>
+                    
+                    <h3>Final Fine-Tuning Steps</h3>
+                    <ul class="log-list">
+                        <li class="log-item">Calibrated safe braking thresholds to prevent inertia slipping during speed steps.</li>
+                        <li class="log-item">Fixed ultrasonic echo math timeouts to drop stray sound reflections off angled floor trim boards.</li>
+                        <li class="log-item">Optimized turn routines down to crisp pivot actions that operate efficiently under a small power draw.</li>
+                    </ul>
+                    <p>The vehicle handles obstacle avoidances perfectly without lock-ups or dropping logic steps. Operational testing successfully completed.</p>
                 </div>
 
-                <div class="spec-group">
-                    <span class="spec-label">Sensory Inputs</span>
-                    <span class="spec-value">HC-SR04 Ultrasonic</span>
-                </div>
+            </main>
 
-                <div class="spec-group">
-                    <span class="spec-label">Actuation Units</span>
-                    <span class="spec-value">SG90 Servo / Twin DC Motors</span>
-                </div>
-
-                <div class="spec-group">
-                    <span class="spec-label">Motor Controller</span>
-                    <span class="spec-value">L298N Dual H-Bridge</span>
-                </div>
-
-                <div class="spec-group">
-                    <span class="spec-label">Firmware Base</span>
-                    <span class="spec-value">C++ / Arduino Sketches</span>
-                </div>
-            </aside>
-
-        </main>
+        </div>
 
         <footer>
             <p>© 2026 Oscar. Hardware system documentation logs.</p>
@@ -531,19 +554,29 @@
     </div>
 
     <script>
-        function switchStage(stageIndex) {
-            // Get all buttons and text panels
-            const nodes = document.querySelectorAll('.timeline-node');
-            const panes = document.querySelectorAll('.timeline-pane');
+        function jumpToStage(stageIndex) {
+            const triggers = document.querySelectorAll('.stage-trigger');
+            const panes = document.querySelectorAll('.stage-pane');
+            const fillLine = document.getElementById('pipeline-fill');
             
-            // Clear out prior active markers
-            nodes.forEach(node => node.classList.remove('active'));
-            panes.forEach(pane => pane.classList.remove('active'));
+            // Un-assign previous selections
+            triggers.forEach(t => t.classList.remove('active'));
+            panes.forEach(p => p.classList.remove('active'));
             
-            // Map active classes over selected identifiers
-            nodes[stageIndex].classList.add('active');
-            document.getElementById(`pane-${stageIndex}`).classList.add('active');
+            // Set newly selected elements active
+            triggers[stageIndex].classList.add('active');
+            document.getElementById(`stage-pane-${stageIndex}`).classList.add('active');
+            
+            // Calculate dynamic glow track fill percentage height mapping
+            // stageIndex / (Total Triggers - 1) * 100
+            const percentage = (stageIndex / (triggers.length - 1)) * 100;
+            fillLine.style.height = `${percentage}%`;
         }
+
+        // Initialize progress line tracking state at baseline on page boot
+        document.addEventListener("DOMContentLoaded", () => {
+            jumpToStage(0);
+        });
     </script>
 
 </body>
