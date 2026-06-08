@@ -148,7 +148,7 @@
             box-shadow: 0 0 12px var(--accent-purple), inset 0 1px 2px rgba(255,255,255,0.4);
             z-index: 10;
             transition: top 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            top: 2rem; /* Shuffled programmatically */
+            top: 2rem;
         }
 
         /* Group stack container holding the switch plates */
@@ -217,7 +217,7 @@
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 3rem;
-            min-height: 580px;
+            min-height: 600px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
@@ -293,6 +293,34 @@
             font-size: 0.85rem;
         }
 
+        /* TECHNICAL SPEC TABLES */
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .spec-table th, .spec-table td {
+            border: 1px solid var(--border);
+            padding: 0.8rem 1rem;
+            text-align: left;
+        }
+
+        .spec-table th {
+            background-color: var(--bg-terminal);
+            color: var(--accent-purple);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .spec-table tr:nth-child(even) {
+            background-color: rgba(32, 20, 58, 0.15);
+        }
+
         /* ASSET ARCHIVE CONTAINERS */
         .image-container {
             width: 100%;
@@ -326,7 +354,39 @@
         .code-kw { color: var(--accent-purple); }
         .code-v { color: #a5b4fc; }
 
-        /* ANIMATION LOOP KEYFRAME */
+        /* CHECKLIST SYSTEM FOR GOALS/COMPLETION */
+        .check-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .check-card {
+            background: var(--bg-terminal);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .check-status-indicator {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            white-space: nowrap;
+        }
+
+        .check-text {
+            font-size: 0.95rem;
+        }
+
         @keyframes terminalBoot {
             from { opacity: 0; transform: scale(0.995) translateY(6px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
@@ -366,8 +426,8 @@
 
         <header>
             <div class="header-meta">
-                <span class="sys-id-tag">RELOAD_SYSTEM // ATMEGA_ROVER_DOCS</span>
-                <span class="sys-status">STABLE // ONLINE</span>
+                <span class="sys-id-tag">PIPELINE // AUTONOMOUS_NAV_CAR_LOGS</span>
+                <span class="sys-status">BUILD COMPLETED // ACTIVE</span>
             </div>
             <h1>Obstacle Avoiding Arduino Car</h1>
         </header>
@@ -381,28 +441,28 @@
                 <div class="deck-switch-stack" id="plate-group">
                     
                     <button class="deck-switch-plate active" onclick="activateDeckStage(0)">
-                        <span class="plate-timestamp">[LOG_01] SOURCING</span>
-                        <span class="plate-headline">Vetting Components</span>
+                        <span class="plate-timestamp">[LOG_01] OBJECTIVE</span>
+                        <span class="plate-headline">Goals & Sourcing</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(1)">
-                        <span class="plate-timestamp">[LOG_02] ASSEMBLY</span>
-                        <span class="plate-headline">Drivetrain & Frame</span>
+                        <span class="plate-timestamp">[LOG_02] SCHEMATICS</span>
+                        <span class="plate-headline">Cadding Electronics</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(2)">
-                        <span class="plate-timestamp">[LOG_03] WIRE_RIG</span>
-                        <span class="plate-headline">Sensors & Actuators</span>
+                        <span class="plate-timestamp">[LOG_03] MECHANICAL</span>
+                        <span class="plate-headline">Mount & Chassis Design</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(3)">
                         <span class="plate-timestamp">[LOG_04] FIRMWARE</span>
-                        <span class="plate-headline">C++ State Machining</span>
+                        <span class="plate-headline">State Loop Coding</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(4)">
-                        <span class="plate-timestamp">[LOG_05] DEPLOY</span>
-                        <span class="plate-headline">Arena Performance</span>
+                        <span class="plate-timestamp">[LOG_05] REVIEW</span>
+                        <span class="plate-headline">Demonstration & Metrics</span>
                     </button>
 
                 </div>
@@ -411,60 +471,88 @@
             <main class="data-display-bay">
 
                 <div id="deck-pane-0" class="stage-pane active">
-                    <div class="pane-routing-tag">LOG_STREAM // HARDWARE_SOURCING</div>
-                    <h2 class="pane-headline-main">Component Sourcing & Bench Testing</h2>
-                    <p>Before launching straight into mechanical construction, individual parts were vetted on standard bench breadboards. This phase focused entirely on hardware compatibility and electrical safety mappings.</p>
+                    <div class="pane-routing-tag">PHASE_01 // SYSTEM_INIT_&_PROCUREMENT</div>
+                    <h2 class="pane-headline-main">Project Scope & Component Sourcing</h2>
+                    <p>The mission core parameter was establishing an autonomous land rover capable of executing instant obstacle avoidance maneuvers based on dynamic 180° distance checks. Sourcing concentrated on low-profile hardware blocks that operate easily over localized power distributions.</p>
                     
-                    <h3>Discord Channel Core Log Capture</h3>
-                    <ul class="discord-channel-logs">
-                        <li class="discord-log-row"><strong>[22:15]</strong> Sourced basic ATmega328P processing framework core.</li>
-                        <li class="discord-log-row"><strong>[23:02]</strong> Unboxed L298N dual H-bridge motor module package.</li>
-                        <li class="discord-log-row"><strong>[01:40]</strong> Flagged heavy transient noise spikes on shared rails during sudden step acceleration spikes.</li>
-                        <li class="discord-log-row"><strong>[02:10]</strong> Resolved background noise issues by introducing complete capacitor filters across motor terminals.</li>
-                    </ul>
+                    <h3>Target Milestones</h3>
+                    <div class="check-grid">
+                        <div class="check-card">
+                            <span class="check-status-indicator">RESOLVED</span>
+                            <span class="check-text">Isolate logical computational power from heavy inductive DC motor currents to avoid random core resets.</span>
+                        </div>
+                        <div class="check-card">
+                            <span class="check-status-indicator">RESOLVED</span>
+                            <span class="check-text">Procure micro-actuators capable of executing rotational sensor sweeping without dropping signal frames.</span>
+                        </div>
+                    </div>
 
-                    <h3>Engineering Analysis</h3>
-                    <p>Connecting brushed inductive loads onto the same power lines as sensitive tracking logic usually results in processing lockouts. Separating the battery rails cleanly prevented unexpected microcontroller brownouts.</p>
+                    <h3>Discord Channel Sourcing Feeds</h3>
+                    <ul class="discord-channel-logs">
+                        <li class="discord-log-row"><strong>[14:20]</strong> Confirmed ATmega328P processing framework footprint limits.</li>
+                        <li class="discord-log-row"><strong>[15:45]</strong> Acquired L298N Dual H-Bridge block to handle raw wheel forward/reverse polarity flips.</li>
+                        <li class="discord-log-row"><strong>[18:10]</strong> Harvested high-frequency HC-SR04 ultrasonic transduction modules to calculate environment gaps.</li>
+                    </ul>
                 </div>
 
                 <div id="deck-pane-1" class="stage-pane">
-                    <div class="pane-routing-tag">LOG_STREAM // STRUCTURAL_FABRICATION</div>
-                    <h2 class="pane-headline-main">Chassis Integration & Drivetrain Mounts</h2>
-                    <p>With electronics verified on test rails, construction moved forward onto the dual-tier structural mobile framework.</p>
+                    <div class="pane-routing-tag">PHASE_02 // CIRCUITS_&_CAD_MAPPING</div>
+                    <h2 class="pane-headline-main">Virtual Circuit Drafting & Wiring Architecture</h2>
+                    <p>To avoid spatial layout collisions or copper trace overloads during vehicle turns, the layout schematics and physical footprints were entirely pre-planned and arranged in visual component software before wiring up the real board layout.</p>
+                    
+                    <h3>Spatial Pin Allocations Matrix</h3>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Hardware Module</th>
+                                <th>Microcontroller I/O Terminal</th>
+                                <th>Signal Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HC-SR04 Ultrasonic</td>
+                                <td>Digital Pin 12 (Trig) / Pin 11 (Echo)</td>
+                                <td>High-frequency sonic burst loop parsing</td>
+                            </tr>
+                            <tr>
+                                <td>SG90 Micro Servo</td>
+                                <td>Digital Pin 10 (PWM enabled)</td>
+                                <td>Angle step positioning execution (0°-180°)</td>
+                            </tr>
+                            <tr>
+                                <td>L298N Motor Driver</td>
+                                <td>Pins 5, 6, 7, 8 (Logic Gates)</td>
+                                <td>Dual-bridge directional polarity switching</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>CAD Clearance Verification</h3>
+                    <p>Special attention during layout checking was paid to trace separation. High-draw inductive ground paths from the DC motors were isolated cleanly to prevent backward current spikes from damaging internal registry values on the core ATmega microprocessor bus line.</p>
+                </div>
+
+                <div id="deck-pane-2" class="stage-pane">
+                    <div class="pane-routing-tag">PHASE_03 // MECHANICAL_FABRICATION</div>
+                    <h2 class="pane-headline-main">Chassis Assembly & Custom Bracket Prints</h2>
+                    <p>This phase integrated mechanical and electronic elements. The main platform features a rigid dual-tier design to keep components clean, while custom structural brackets handle sensor orientation adjustments.</p>
                     
                     <div class="image-container">
                         <img src="Images/carassembly.png" alt="Chassis Structural Assembly Breakdown Diagram">
                     </div>
 
-                    <h3>Assembly Checklist Logs</h3>
+                    <h3>Fabrication Spec Registry</h3>
                     <ul class="discord-channel-logs">
-                        <li class="discord-log-row">Fixed twin 6V geared motors down securely onto the clear acrylic sub-deck structure.</li>
-                        <li class="discord-log-row">Fitted non-driven front caster components to facilitate low-friction multi-directional pivot capabilities.</li>
-                        <li class="discord-log-row">Positioned high-current batteries low in the frame to lock in an ultra-stable center of gravity.</li>
+                        <li class="discord-log-row"><strong>Material:</strong> Light, high-density thermoplastic structure to keep weight metrics small.</li>
+                        <li class="discord-log-row"><strong>Front Nose Array:</strong> Designed and printed a custom press-fit bracket cluster holding the HC-SR04 eyes squarely onto the SG90 micro-servo gear shaft.</li>
+                        <li class="discord-log-row"><strong>Drivetrain Balance:</strong> Lower tier houses the battery array and dual geared wheels to establish a rock-solid center of gravity for stable rotational sliding maneuvers.</li>
                     </ul>
-                    <p>A balanced weight distribution keeps mechanical traction high on both driven wheels during fast directional adjustments.</p>
-                </div>
-
-                <div id="deck-pane-2" class="stage-pane">
-                    <div class="pane-routing-tag">LOG_STREAM // MECHATRONIC_CALIBRATION</div>
-                    <h2 class="pane-headline-main">Ultrasonic Rigging & Servo Sweeper Setup</h2>
-                    <p>This phase introduced dynamic spatial awareness, replacing simple blind forward paths with active obstacle detection routines.</p>
-                    
-                    <h3>Sensory Stack Milestones</h3>
-                    <ul class="discord-channel-logs">
-                        <li class="discord-log-row">Mounted an SG90 micro-servo unit right onto the front center nose point.</li>
-                        <li class="discord-log-row">Calibrated home sweep coordinate vectors cleanly to 90 degrees dead center alignment.</li>
-                        <li class="discord-log-row">Attached the HC-SR04 ultrasonic rangefinder node cleanly on top of the moving servo horn.</li>
-                    </ul>
-
-                    <h3>Operational Concept</h3>
-                    <p>This hardware layout creates a panoramic sensor field. Instead of blindly turning around when an obstacle blocks its path, the vehicle stops and sweeps its surroundings to select the route with the best clearance margin.</p>
                 </div>
 
                 <div id="deck-pane-3" class="stage-pane">
-                    <div class="pane-routing-tag">LOG_STREAM // FIRMWARE_COMPILATION</div>
-                    <h2 class="pane-headline-main">Firmware Pipeline & Obstacle Parsing Loops</h2>
-                    <p>This milestone focused on flashing and debugging the real-time runtime state engine on the ATmega processor.</p>
+                    <div class="pane-routing-tag">PHASE_04 // SOFTWARE_ARCHITECTURE</div>
+                    <h2 class="pane-headline-main">Firmware Pipeline & Range Check States</h2>
+                    <p>The code is structured as an interactive state routine written in C++. It constantly evaluates spatial feedback parameters before modifying active motor gate logic values.</p>
                     
                     <div class="code-tray">
 <span class="code-comm">// Dynamic spatial evaluation algorithm</span>
@@ -481,22 +569,32 @@
 }
                     </div>
 
-                    <h3>State Logic Protocol</h3>
-                    <p>The code runs an infinite loop checking frontal ranges. If a path constraint drops below 30cm, an interrupt routine triggers: the car halts, scans left/right spatial vectors, compares the depth variables, and activates the optimal H-bridge direction channels.</p>
+                    <h3>Decision Logic Map</h3>
+                    <p>The main sequence monitors a continuous forward tracking thread. If an environmental boundary drops closer than 30 centimeters, a pause is flagged, motor loops cut out, the <code>lookAround()</code> routine runs diagnostic right/left sweeps, evaluates the max path gap variable, and spins the vehicle to clear the target.</p>
                 </div>
 
                 <div id="deck-pane-4" class="stage-pane">
-                    <div class="pane-routing-tag">LOG_STREAM // FIELD_DIAGNOSTICS</div>
-                    <h2 class="pane-headline-main">Arena Validation & Threshold Tuning</h2>
-                    <p>The final phase was dedicated to calibration and boundary testing inside controlled environments.</p>
+                    <div class="pane-routing-tag">PHASE_05 // PERFORMANCE_VALIDATION</div>
+                    <h2 class="pane-headline-main">Final Deployment & Environmental Trials</h2>
+                    <p>The build concluded with open field trials to verify boundary tracking calibration and assess runtime power draws over tight obstacle courses.</p>
                     
-                    <h3>Final Engineering Fixes</h3>
-                    <ul class="discord-channel-logs">
-                        <li class="discord-log-row">Adjusted deceleration ramp rates to prevent wheel lockups or sliding on slick surfaces.</li>
-                        <li class="discord-log-row">Filtered out echo reflection noise caused by wall trim shapes.</li>
-                        <li class="discord-log-row">Optimized pivot turns to ensure fast response times under low current draw conditions.</li>
-                    </ul>
-                    <p>System operational checks are green. Autonomous tracking is running smoothly with high runtime stability.</p>
+                    <h3>System Readiness Matrix</h3>
+                    <div class="check-grid">
+                        <div class="check-card">
+                            <span class="check-status-indicator">PASSED</span>
+                            <span class="check-text"><strong>Obstacle Response:</strong> Vehicle reliably drops speed profiles and maneuvers before structural clipping occurs.</span>
+                        </div>
+                        <div class="check-card">
+                            <span class="check-status-indicator">PASSED</span>
+                            <span class="check-text"><strong>Echo Attenuation:</strong> Noise filters successfully block out floor reflection artifacts.</span>
+                        </div>
+                        <div class="check-card">
+                            <span class="check-status-indicator">PASSED</span>
+                            <span class="check-text"><strong>Power Stability:</strong> Zero processor brownouts encountered during hard motor reverse braking cycles.</span>
+                        </div>
+                    </div>
+
+                    <p>The vehicle navigates complicated paths without requiring any manual corrections or physical overrides. All mechatronic systems are fully operational.</p>
                 </div>
 
             </main>
@@ -525,7 +623,6 @@
             document.getElementById(`deck-pane-${stageIndex}`).classList.add('active');
             
             // Programmatically calculate exact top offset to slide mechanical fader knob perfectly
-            // Finds the pixel height position relative to the main housing deck container
             const trackOffsetTop = targetedPlate.offsetTop;
             const plateHeight = targetedPlate.offsetHeight;
             
