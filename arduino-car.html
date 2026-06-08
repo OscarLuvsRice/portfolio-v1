@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar // Arduino Car Spec Sheet</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* PASSIONATE PURPLE THEME VARIABLES */
+        :root {
+            --bg-main: #06030e;        /* Dark obsidian purple night */
+            --bg-card: #120b24;        /* Rich velvet purple for structural cards */
+            --bg-card-hover: #191032;  /* Slightly brighter purple for hover reactions */
+            --border: #261947;         /* Defined, clean border line */
+            --text-title: #ffffff;     /* Crisp white for core headings */
+            --text-body: #e3ddec;      /* Bright, high-readability text */
+            --text-muted: #8d80a8;     /* Soft purple-grey for details */
+            --accent-purple: #c084fc;  /* Neon electric lavender */
+            --accent-blue: #6366f1;    /* Deep cosmic indigo */
+            --accent-green: #34d399;   /* Crisp neon mint for active/finished statuses */
+            --bg-terminal: #0b0618;    /* Darker inset terminal background */
+        }
+
+        /* RESET & BASE LAYOUT */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            line-height: 1.6;
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 960px;
+            width: 100%;
+        }
+
+        /* BACK BUTTON */
+        .back-registry {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .back-registry:hover {
+            color: var(--accent-purple);
+            transform: translateX(-4px);
+        }
+
+        /* HEADER BLOCK */
+        header {
+            margin-bottom: 3.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+        }
+
+        .project-meta-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .system-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            font-weight: 500;
+        }
+
+        .status-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-weight: 500;
+            background: rgba(52, 211, 153, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--text-title);
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        /* GRID LAYOUT: DOCUMENTATION + TELEMETRY */
+        .spec-layout {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* DOCUMENTATION CONTENT */
+        .doc-content section {
+            margin-bottom: 3rem;
+        }
+
+        .doc-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-title);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .doc-content h2::before {
+            content: '//';
+            color: var(--accent-purple);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+        }
+
+        .doc-content p {
+            font-size: 1rem;
+            color: var(--text-body);
+            margin-bottom: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* IMAGE CONTEXT CONTAINER */
+        .image-container {
+            width: 100%;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 1.5rem 0 2.5rem 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* TERMINAL / CODE EMBED BOX */
+        .terminal-block {
+            background-color: var(--bg-terminal);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            color: #e2dbf0;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            box-shadow: inset 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .terminal-comment { color: var(--text-muted); }
+        .terminal-keyword { color: var(--accent-purple); }
+        .terminal-var { color: #a5b4fc; }
+
+        /* TELEMETRY SIDEBAR */
+        .telemetry-sidebar {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.8rem;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .telemetry-sidebar h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-title);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.6rem;
+        }
+
+        .spec-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .spec-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .spec-value {
+            font-size: 0.95rem;
+            color: var(--text-body);
+            font-weight: 500;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            margin-top: 5rem;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* RESPONSIVE LAYOUT */
+        @media (max-width: 850px) {
+            .spec-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+            .telemetry-sidebar { position: static; }
+            body { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <a href="projects.html" class="back-registry">← back_to_registry</a>
+
+        <header>
+            <div class="project-meta-top">
+                <span class="system-id">SYS_LOG // AUTONOMOUS_NAV_ROVER</span>
+                <span class="status-badge">[COMPLETED]</span>
+            </div>
+            <h1>Obstacle Avoiding Arduino Car</h1>
+        </header>
+
+        <main class="spec-layout">
+            
+            <div class="doc-content">
+                
+                <section>
+                    <h2>Overview</h2>
+                    <p>This project focused on constructing an autonomous mobile vehicle capable of navigating unknown physical environments without human intervention. By deploying a real-time rangefinding system on a pivoting chassis, the vehicle constantly polls spatial depths to map its path and dynamically re-route around obstacles.</p>
+                </section>
+
+                <div class="image-container">
+                    <img src="Images/carassembly.png" alt="Obstacle Avoiding Car Structural Assembly">
+                </div>
+
+                <section>
+                    <h2>Hardware Architecture</h2>
+                    <p>The mechanical footprint utilizes a multi-tiered structural platform driven by dual DC motors. The computational brain consists of an ATmega328P microcontroller running customized firmware loop priorities.</p>
+                    <p>To detect environmental boundaries, an HC-SR04 ultrasonic sensor is mounted to an front-facing SG90 servo motor. This enables a physical "scanning sweep" of 180 degrees whenever a forward path constraint is logged, calculating spatial vectors before firing directional motor commands.</p>
+                </section>
+
+                <section>
+                    <h2>Firmware Logic Pipeline</h2>
+                    <p>The software loop is engineered to maintain a fast execution lifecycle. The controller handles a state machine that switches between nominal linear movement, deceleration safety checking, distance parsing, and directional orientation corrections.</p>
+                    
+                    <div class="terminal-block">
+<span class="terminal-comment">// Distance check subroutine loop</span>
+<span class="terminal-keyword">void</span> <span class="terminal-var">lookAround</span>() {
+    <span class="terminal-var">myservo</span>.<span class="terminal-var">write</span>(45);  <span class="terminal-comment">// Scan Right vector</span>
+    <span class="terminal-var">delay</span>(300);
+    <span class="terminal-var">distanceRight</span> = <span class="terminal-var">readPing</span>();
+    
+    <span class="terminal-var">myservo</span>.<span class="terminal-var">write</span>(135); <span class="terminal-comment">// Scan Left vector</span>
+    <span class="terminal-var">delay</span>(300);
+    <span class="terminal-var">distanceLeft</span> = <span class="terminal-var">readPing</span>();
+    
+    <span class="terminal-var">myservo</span>.<span class="terminal-var">write</span>(90);  <span class="terminal-comment">// Return to center baseline</span>
+}
+                    </div>
+                    <p>When the front sensor registers an object closer than the configured safety threshold, the vehicle holds position, initializes a panoramic scan to compare left/right path vacancies, and prioritizes the motor spin toward the vector possessing the maximum clearance margin.</p>
+                </section>
+
+            </div>
+
+            <aside class="telemetry-sidebar">
+                <h3>System Telemetry</h3>
+                
+                <div class="spec-group">
+                    <span class="spec-label">Deployment Year</span>
+                    <span class="spec-value">2026</span>
+                </div>
+
+                <div class="spec-group">
+                    <span class="spec-label">Core Architecture</span>
+                    <span class="spec-value">Arduino (ATmega328P)</span>
+                </div>
+
+                <div class="spec-group">
+                    <span class="spec-label">Sensory Inputs</span>
+                    <span class="spec-value">HC-SR04 Ultrasonic</span>
+                </div>
+
+                <div class="spec-group">
+                    <span class="spec-label">Actuation Units</span>
+                    <span class="spec-value">SG90 Servo / Twin DC Motors</span>
+                </div>
+
+                <div class="spec-group">
+                    <span class="spec-label">Motor Controller</span>
+                    <span class="spec-value">L298N Dual H-Bridge</span>
+                </div>
+
+                <div class="spec-group">
+                    <span class="spec-label">Firmware Base</span>
+                    <span class="spec-value">C++ / Arduino Sketches</span>
+                </div>
+            </aside>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Oscar. Hardware system documentation logs.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
