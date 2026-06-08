@@ -12,17 +12,17 @@
     <style>
         /* PASSIONATE PURPLE THEME VARIABLES */
         :root {
-            --bg-main: #06030e;        /* Dark obsidian purple night */
-            --bg-card: #120b24;        /* Rich velvet purple for structural cards */
-            --bg-card-hover: #191032;  /* Slightly brighter purple for hover reactions */
-            --border: #261947;         /* Defined, clean border line */
-            --text-title: #ffffff;     /* Crisp white for core headings */
-            --text-body: #e3ddec;      /* Bright, high-readability text */
-            --text-muted: #8d80a8;     /* Soft purple-grey for details */
-            --accent-purple: #c084fc;  /* Neon electric lavender */
-            --accent-blue: #6366f1;    /* Deep cosmic indigo */
-            --accent-green: #34d399;   /* Crisp neon mint for active/finished statuses */
-            --bg-terminal: #0b0618;    /* Darker inset terminal background */
+            --bg-main: #05030a;        /* Pitch obsidian night */
+            --bg-card: #0f0a1c;        /* Deep mechanical purple block */
+            --bg-card-hover: #150e26;  /* Focused block state */
+            --border: #20143a;         /* Structural housing line */
+            --text-title: #ffffff;     /* White titles */
+            --text-body: #e0dae9;      /* Clear scannability text */
+            --text-muted: #7d709a;     /* Inactive status text */
+            --accent-purple: #c084fc;  /* Glowing electric lavender */
+            --accent-blue: #4f46e5;    /* Deep cosmic bus line */
+            --accent-green: #10b981;   /* System online mint */
+            --bg-terminal: #090512;    /* Recessed terminal tray */
         }
 
         /* RESET & BASE LAYOUT */
@@ -37,20 +37,18 @@
             background-color: var(--bg-main);
             color: var(--text-body);
             line-height: 1.6;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
             display: flex;
             justify-content: center;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1140px;
+            max-width: 1180px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* BACK BUTTON */
+        /* NAVIGATION HEADER BACKLINK */
         .back-registry {
             display: inline-flex;
             align-items: center;
@@ -58,10 +56,9 @@
             color: var(--text-muted);
             text-decoration: none;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             margin-bottom: 2rem;
             transition: color 0.2s ease, transform 0.2s ease;
-            width: fit-content;
         }
 
         .back-registry:hover {
@@ -69,313 +66,295 @@
             transform: translateX(-4px);
         }
 
-        /* HEADER BLOCK */
+        /* MAIN SYSTEM HEADER */
         header {
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
             border-bottom: 1px solid var(--border);
             padding-bottom: 1.5rem;
         }
 
-        .project-meta-top {
+        .header-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
 
-        .system-id {
+        .sys-id-tag {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--accent-blue);
-            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--accent-purple);
+            letter-spacing: 1px;
         }
 
-        .status-badge {
+        .sys-status {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
-            padding: 0.3rem 0.7rem;
-            border-radius: 6px;
-            font-weight: 500;
-            background: rgba(52, 211, 153, 0.1);
             color: var(--accent-green);
-            border: 1px solid rgba(52, 211, 153, 0.2);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--text-title);
             letter-spacing: -1px;
-            line-height: 1.2;
         }
 
-        /* SPLIT WORKSPACE INTERFACE */
-        .workspace-grid {
+        /* TWO-COLUMN SPLIT CONTROL DECK WORKSPACE */
+        .workspace {
             display: grid;
-            grid-template-columns: 260px 1fr;
+            grid-template-columns: 320px 1fr;
             gap: 4rem;
             align-items: start;
-            flex-grow: 1;
         }
 
-        /* STICKY LEFT-HAND TIMELINE CONTAINER */
-        .timeline-sidebar-left {
+        /* LEFT COLUMN: THE PHYSICAL HARDWARE CONTROL DECK */
+        .control-deck {
             position: sticky;
-            top: 3rem;
+            top: 4rem;
+            display: flex;
+            position: relative;
+            background: var(--bg-terminal);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 1rem 1.5rem 2rem;
+        }
+
+        /* Recessed Track Groove for the Mechanical Fader Block */
+        .fader-track-channel {
+            position: absolute;
+            top: 2rem;
+            left: 1rem;
+            width: 4px;
+            height: calc(100% - 4rem);
+            background-color: #120b20;
+            border-radius: 2px;
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* The Physical Glowing Slider Handle Block */
+        .mechanical-fader-block {
+            position: absolute;
+            left: 0.75rem; /* Centered precisely on the track channel */
+            width: 12px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 3px;
+            box-shadow: 0 0 12px var(--accent-purple), inset 0 1px 2px rgba(255,255,255,0.4);
+            z-index: 10;
+            transition: top 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            top: 2rem; /* Shuffled programmatically */
+        }
+
+        /* Group stack container holding the switch plates */
+        .deck-switch-stack {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .sidebar-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Dynamic Progress Track System */
-        .vertical-track {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            padding-left: 1.5rem;
-        }
-
-        /* Passive alignment spine line */
-        .vertical-track::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 3px;
-            width: 2px;
-            height: calc(100% - 20px);
-            background-color: var(--border);
-            z-index: 1;
-        }
-
-        /* Active filling pipeline bar driven by JS */
-        .track-progress-fill {
-            position: absolute;
-            top: 10px;
-            left: 3px;
-            width: 2px;
-            height: 0%; /* Dynamic allocation */
-            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
-            box-shadow: 0 0 10px rgba(192, 132, 252, 0.6);
-            z-index: 2;
-            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Step Button Logic */
-        .stage-trigger {
-            background: none;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-            position: relative;
-            z-index: 3;
-            display: flex;
-            align-items: flex-start;
             gap: 1rem;
-            text-decoration: none;
-            outline: none;
+            width: 100%;
         }
 
-        .trigger-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: var(--bg-main);
-            border: 2px solid var(--border);
-            margin-top: 0.45rem;
-            margin-left: -1.45rem; /* Center right over the track line */
-            transition: all 0.3s ease;
-        }
-
-        .trigger-meta {
+        /* Industrial Toggle Plates (Buttons) */
+        .deck-switch-plate {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: all 0.25s ease;
             display: flex;
             flex-direction: column;
+            gap: 0.25rem;
+            position: relative;
         }
 
-        .trigger-id {
+        .deck-switch-plate:hover {
+            background-color: var(--bg-card-hover);
+            border-color: rgba(192, 132, 252, 0.3);
+        }
+
+        /* Plate Sub-components */
+        .plate-timestamp {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             color: var(--text-muted);
-            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
         }
 
-        .trigger-name {
+        .plate-headline {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
             color: var(--text-muted);
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
         }
 
-        /* Trigger Hover Interactions */
-        .stage-trigger:hover .trigger-name {
-            color: var(--text-body);
-        }
-
-        /* Active Step Configurations */
-        .stage-trigger.active .trigger-dot {
+        /* ACTIVE TOGGLE STATE STYLING */
+        .deck-switch-plate.active {
+            background-color: #170f30;
             border-color: var(--accent-purple);
-            background-color: var(--accent-purple);
-            box-shadow: 0 0 10px var(--accent-purple);
+            box-shadow: inset -4px 0 0 var(--accent-purple);
         }
 
-        .stage-trigger.active .trigger-id {
+        .deck-switch-plate.active .plate-timestamp {
             color: var(--accent-blue);
         }
 
-        .stage-trigger.active .trigger-name {
+        .deck-switch-plate.active .plate-headline {
             color: var(--text-title);
-            font-weight: 700;
         }
 
-        /* RIGHT-HAND DYNAMIC STAGE BAY Panels */
-        .stage-display-panel {
-            background-color: rgba(18, 11, 36, 0.3);
+        /* RIGHT COLUMN: MAIN DATA TERMINAL BAY */
+        .data-display-bay {
+            background-color: rgba(15, 10, 28, 0.2);
             border: 1px solid var(--border);
             border-radius: 20px;
-            padding: 2.5rem;
-            min-height: 500px;
+            padding: 3rem;
+            min-height: 580px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
+        /* Individual Pane Visibility Transitions */
         .stage-pane {
             display: none;
-            animation: paneShift 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: terminalBoot 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .stage-pane.active {
             display: block;
         }
 
-        .pane-header-group {
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1rem;
-        }
-
-        .pane-sys-tag {
+        /* Content Formatting Elements */
+        .pane-routing-tag {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--accent-purple);
-            margin-bottom: 0.4rem;
+            font-size: 0.78rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
         }
 
-        .pane-main-title {
+        .pane-headline-main {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--text-title);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
+            letter-spacing: -0.5px;
         }
 
-        /* SYSTEM BLOCK MARKERS Inside Document Sections */
         .stage-pane h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: var(--text-title);
             margin: 2rem 0 0.8rem 0;
         }
 
         .stage-pane p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--text-body);
             margin-bottom: 1.2rem;
             opacity: 0.95;
         }
 
-        /* COMPACT ORDERED BULLET LOGS (Discord Message Style) */
-        .log-list {
+        /* DISCORD REPLICA LOG BULLETS */
+        .discord-channel-logs {
             list-style: none;
             margin: 1.5rem 0;
+            background-color: var(--bg-terminal);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
         }
 
-        .log-item {
+        .discord-log-row {
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 1.8rem;
             margin-bottom: 0.8rem;
             font-size: 0.95rem;
         }
 
-        .log-item::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: var(--accent-blue);
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: bold;
+        .discord-log-row:last-child {
+            margin-bottom: 0;
         }
 
-        /* IMAGE CONTEXT CONTAINER */
+        .discord-log-row::before {
+            content: '➔';
+            position: absolute;
+            left: 0;
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+        }
+
+        /* ASSET ARCHIVE CONTAINERS */
         .image-container {
             width: 100%;
-            background-color: var(--bg-card);
+            background-color: var(--bg-terminal);
             border: 1px solid var(--border);
             border-radius: 14px;
             overflow: hidden;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
         }
 
         .image-container img {
             width: 100%;
             height: auto;
             display: block;
-            object-fit: cover;
         }
 
-        /* TERMINAL BLOCKS */
-        .terminal-block {
-            background-color: var(--bg-terminal);
+        /* CODE SEGMENT BOXES */
+        .code-tray {
+            background-color: #040208;
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 1.5rem;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.88rem;
-            color: #e2dbf0;
+            color: #e5def0;
             overflow-x: auto;
             margin: 1.5rem 0;
-            box-shadow: inset 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        .terminal-comment { color: var(--text-muted); }
-        .terminal-keyword { color: var(--accent-purple); }
-        .terminal-var { color: #a5b4fc; }
+        .code-comm { color: var(--text-muted); }
+        .code-kw { color: var(--accent-purple); }
+        .code-v { color: #a5b4fc; }
 
-        @keyframes paneShift {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ANIMATION LOOP KEYFRAME */
+        @keyframes terminalBoot {
+            from { opacity: 0; transform: scale(0.995) translateY(6px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* FOOTER */
+        /* SYSTEM WORKSPACE FOOTER */
         footer {
             border-top: 1px solid var(--border);
             padding-top: 2rem;
-            margin-top: 5rem;
+            margin-top: 6rem;
             text-align: center;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
         }
 
-        /* RESPONSIVE RENDERING COMPRESSION */
-        @media (max-width: 880px) {
-            .workspace-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-            .sidebar-title { display: none; }
-            .timeline-sidebar-left { position: static; width: 100%; }
-            .vertical-track { flex-direction: row; flex-wrap: wrap; justify-content: space-between; padding-left: 0; gap: 1rem;}
-            .vertical-track::before, .track-progress-fill { display: none; }
-            .trigger-dot { display: none; }
-            .stage-trigger { background-color: var(--bg-card); padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--border); }
-            .stage-trigger.active { border-color: var(--accent-purple); }
+        /* RESPONSIVE LAYOUT MATRIX BREAKPOINT */
+        @media (max-width: 900px) {
+            .workspace { grid-template-columns: 1fr; gap: 2rem; }
+            .control-deck { position: static; padding: 1rem; }
+            .fader-track-channel, .mechanical-fader-block { display: none; }
+            .deck-switch-stack { flex-direction: row; flex-wrap: wrap; }
+            .deck-switch-plate { width: calc(50% - 0.5rem); }
             body { padding: 2rem 1rem; }
+            .data-display-bay { padding: 1.8rem; }
+        }
+        @media (max-width: 580px) {
+            .deck-switch-plate { width: 100%; }
         }
     </style>
 </head>
@@ -386,161 +365,138 @@
         <a href="projects.html" class="back-registry">← back_to_registry</a>
 
         <header>
-            <div class="project-meta-top">
-                <span class="system-id">TRACKER // AUTONOMOUS_NAV_CAR</span>
-                <span class="status-badge">[COMPLETED]</span>
+            <div class="header-meta">
+                <span class="sys-id-tag">RELOAD_SYSTEM // ATMEGA_ROVER_DOCS</span>
+                <span class="sys-status">STABLE // ONLINE</span>
             </div>
             <h1>Obstacle Avoiding Arduino Car</h1>
         </header>
 
-        <div class="workspace-grid">
+        <div class="workspace">
             
-            <aside class="timeline-sidebar-left">
-                <div class="sidebar-title">Pipeline Logs</div>
-                
-                <nav class="vertical-track">
-                    <div class="track-progress-fill" id="pipeline-fill"></div>
+            <aside class="control-deck">
+                <div class="fader-track-channel"></div>
+                <div class="mechanical-fader-block" id="fader-knob"></div>
 
-                    <button class="stage-trigger active" onclick="jumpToStage(0)">
-                        <div class="trigger-dot"></div>
-                        <div class="trigger-meta">
-                            <span class="trigger-id">LOG_01</span>
-                            <span class="trigger-name">Sourcing & Pre-wire</span>
-                        </div>
+                <div class="deck-switch-stack" id="plate-group">
+                    
+                    <button class="deck-switch-plate active" onclick="activateDeckStage(0)">
+                        <span class="plate-timestamp">[LOG_01] SOURCING</span>
+                        <span class="plate-headline">Vetting Components</span>
                     </button>
 
-                    <button class="stage-trigger" onclick="jumpToStage(1)">
-                        <div class="trigger-dot"></div>
-                        <div class="trigger-meta">
-                            <span class="trigger-id">LOG_02</span>
-                            <span class="trigger-name">Chassis Assembly</span>
-                        </div>
+                    <button class="deck-switch-plate" onclick="activateDeckStage(1)">
+                        <span class="plate-timestamp">[LOG_02] ASSEMBLY</span>
+                        <span class="plate-headline">Drivetrain & Frame</span>
                     </button>
 
-                    <button class="stage-trigger" onclick="jumpToStage(2)">
-                        <div class="trigger-dot"></div>
-                        <div class="trigger-meta">
-                            <span class="trigger-id">LOG_03</span>
-                            <span class="trigger-name">Sensor Calibration</span>
-                        </div>
+                    <button class="deck-switch-plate" onclick="activateDeckStage(2)">
+                        <span class="plate-timestamp">[LOG_03] WIRE_RIG</span>
+                        <span class="plate-headline">Sensors & Actuators</span>
                     </button>
 
-                    <button class="stage-trigger" onclick="jumpToStage(3)">
-                        <div class="trigger-dot"></div>
-                        <div class="trigger-meta">
-                            <span class="trigger-id">LOG_04</span>
-                            <span class="trigger-name">Firmware Integration</span>
-                        </div>
+                    <button class="deck-switch-plate" onclick="activateDeckStage(3)">
+                        <span class="plate-timestamp">[LOG_04] FIRMWARE</span>
+                        <span class="plate-headline">C++ State Machining</span>
                     </button>
 
-                    <button class="stage-trigger" onclick="jumpToStage(4)">
-                        <div class="trigger-dot"></div>
-                        <div class="trigger-meta">
-                            <span class="trigger-id">LOG_05</span>
-                            <span class="trigger-name">Arena Tests</span>
-                        </div>
+                    <button class="deck-switch-plate" onclick="activateDeckStage(4)">
+                        <span class="plate-timestamp">[LOG_05] DEPLOY</span>
+                        <span class="plate-headline">Arena Performance</span>
                     </button>
-                </nav>
+
+                </div>
             </aside>
 
-            <main class="stage-display-panel">
+            <main class="data-display-bay">
 
-                <div id="stage-pane-0" class="stage-pane active">
-                    <div class="pane-header-group">
-                        <div class="pane-sys-tag">PHASE_01 // COMPONENT_HARVEST</div>
-                        <h2 class="pane-main-title">Sourcing & Initial Circuit Mapping</h2>
-                    </div>
-                    <p>Before launching straight into the physical chassis build, the component parameters had to be completely locked down and vetted on a breadboard array. The goal was maintaining clean, decoupled power links.</p>
+                <div id="deck-pane-0" class="stage-pane active">
+                    <div class="pane-routing-tag">LOG_STREAM // HARDWARE_SOURCING</div>
+                    <h2 class="pane-headline-main">Component Sourcing & Bench Testing</h2>
+                    <p>Before launching straight into mechanical construction, individual parts were vetted on standard bench breadboards. This phase focused entirely on hardware compatibility and electrical safety mappings.</p>
                     
-                    <h3>Acquired Hardware Manifest</h3>
-                    <ul class="log-list">
-                        <li class="log-item">Microprocessor: Arduino Uno Board configuration core (ATmega328P).</li>
-                        <li class="log-item">Actuation Blocks: Dual 6V high-torque brushed yellow geared DC motors.</li>
-                        <li class="log-item">H-Bridge Isolation Driver: L298N module module to handle raw inductive reverse EMF.</li>
-                        <li class="log-item">Telemetry Nodes: HC-SR04 ultrasonic transducer transceiver module.</li>
+                    <h3>Discord Channel Core Log Capture</h3>
+                    <ul class="discord-channel-logs">
+                        <li class="discord-log-row"><strong>[22:15]</strong> Sourced basic ATmega328P processing framework core.</li>
+                        <li class="discord-log-row"><strong>[23:02]</strong> Unboxed L298N dual H-bridge motor module package.</li>
+                        <li class="discord-log-row"><strong>[01:40]</strong> Flagged heavy transient noise spikes on shared rails during sudden step acceleration spikes.</li>
+                        <li class="discord-log-row"><strong>[02:10]</strong> Resolved background noise issues by introducing complete capacitor filters across motor terminals.</li>
                     </ul>
-                    
-                    <h3>Engineering Notes</h3>
-                    <p>Initial desk validation flagged major electrical noise. When connecting both motor modules onto the structural logical ground line without optocoupler isolation, sudden acceleration steps caused heavy logic drops inside the ATmega controller core, forcing random restarts. Solved this early by dedicating separate power line rails for logic and raw motor tracking blocks.</p>
+
+                    <h3>Engineering Analysis</h3>
+                    <p>Connecting brushed inductive loads onto the same power lines as sensitive tracking logic usually results in processing lockouts. Separating the battery rails cleanly prevented unexpected microcontroller brownouts.</p>
                 </div>
 
-                <div id="stage-pane-1" class="stage-pane">
-                    <div class="pane-header-group">
-                        <div class="pane-sys-tag">PHASE_02 // STRUCTURAL_FAB</div>
-                        <h2 class="pane-main-title">Chassis Construction & Drivetrain</h2>
-                    </div>
-                    <p>With basic components verified, work shifted into framing up the physical mobile footprint of the vehicle assembly.</p>
+                <div id="deck-pane-1" class="stage-pane">
+                    <div class="pane-routing-tag">LOG_STREAM // STRUCTURAL_FABRICATION</div>
+                    <h2 class="pane-headline-main">Chassis Integration & Drivetrain Mounts</h2>
+                    <p>With electronics verified on test rails, construction moved forward onto the dual-tier structural mobile framework.</p>
                     
                     <div class="image-container">
-                        <img src="Images/carassembly.png" alt="Structural Frame Overlay">
+                        <img src="Images/carassembly.png" alt="Chassis Structural Assembly Breakdown Diagram">
                     </div>
 
-                    <h3>Structural Assembly Notes</h3>
-                    <ul class="log-list">
-                        <li class="log-item">Secured the twin DC motor modules to the bottom clear acrylic baseplate tracking line.</li>
-                        <li class="log-item">Aligned rear trailing caster wheels to optimize quick multi-directional spin transitions.</li>
-                        <li class="log-item">Positioned the L298N driver board centrally to maintain uniform copper tracing distances across both drivetrain terminals.</li>
+                    <h3>Assembly Checklist Logs</h3>
+                    <ul class="discord-channel-logs">
+                        <li class="discord-log-row">Fixed twin 6V geared motors down securely onto the clear acrylic sub-deck structure.</li>
+                        <li class="discord-log-row">Fitted non-driven front caster components to facilitate low-friction multi-directional pivot capabilities.</li>
+                        <li class="discord-log-row">Positioned high-current batteries low in the frame to lock in an ultra-stable center of gravity.</li>
                     </ul>
-                    <p>Everything was centered properly to maintain stable weight management during quick pivot rotations when correcting directional tracking around tight obstacles.</p>
+                    <p>A balanced weight distribution keeps mechanical traction high on both driven wheels during fast directional adjustments.</p>
                 </div>
 
-                <div id="stage-pane-2" class="stage-pane">
-                    <div class="pane-header-group">
-                        <div class="pane-sys-tag">PHASE_03 // MECHATRONIC_SENSING</div>
-                        <h2 class="pane-main-title">Sensory Rig & Servo Sweeper Setup</h2>
-                    </div>
-                    <p>An autonomous rover cannot re-route correctly if it only monitors a fixed, narrow tunnel directly ahead. This build phase added dynamic environmental awareness.</p>
+                <div id="deck-pane-2" class="stage-pane">
+                    <div class="pane-routing-tag">LOG_STREAM // MECHATRONIC_CALIBRATION</div>
+                    <h2 class="pane-headline-main">Ultrasonic Rigging & Servo Sweeper Setup</h2>
+                    <p>This phase introduced dynamic spatial awareness, replacing simple blind forward paths with active obstacle detection routines.</p>
                     
-                    <h3>Integration Milestones</h3>
-                    <ul class="log-list">
-                        <li class="log-item">Mounted an SG90 micro-servo directly down onto the front structural nose block.</li>
-                        <li class="log-item">Aligned sensor bracket to set home coordinate calibration precisely to 90 degrees (Dead Center alignment).</li>
-                        <li class="log-item">Interfaced the HC-SR04 bracket directly onto the servo spline assembly horn.</li>
+                    <h3>Sensory Stack Milestones</h3>
+                    <ul class="discord-channel-logs">
+                        <li class="discord-log-row">Mounted an SG90 micro-servo unit right onto the front center nose point.</li>
+                        <li class="discord-log-row">Calibrated home sweep coordinate vectors cleanly to 90 degrees dead center alignment.</li>
+                        <li class="discord-log-row">Attached the HC-SR04 ultrasonic rangefinder node cleanly on top of the moving servo horn.</li>
                     </ul>
-                    <h3>Spatial Geometry Mechanics</h3>
-                    <p>By pairing ultrasonic depth measuring routines alongside rotational sweep scripts, the vehicle can survey a wide arc area without changing its primary footprint path vector alignment.</p>
+
+                    <h3>Operational Concept</h3>
+                    <p>This hardware layout creates a panoramic sensor field. Instead of blindly turning around when an obstacle blocks its path, the vehicle stops and sweeps its surroundings to select the route with the best clearance margin.</p>
                 </div>
 
-                <div id="stage-pane-3" class="stage-pane">
-                    <div class="pane-header-group">
-                        <div class="pane-sys-tag">PHASE_04 // FIRMWARE_COMPILE</div>
-                        <h2 class="pane-main-title">Firmware Pipeline & Scanning Scripts</h2>
-                    </div>
-                    <p>This deployment phase involved flashing the core operational firmware state machine onto the ATmega controller processor.</p>
+                <div id="deck-pane-3" class="stage-pane">
+                    <div class="pane-routing-tag">LOG_STREAM // FIRMWARE_COMPILATION</div>
+                    <h2 class="pane-headline-main">Firmware Pipeline & Obstacle Parsing Loops</h2>
+                    <p>This milestone focused on flashing and debugging the real-time runtime state engine on the ATmega processor.</p>
                     
-                    <div class="terminal-block">
-<span class="terminal-comment">// Distance check subroutine loop</span>
-<span class="terminal-keyword">void</span> <span class="terminal-var">lookAround</span>() {
-    <span class="terminal-var">myservo</span>.<span class="terminal-var">write</span>(45);  <span class="terminal-comment">// Scan Right vector</span>
-    <span class="terminal-var">delay</span>(300);
-    <span class="terminal-var">distanceRight</span> = <span class="terminal-var">readPing</span>();
+                    <div class="code-tray">
+<span class="code-comm">// Dynamic spatial evaluation algorithm</span>
+<span class="code-kw">void</span> <span class="code-v">lookAround</span>() {
+    <span class="code-v">myservo</span>.<span class="code-v">write</span>(45);  <span class="code-comm">// Sweep Right quadrant</span>
+    <span class="code-v">delay</span>(300);
+    <span class="code-v">distanceRight</span> = <span class="code-v">readPing</span>();
     
-    <span class="terminal-var">myservo</span>.<span class="terminal-var">write</span>(135); <span class="terminal-comment">// Scan Left vector</span>
-    <span class="terminal-var">delay</span>(300);
-    <span class="terminal-var">distanceLeft</span> = <span class="terminal-var">readPing</span>();
+    <span class="code-v">myservo</span>.<span class="code-v">write</span>(135); <span class="code-comm">// Sweep Left quadrant</span>
+    <span class="code-v">delay</span>(300);
+    <span class="code-v">distanceLeft</span> = <span class="code-v">readPing</span>();
     
-    <span class="terminal-var">myservo</span>.<span class="terminal-var">write</span>(90);  <span class="terminal-comment">// Return to center baseline</span>
+    <span class="code-v">myservo</span>.<span class="code-v">write</span>(90);  <span class="code-comm">// Center baseline align</span>
 }
                     </div>
 
                     <h3>State Logic Protocol</h3>
-                    <p>When the center sonar sweep flags an object closer than the danger line threshold, the firmware triggers a brief tracking freeze sequence. It spins right and left vectors sequentially, computes which field coordinate offers maximum path vacancy, and shifts motor tracks to that heading.</p>
+                    <p>The code runs an infinite loop checking frontal ranges. If a path constraint drops below 30cm, an interrupt routine triggers: the car halts, scans left/right spatial vectors, compares the depth variables, and activates the optimal H-bridge direction channels.</p>
                 </div>
 
-                <div id="stage-pane-4" class="stage-pane">
-                    <div class="pane-header-group">
-                        <div class="pane-sys-tag">PHASE_05 // FIELD_DIAGNOSTICS</div>
-                        <h2 class="pane-main-title">Arena Trials & Spatial Optimization</h2>
-                    </div>
-                    <p>The final phase was all about fine-tuning real-world behavior and tweaking obstacle margins inside closed test runs.</p>
+                <div id="deck-pane-4" class="stage-pane">
+                    <div class="pane-routing-tag">LOG_STREAM // FIELD_DIAGNOSTICS</div>
+                    <h2 class="pane-headline-main">Arena Validation & Threshold Tuning</h2>
+                    <p>The final phase was dedicated to calibration and boundary testing inside controlled environments.</p>
                     
-                    <h3>Final Fine-Tuning Steps</h3>
-                    <ul class="log-list">
-                        <li class="log-item">Calibrated safe braking thresholds to prevent inertia slipping during speed steps.</li>
-                        <li class="log-item">Fixed ultrasonic echo math timeouts to drop stray sound reflections off angled floor trim boards.</li>
-                        <li class="log-item">Optimized turn routines down to crisp pivot actions that operate efficiently under a small power draw.</li>
+                    <h3>Final Engineering Fixes</h3>
+                    <ul class="discord-channel-logs">
+                        <li class="discord-log-row">Adjusted deceleration ramp rates to prevent wheel lockups or sliding on slick surfaces.</li>
+                        <li class="discord-log-row">Filtered out echo reflection noise caused by wall trim shapes.</li>
+                        <li class="discord-log-row">Optimized pivot turns to ensure fast response times under low current draw conditions.</li>
                     </ul>
-                    <p>The vehicle handles obstacle avoidances perfectly without lock-ups or dropping logic steps. Operational testing successfully completed.</p>
+                    <p>System operational checks are green. Autonomous tracking is running smoothly with high runtime stability.</p>
                 </div>
 
             </main>
@@ -554,28 +510,33 @@
     </div>
 
     <script>
-        function jumpToStage(stageIndex) {
-            const triggers = document.querySelectorAll('.stage-trigger');
+        function activateDeckStage(stageIndex) {
+            const plates = document.querySelectorAll('.deck-switch-plate');
             const panes = document.querySelectorAll('.stage-pane');
-            const fillLine = document.getElementById('pipeline-fill');
+            const faderKnob = document.getElementById('fader-knob');
             
-            // Un-assign previous selections
-            triggers.forEach(t => t.classList.remove('active'));
-            panes.forEach(p => p.classList.remove('active'));
+            // Wipe out existing selections
+            plates.forEach(p => p.classList.remove('active'));
+            panes.forEach(pane => pane.classList.remove('active'));
             
-            // Set newly selected elements active
-            triggers[stageIndex].classList.add('active');
-            document.getElementById(`stage-pane-${stageIndex}`).classList.add('active');
+            // Bind newly called targets active
+            const targetedPlate = plates[stageIndex];
+            targetedPlate.classList.add('active');
+            document.getElementById(`deck-pane-${stageIndex}`).classList.add('active');
             
-            // Calculate dynamic glow track fill percentage height mapping
-            // stageIndex / (Total Triggers - 1) * 100
-            const percentage = (stageIndex / (triggers.length - 1)) * 100;
-            fillLine.style.height = `${percentage}%`;
+            // Programmatically calculate exact top offset to slide mechanical fader knob perfectly
+            // Finds the pixel height position relative to the main housing deck container
+            const trackOffsetTop = targetedPlate.offsetTop;
+            const plateHeight = targetedPlate.offsetHeight;
+            
+            // Align the center of the mechanical knob perfectly alongside the center of the plate
+            const optimalKnobPosition = trackOffsetTop + (plateHeight / 2) - 18; 
+            faderKnob.style.top = `${optimalKnobPosition}px`;
         }
 
-        // Initialize progress line tracking state at baseline on page boot
+        // Initialize at zero configuration upon loading complete DOM tree
         document.addEventListener("DOMContentLoaded", () => {
-            jumpToStage(0);
+            activateDeckStage(0);
         });
     </script>
 
