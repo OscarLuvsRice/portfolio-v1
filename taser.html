@@ -1,11 +1,144 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar // High Voltage Taser</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght=500;700&family=Plus+Jakarta+Sans:wght=400;500;600;700&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #05030a;
+            --bg-card: #0f0a1c;
+            --bg-card-hover: #150e26;
+            --border: #20143a;
+            --text-title: #ffffff;
+            --text-body: #e0dae9;
+            --text-muted: #7d709a;
+            --accent-purple: #c084fc;
+            --accent-blue: #4f46e5;
+            --accent-green: #10b981;
+            --bg-terminal: #090512;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            line-height: 1.6;
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1180px; width: 100%; }
+
+        .back-registry {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            margin-bottom: 2rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .back-registry:hover { color: var(--accent-purple); transform: translateX(-4px); }
+
+        header { margin-bottom: 3.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+        .header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+        .sys-id-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent-purple); letter-spacing: 1px; }
+        .sys-status { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-green); background: rgba(16, 185, 129, 0.1); padding: 0.25rem 0.6rem; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.2); }
+        h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-title); letter-spacing: -1px; }
+
+        .workspace { display: grid; grid-template-columns: 320px 1fr; gap: 4rem; align-items: start; }
+        
+        .control-deck {
+            position: sticky;
+            top: 4rem;
+            display: flex;
+            background: var(--bg-terminal);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 1rem 1.5rem 2rem;
+        }
+
+        .fader-track-channel { position: absolute; top: 2rem; left: 1rem; width: 4px; height: calc(100% - 4rem); background-color: #120b20; border-radius: 2px; box-shadow: inset 1px 1px 3px rgba(0,0,0,0.8); }
+        .mechanical-fader-block { position: absolute; left: 0.75rem; width: 12px; height: 36px; background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); border-radius: 3px; box-shadow: 0 0 12px var(--accent-purple), inset 0 1px 2px rgba(255,255,255,0.4); z-index: 10; transition: top 0.3s cubic-bezier(0.25, 1, 0.5, 1); top: 2rem; }
+        .deck-switch-stack { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
+        
+        .deck-switch-plate {
+            background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; cursor: pointer; width: 100%; text-align: left; transition: all 0.25s ease; display: flex; flex-direction: column; gap: 0.25rem; position: relative;
+        }
+        .deck-switch-plate:hover { background-color: var(--bg-card-hover); border-color: rgba(192, 132, 252, 0.3); }
+        .plate-timestamp { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .plate-headline { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s ease; }
+
+        .deck-switch-plate.active { background-color: #170f30; border-color: var(--accent-purple); box-shadow: inset -4px 0 0 var(--accent-purple); }
+        .deck-switch-plate.active .plate-timestamp { color: var(--accent-blue); }
+        .deck-switch-plate.active .plate-headline { color: var(--text-title); }
+
+        .data-display-bay { background-color: rgba(15, 10, 28, 0.2); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; min-height: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .stage-pane { display: none; animation: terminalBoot 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .stage-pane.active { display: block; }
+
+        .pane-routing-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 0.5rem; }
+        .pane-headline-main { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; color: var(--text-title); border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; margin-bottom: 1.8rem; letter-spacing: -0.5px; }
+        
+        .stage-pane h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; color: var(--text-title); margin: 2rem 0 1rem 0; }
+        .stage-pane h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; color: var(--accent-purple); margin: 1.5rem 0 0.5rem 0; }
+        .stage-pane p { font-size: 1.05rem; color: var(--text-body); margin-bottom: 1.2rem; opacity: 0.95; }
+
+        .stage-pane ul { margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-body); }
+        .stage-pane li { margin-bottom: 0.4rem; }
+
+        .image-container { width: 100%; background-color: var(--bg-terminal); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin: 2rem 0; padding: 1.5rem; text-align: center; }
+        .image-container img { max-width: 100%; height: auto; display: block; margin: 0 auto 1.5rem auto; border-radius: 8px; }
+        .image-container img:last-of-type { margin-bottom: 0; }
+        figcaption { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; }
+
+        .check-grid { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin: 1.5rem 0; }
+        .check-card { background: var(--bg-terminal); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; display: flex; align-items: center; gap: 1rem; }
+        .check-status-indicator { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-green); background: rgba(16, 185, 129, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.2); white-space: nowrap; }
+        .check-text { font-size: 0.95rem; }
+
+        footer { border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 6rem; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-muted); }
+
+        @keyframes terminalBoot {
+            from { opacity: 0; transform: scale(0.995) translateY(6px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @media (max-width: 900px) {
+            .workspace { grid-template-columns: 1fr; gap: 2rem; }
+            .control-deck { position: static; padding: 1rem; }
+            .fader-track-channel, .mechanical-fader-block { display: none; }
+            .deck-switch-stack { flex-direction: row; flex-wrap: wrap; }
+            .deck-switch-plate { width: calc(50% - 0.5rem); }
+            body { padding: 2rem 1rem; }
+            .data-display-bay { padding: 1.8rem; }
+        }
+        @media (max-width: 580px) { .deck-switch-plate { width: 100%; } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
         
         <a href="projects.html" class="back-registry">← back_to_registry</a>
 
         <header>
             <div class="header-meta">
-                <span class="sys-id-tag">PIPELINE // PROJECT_LOGS</span>
-                <span class="sys-status">ACTIVE</span>
+                <span class="sys-id-tag">PIPELINE // HIGH_VOLTAGE_TASER_LOGS</span>
+                <span class="sys-status">BUILD COMPLETED // ACTIVE</span>
             </div>
             <h1>Taser ⚡🔧</h1>
         </header>
@@ -19,27 +152,27 @@
                 <div class="deck-switch-stack" id="plate-group">
                     
                     <button class="deck-switch-plate active" onclick="activateDeckStage(0)">
-                        <span class="plate-timestamp">[LOG_01]</span>
-                        <span class="plate-headline">Overview & Materials</span>
+                        <span class="plate-timestamp">[LOG_01] OVERVIEW</span>
+                        <span class="plate-headline">Scope & Materials</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(1)">
-                        <span class="plate-timestamp">[LOG_02]</span>
-                        <span class="plate-headline">STEP 1: Modeling</span>
+                        <span class="plate-timestamp">[LOG_02] MODELING</span>
+                        <span class="plate-headline">STEP 1: Twin Mapping</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(2)">
-                        <span class="plate-timestamp">[LOG_03]</span>
+                        <span class="plate-timestamp">[LOG_03] FABRICATION</span>
                         <span class="plate-headline">STEP 2: Case Design</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(3)">
-                        <span class="plate-timestamp">[LOG_04]</span>
+                        <span class="plate-timestamp">[LOG_04] ELECTRICAL</span>
                         <span class="plate-headline">STEP 3: Actual Test</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(4)">
-                        <span class="plate-timestamp">[LOG_05]</span>
+                        <span class="plate-timestamp">[LOG_05] REVIEW</span>
                         <span class="plate-headline">STEP 4: FINALE</span>
                     </button>
 
@@ -49,17 +182,14 @@
             <main class="data-display-bay">
 
                 <div id="deck-pane-0" class="stage-pane active">
-                    <div class="pane-routing-tag">PHASE_01 // SCOPE</div>
+                    <div class="pane-routing-tag">PHASE_01 // SYSTEM_INIT_&_BOM</div>
                     <h2 class="pane-headline-main">📌 Overview</h2>
-                    <p>I finally got my hand on a 3d printer and i wanted to test my CAD skills, and for some reason my mind told me hey designing a case for a taser would be fun and beneficial. This project tested my skill and also improved my problem solving and creative thinking, especially in the engineering field. It also enchanced our hands-on experience with tools as I had to do a quite a bit of tinkering and soldering.</p>
-                    <br>
+                    <p>I finally got my hand on a 3d printer and i wanted to test my CAD skills, and for some reason my mind told me hey designing a case for a taser would be fun and beneficial. This project tested my skill and also improved my problem solving and creative thinking, especially in the engineering field. It also enchanced my hands-on experience with tools as I had to do a quite a bit of tinkering and soldering.</p>
                     <p>The taser uses a 3.7V lithium ion battery. It recharges using a tp4056 board, has a safety switch design.</p>
-                    <br>
                     <p>I was able to find out some useful information online about the electrical compoenents of a taser. However I found no luck for the case, so I designed the case completely on my own with nothing in reference to.</p>
-                    <br>
                     <p><strong>Outcome:</strong> A fully functional taser that can devliver high voltage.</p>
                     
-                    <hr>
+                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 2rem 0;">
                     
                     <h2>🛠️ Materials & Components</h2>
                     <h3>Electronic</h3>
@@ -90,7 +220,7 @@
                 </div>
 
                 <div id="deck-pane-1" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_02 // COMPONENT_MODELING</div>
+                    <div class="pane-routing-tag">PHASE_02 // COMPONENT_CAD_MODELS</div>
                     <h2 class="pane-headline-main">STEP 1 : Model everything</h2>
                     <p>To make sure all the components can fit into the case, I started by individually modelling all the components of the Taser.</p>
                     
@@ -99,29 +229,37 @@
                         <img src="Images/transformer.png" alt="transformer">
                         <img src="Images/tp4056.png" alt="tp4056">
                         <img src="Images/onoff.png" alt="onoff">
-                        <img src="Images/pushbutton.png" alt="pushbutton">
+                        <figcaption>3.7V Battery, High Voltage Transformer, TP4056, On/Off switch, and custom push button tracking layouts.</figcaption>
+                    </div>
+
+                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 2rem 0;">
+
+                    <h3>In addition I did some brainstorming while waiting for the parts to arrive.</h3>
+                    <div class="image-container">
+                        <img src="Images/brainstorm.png" alt="brainstorm">
+                        <figcaption>some random brainstorm</figcaption>
                     </div>
                 </div>
 
                 <div id="deck-pane-2" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_03 // CASE_EVOLUTION</div>
+                    <div class="pane-routing-tag">PHASE_03 // SHELL_DEVELOPMENT</div>
                     <h2 class="pane-headline-main">STEP 2 Shell/Case design</h2>
                     
                     <div class="image-container">
                         <img src="Images/taserv1.jpg" alt="taserv1">
-                        <figcaption>Version 1, problem: switch and tp4056 holes were too small. Infill was too small, making it weak and easily broken.</figcaption>
+                        <figcaption>Version 1 of the taser. Problems: The hole for on and off switch is not big enough. The hole for tp4056 is not big enough and is placed slightly too low. Strength of walls are not good enough, vulnerable to cracks.</figcaption>
                     </div>
-                    <br>
+
                     <div class="image-container">
                         <img src="Images/taserv2.png" alt="taserv2">
-                        <figcaption>Version 2, fixed holes using offset/projection. Thickened it and increased infill. Problem: realized where the wire comes out for the taser prong wasn't ideal.</figcaption>
+                        <figcaption>Version 2 of the taser, hole problem improved using offsets and projection, strength fixed by increasing thickness and infill% of print, also made probe circles better. Problems: TP4056 is stil kinda awkward, should be placed higher. Probe circle size is fine but position is not optiaml, it should be placed in the corners so it looks like a "八" shape. push button's location doesn't feel ergonomic. Still don't have cover designed. Haven't designed threaded insertion holes.</figcaption>
                     </div>
-                    <br>
+
                     <div class="image-container">
                         <img src="Images/taserv3.jpg" alt="taserv3">
-                        <figcaption>Version 3, fixed probe position, made the hole into like a "八" shape. Infill increase to 50%. Button position is more ergonomic. Threaded insertion designed. Cover designed. LED hole designed.</figcaption>
+                        <figcaption>Version 3 of the taser, Probe circles location optimised, infill increase to 50%. Button position is more ergonomic. Threaded insertion designed. Cover designed. LED hole designed.</figcaption>
                     </div>
-                    <br>
+                    
                     <h3>Problems of v3</h3>
                     <ul>
                         <li>TP4056 is still awkward, although less awkward but still could be better, hole shnould be bigger so when being used you can see the lights on the board.</li>
@@ -130,8 +268,9 @@
                 </div>
 
                 <div id="deck-pane-3" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_04 // TESTING</div>
+                    <div class="pane-routing-tag">PHASE_04 // CIRCUIT_VALIDATION</div>
                     <h2 class="pane-headline-main">STEP 3 Actual test of the taser</h2>
+                    
                     <h3>🧩 Obstacles faced</h3>
                     <p><strong>Problem:</strong> the safety switch feature wouldn't work.</p>
                     <p><strong>Solution:</strong> I learned on the spot the that the side you solder the push buttons pins matters a lot. I initially soldered incorrectly which allowed the transfomer to bypass the safety switch. That was solved by soldering correction.</p>
@@ -142,13 +281,13 @@
                 </div>
 
                 <div id="deck-pane-4" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_05 // FINALE</div>
+                    <div class="pane-routing-tag">PHASE_05 // FINAL_INTEGRATION</div>
                     <h2 class="pane-headline-main">STEP 4 FINALE</h2>
                     <p>Still designed the v4 of the taser case, which is the final version.</p>
                     
                     <div class="image-container">
                         <img src="Images/taserv4.png" alt="taserv4">
-                        <figcaption>Version 4, Improved TP4056 hole, Push button hole became bigger to allow higher quality button.</figcaption>
+                        <figcaption>Version 4, Improved TP4056 hole, Push button hole bigger which suits the bigger better push button that I have.</figcaption>
                     </div>
 
                     <br>
@@ -156,7 +295,7 @@
                     <div class="check-grid">
                         <div class="check-card">
                             <span class="check-status-indicator">EXTERNAL LINK</span>
-                            <span class="check-text"><a href="https://youtube.com/shorts/yTjaJlfPVyQ" target="_blank" style="color: var(--accent-purple); text-decoration: none;">▶️ Watch on YouTube</a></span>
+                            <span class="check-text"><a href="https://youtube.com/shorts/yTjaJlfPVyQ" target="_blank" style="color: var(--accent-purple); text-decoration: none; font-weight: 600;">▶️ Watch high voltage diagnostic test on YouTube</a></span>
                         </div>
                     </div>
                 </div>
@@ -170,3 +309,30 @@
         </footer>
 
     </div>
+
+    <script>
+        function activateDeckStage(stageIndex) {
+            const plates = document.querySelectorAll('.deck-switch-plate');
+            const panes = document.querySelectorAll('.stage-pane');
+            const faderKnob = document.getElementById('fader-knob');
+            
+            plates.forEach(p => p.classList.remove('active'));
+            panes.forEach(pane => pane.classList.remove('active'));
+            
+            const targetedPlate = plates[stageIndex];
+            targetedPlate.classList.add('active');
+            document.getElementById(`deck-pane-${stageIndex}`).classList.add('active');
+            
+            const trackOffsetTop = targetedPlate.offsetTop;
+            const plateHeight = targetedPlate.offsetHeight;
+            const optimalKnobPosition = trackOffsetTop + (plateHeight / 2) - 18; 
+            faderKnob.style.top = `${optimalKnobPosition}px`;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            activateDeckStage(0);
+        });
+    </script>
+
+</body>
+</html>
