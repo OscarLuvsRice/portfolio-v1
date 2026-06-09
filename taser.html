@@ -4,10 +4,10 @@
 
         <header>
             <div class="header-meta">
-                <span class="sys-id-tag">PIPELINE // HIGH_VOLTAGE_TASER_LOGS</span>
-                <span class="sys-status">BUILD COMPLETED // ACTIVE</span>
+                <span class="sys-id-tag">PIPELINE // PROJECT_LOGS</span>
+                <span class="sys-status">ACTIVE</span>
             </div>
-            <h1>High Voltage Taser</h1>
+            <h1>Taser ⚡🔧</h1>
         </header>
 
         <div class="workspace">
@@ -19,28 +19,28 @@
                 <div class="deck-switch-stack" id="plate-group">
                     
                     <button class="deck-switch-plate active" onclick="activateDeckStage(0)">
-                        <span class="plate-timestamp">[LOG_01] OBJECTIVE</span>
-                        <span class="plate-headline">Overview & Components</span>
+                        <span class="plate-timestamp">[LOG_01]</span>
+                        <span class="plate-headline">Overview & Materials</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(1)">
-                        <span class="plate-timestamp">[LOG_02] DIGITAL TWIN</span>
-                        <span class="plate-headline">CAD Modeling</span>
+                        <span class="plate-timestamp">[LOG_02]</span>
+                        <span class="plate-headline">STEP 1: Modeling</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(2)">
-                        <span class="plate-timestamp">[LOG_03] FABRICATION</span>
-                        <span class="plate-headline">Iterative Printing</span>
+                        <span class="plate-timestamp">[LOG_03]</span>
+                        <span class="plate-headline">STEP 2: Case Design</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(3)">
-                        <span class="plate-timestamp">[LOG_04] ELECTRICAL</span>
-                        <span class="plate-headline">Circuit Troubleshooting</span>
+                        <span class="plate-timestamp">[LOG_04]</span>
+                        <span class="plate-headline">STEP 3: Actual Test</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(4)">
-                        <span class="plate-timestamp">[LOG_05] REVIEW</span>
-                        <span class="plate-headline">Final Version & Demo</span>
+                        <span class="plate-timestamp">[LOG_05]</span>
+                        <span class="plate-headline">STEP 4: FINALE</span>
                     </button>
 
                 </div>
@@ -49,105 +49,114 @@
             <main class="data-display-bay">
 
                 <div id="deck-pane-0" class="stage-pane active">
-                    <div class="pane-routing-tag">PHASE_01 // SCOPE_&_BOM</div>
-                    <h2 class="pane-headline-main">Project Scope & Sourcing</h2>
-                    <p>I finally got my hands on a 3D printer and wanted to test my CAD skills. Designing a case for a taser seemed like a fun and beneficial engineering challenge. The taser uses a 3.7V lithium-ion battery, recharges via a TP4056 board, and features a mechanical safety switch.</p>
-                    <p>While I found information online about the electrical components, there were no case designs available. I modeled the housing completely from scratch with zero references.</p>
-
-                    <h3>Component Architecture</h3>
-                    <table class="spec-table">
-                        <tr>
-                            <th>System</th>
-                            <th>Hardware</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Power & Logic</strong></td>
-                            <td>3.7V Li-ion battery, Step-up HV transformer, TP4056 USB-C board, 100Ω resistor</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Interface</strong></td>
-                            <td>Push button, On/Off toggle, Green status LED</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Housing</strong></td>
-                            <td>PLA printed case, M3 Threaded Inserts, M3 Screws</td>
-                        </tr>
-                    </table>
+                    <div class="pane-routing-tag">PHASE_01 // SCOPE</div>
+                    <h2 class="pane-headline-main">📌 Overview</h2>
+                    <p>I finally got my hand on a 3d printer and i wanted to test my CAD skills, and for some reason my mind told me hey designing a case for a taser would be fun and beneficial. This project tested my skill and also improved my problem solving and creative thinking, especially in the engineering field. It also enchanced our hands-on experience with tools as I had to do a quite a bit of tinkering and soldering.</p>
+                    <br>
+                    <p>The taser uses a 3.7V lithium ion battery. It recharges using a tp4056 board, has a safety switch design.</p>
+                    <br>
+                    <p>I was able to find out some useful information online about the electrical compoenents of a taser. However I found no luck for the case, so I designed the case completely on my own with nothing in reference to.</p>
+                    <br>
+                    <p><strong>Outcome:</strong> A fully functional taser that can devliver high voltage.</p>
+                    
+                    <hr>
+                    
+                    <h2>🛠️ Materials & Components</h2>
+                    <h3>Electronic</h3>
+                    <ul>
+                        <li>3.7V lithium ion battery</li>
+                        <li>Step up high voltage transfomer</li>
+                        <li>TP4056 USB C recharging board.</li>
+                        <li>Wires</li>
+                        <li>Push button</li>
+                        <li>On and Off Button</li>
+                        <li>Green LED</li>
+                        <li>100ohm resistor</li>
+                    </ul>
+                    <h3>Mechanical</h3>
+                    <ul>
+                        <li>PLA case</li>
+                        <li>M3 Threaded Inserts</li>
+                        <li>M3 Screws</li>
+                    </ul>
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Soldering iron</li>
+                        <li>Hot glue gun</li>
+                        <li>Electrical Tape</li>
+                        <li>Multipurpose wire stripper.</li>
+                        <li>Scissor</li>
+                    </ul>
                 </div>
 
                 <div id="deck-pane-1" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_02 // DIGITAL_TWIN_MAPPING</div>
-                    <h2 class="pane-headline-main">Modeling Internal Hardware</h2>
-                    <p>To ensure perfect tolerances inside the custom shell, I started by individually modeling exact digital twins of all electronic components.</p>
+                    <div class="pane-routing-tag">PHASE_02 // COMPONENT_MODELING</div>
+                    <h2 class="pane-headline-main">STEP 1 : Model everything</h2>
+                    <p>To make sure all the components can fit into the case, I started by individually modelling all the components of the Taser.</p>
                     
-                    <div class="check-grid">
-                        <div class="image-container" style="margin-top: 0;">
-                            <img src="Images/3.7vbattery.png" alt="3.7V Battery">
-                            <figcaption>3.7V Lithium-Ion Battery mapping.</figcaption>
-                        </div>
-                        <div class="image-container" style="margin-top: 0;">
-                            <img src="Images/transformer.png" alt="Transformer">
-                            <figcaption>Step-up high voltage transformer.</figcaption>
-                        </div>
-                        <div class="image-container" style="margin-top: 0;">
-                            <img src="Images/tp4056.png" alt="TP4056">
-                            <img src="Images/onoff.png" alt="Switches">
-                            <figcaption>TP4056 charging board alongside the On/Off switch and push button assemblies.</figcaption>
-                        </div>
+                    <div class="image-container">
+                        <img src="Images/3.7vbattery.png" alt="3.7vbattery">
+                        <img src="Images/transformer.png" alt="transformer">
+                        <img src="Images/tp4056.png" alt="tp4056">
+                        <img src="Images/onoff.png" alt="onoff">
+                        <img src="Images/pushbutton.png" alt="pushbutton">
                     </div>
                 </div>
 
                 <div id="deck-pane-2" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_03 // RAPID_PROTOTYPING</div>
-                    <h2 class="pane-headline-main">Housing Iterations</h2>
-                    <p>Tolerances and ergonomics required multiple iterations to get right.</p>
+                    <div class="pane-routing-tag">PHASE_03 // CASE_EVOLUTION</div>
+                    <h2 class="pane-headline-main">STEP 2 Shell/Case design</h2>
                     
                     <div class="image-container">
-                        <img src="Images/taserv1.jpg" alt="Taser V1">
-                        <figcaption><strong>Version 1:</strong> Switch and TP4056 holes were too small. Wall strength was insufficient and vulnerable to cracking.</figcaption>
+                        <img src="Images/taserv1.jpg" alt="taserv1">
+                        <figcaption>Version 1, problem: switch and tp4056 holes were too small. Infill was too small, making it weak and easily broken.</figcaption>
                     </div>
-
+                    <br>
                     <div class="image-container">
-                        <img src="Images/taserv2.png" alt="Taser V2">
-                        <figcaption><strong>Version 2:</strong> Fixed holes using offsets/projections. Increased thickness and infill. Probe positions were suboptimal.</figcaption>
+                        <img src="Images/taserv2.png" alt="taserv2">
+                        <figcaption>Version 2, fixed holes using offset/projection. Thickened it and increased infill. Problem: realized where the wire comes out for the taser prong wasn't ideal.</figcaption>
                     </div>
-
+                    <br>
                     <div class="image-container">
-                        <img src="Images/taserv3.jpg" alt="Taser V3">
-                        <figcaption><strong>Version 3:</strong> Probe circles optimized to an angled (八) shape. Infill bumped to 50%. Ergonomics improved. Threaded inserts and cover designed.</figcaption>
+                        <img src="Images/taserv3.jpg" alt="taserv3">
+                        <figcaption>Version 3, fixed probe position, made the hole into like a "八" shape. Infill increase to 50%. Button position is more ergonomic. Threaded insertion designed. Cover designed. LED hole designed.</figcaption>
                     </div>
+                    <br>
+                    <h3>Problems of v3</h3>
+                    <ul>
+                        <li>TP4056 is still awkward, although less awkward but still could be better, hole shnould be bigger so when being used you can see the lights on the board.</li>
+                        <li>The button hole is fine but realised I have bigger better buttons at home, so next version will use that instead.</li>
+                    </ul>
                 </div>
 
                 <div id="deck-pane-3" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_04 // ELECTRONICS_DEBUGGING</div>
-                    <h2 class="pane-headline-main">Assembly & Troubleshooting</h2>
-                    <p>Integrating the high-voltage system revealed a few critical electrical bugs during live testing.</p>
-
-                    <ul class="discord-channel-logs">
-                        <li class="discord-log-row"><strong>Safety Bypass Fault:</strong> The safety switch feature wouldn't work.</li>
-                        <li class="discord-log-row"><strong>Solution:</strong> Learned that push button pin orientation matters. Initial soldering allowed the transformer to bypass the switch. Corrected the soldering logic.</li>
-                    </ul>
-
-                    <ul class="discord-channel-logs">
-                        <li class="discord-log-row"><strong>LED Burnout:</strong> The original red LED would fail because the 100Ω resistor wasn't strong enough for the 3.7V draw.</li>
-                        <li class="discord-log-row"><strong>Solution:</strong> Applying knowledge of activation energy, I swapped the red LED for a green one (which requires a higher forward voltage drop), perfectly balancing the power overflow.</li>
-                    </ul>
+                    <div class="pane-routing-tag">PHASE_04 // TESTING</div>
+                    <h2 class="pane-headline-main">STEP 3 Actual test of the taser</h2>
+                    <h3>🧩 Obstacles faced</h3>
+                    <p><strong>Problem:</strong> the safety switch feature wouldn't work.</p>
+                    <p><strong>Solution:</strong> I learned on the spot the that the side you solder the push buttons pins matters a lot. I initially soldered incorrectly which allowed the transfomer to bypass the safety switch. That was solved by soldering correction.</p>
+                    
+                    <br>
+                    <p><strong>Problem:</strong> The red LED would die because the resistor isn't strong enough to bring down the power of 3.7V</p>
+                    <p><strong>Solution:</strong> Using my knowledge of activation energy, I don't have access to a stronger resistor so I swapped red with green, which requires a higher activation energy. This solves the overflow of power.</p>
                 </div>
 
                 <div id="deck-pane-4" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_05 // FINAL_DEPLOYMENT</div>
-                    <h2 class="pane-headline-main">Final Version & Demonstration</h2>
-                    <p>Taking all previous lessons, V4 became the final production model.</p>
+                    <div class="pane-routing-tag">PHASE_05 // FINALE</div>
+                    <h2 class="pane-headline-main">STEP 4 FINALE</h2>
+                    <p>Still designed the v4 of the taser case, which is the final version.</p>
                     
                     <div class="image-container">
-                        <img src="Images/taserv4.png" alt="Taser V4">
-                        <figcaption><strong>Version 4 (Final):</strong> Improved TP4056 visibility port. Enlarged the push button housing to accommodate a higher-quality tactile switch.</figcaption>
+                        <img src="Images/taserv4.png" alt="taserv4">
+                        <figcaption>Version 4, Improved TP4056 hole, Push button hole became bigger to allow higher quality button.</figcaption>
                     </div>
 
+                    <br>
+                    <h2>🎥 Demo Video</h2>
                     <div class="check-grid">
                         <div class="check-card">
-                            <span class="check-status-indicator">HIGH VOLTAGE LIVE</span>
-                            <span class="check-text"><a href="https://youtube.com/shorts/yTjaJlfPVyQ" target="_blank" style="color: var(--accent-purple); text-decoration: none;">▶️ Watch the spark test demonstration</a></span>
+                            <span class="check-status-indicator">EXTERNAL LINK</span>
+                            <span class="check-text"><a href="https://youtube.com/shorts/yTjaJlfPVyQ" target="_blank" style="color: var(--accent-purple); text-decoration: none;">▶️ Watch on YouTube</a></span>
                         </div>
                     </div>
                 </div>
