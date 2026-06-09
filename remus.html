@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar // Project REMUS</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght=500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* PASSIONATE PURPLE THEME VARIABLES */
+        :root {
+            --bg-main: #05030a;        
+            --bg-card: #0f0a1c;        
+            --bg-card-hover: #150e26;  
+            --border: #20143a;         
+            --text-title: #ffffff;     
+            --text-body: #e0dae9;      
+            --text-muted: #7d709a;     
+            --accent-purple: #c084fc;  
+            --accent-blue: #4f46e5;    
+            --accent-green: #10b981;   
+            --accent-warning: #f59e0b;  /* Warning Amber for Restricted Projects */
+            --bg-terminal: #090512;    
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            line-height: 1.6;
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            width: 100%;
+        }
+
+        .back-registry {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            margin-bottom: 2rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .back-registry:hover {
+            color: var(--accent-purple);
+            transform: translateX(-4px);
+        }
+
+        header {
+            margin-bottom: 3.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
+
+        .header-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .sys-id-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-purple);
+            letter-spacing: 1px;
+        }
+
+        .sys-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-warning);
+            background: rgba(245, 158, 11, 0.1);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-title);
+            letter-spacing: -1px;
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .control-deck {
+            position: sticky;
+            top: 4rem;
+            display: flex;
+            position: relative;
+            background: var(--bg-terminal);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 1rem 1.5rem 2rem;
+        }
+
+        .fader-track-channel {
+            position: absolute;
+            top: 2rem;
+            left: 1rem;
+            width: 4px;
+            height: calc(100% - 4rem);
+            background-color: #120b20;
+            border-radius: 2px;
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .mechanical-fader-block {
+            position: absolute;
+            left: 0.75rem; 
+            width: 12px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 3px;
+            box-shadow: 0 0 12px var(--accent-purple), inset 0 1px 2px rgba(255,255,255,0.4);
+            z-index: 10;
+            transition: top 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            top: 2rem;
+        }
+
+        .deck-switch-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .deck-switch-plate {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            position: relative;
+        }
+
+        .deck-switch-plate:hover {
+            background-color: var(--bg-card-hover);
+            border-color: rgba(192, 132, 252, 0.3);
+        }
+
+        .plate-timestamp {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .plate-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: color 0.2s ease;
+        }
+
+        .deck-switch-plate.active {
+            background-color: #170f30;
+            border-color: var(--accent-purple);
+            box-shadow: inset -4px 0 0 var(--accent-purple);
+        }
+
+        .deck-switch-plate.active .plate-timestamp {
+            color: var(--accent-blue);
+        }
+
+        .deck-switch-plate.active .plate-headline {
+            color: var(--text-title);
+        }
+
+        .data-display-bay {
+            background-color: rgba(15, 10, 28, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            min-height: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .stage-pane {
+            display: none;
+            animation: terminalBoot 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .stage-pane.active {
+            display: block;
+        }
+
+        .pane-routing-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .pane-headline-main {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--text-title);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .stage-pane p {
+            font-size: 1.05rem;
+            color: var(--text-body);
+            margin-bottom: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .security-notice-box {
+            background-color: rgba(245, 158, 11, 0.04);
+            border: 1px dashed var(--border);
+            border-left: 4px solid var(--accent-warning);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .security-notice-title {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-title);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .image-container {
+            width: 100%;
+            background-color: var(--bg-terminal);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        figcaption {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: -0.5rem;
+        }
+
+        @keyframes terminalBoot {
+            from { opacity: 0; transform: scale(0.995) translateY(6px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            margin-top: 6rem;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 900px) {
+            .workspace { grid-template-columns: 1fr; gap: 2rem; }
+            .control-deck { position: static; padding: 1rem; }
+            .fader-track-channel, .mechanical-fader-block { display: none; }
+            .deck-switch-stack { flex-direction: row; flex-wrap: wrap; }
+            .deck-switch-plate { width: calc(50% - 0.5rem); }
+            body { padding: 2rem 1rem; }
+            .data-display-bay { padding: 1.8rem; }
+        }
+        @media (max-width: 580px) {
+            .deck-switch-plate { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <a href="projects.html" class="back-registry">← back_to_registry</a>
+
+        <header>
+            <div class="header-meta">
+                <span class="sys-id-tag">PIPELINE // MONASH_HPR_REMUS</span>
+                <span class="sys-status">UNDER DEVELOPMENT // RESTRICTED ACCESS</span>
+            </div>
+            <h1>Project REMUS</h1>
+        </header>
+
+        <div class="workspace">
+            
+            <aside class="control-deck">
+                <div class="fader-track-channel"></div>
+                <div class="mechanical-fader-block" id="fader-knob"></div>
+
+                <div class="deck-switch-stack" id="plate-group">
+                    
+                    <button class="deck-switch-plate active" onclick="activateDeckStage(0)">
+                        <span class="plate-timestamp">[LOG_01] SECURITY</span>
+                        <span class="plate-headline">Clearance Status</span>
+                    </button>
+
+                    <button class="deck-switch-plate" onclick="activateDeckStage(1)">
+                        <span class="plate-timestamp">[LOG_02] TELEMETRY</span>
+                        <span class="plate-headline">Visual Brief</span>
+                    </button>
+
+                </div>
+            </aside>
+
+            <main class="data-display-bay">
+
+                <div id="deck-pane-0" class="stage-pane active">
+                    <div class="pane-routing-tag">PHASE_01 // CONFIDENTIALITY_NOTICE</div>
+                    <h2 class="pane-headline-main">Project Status & Classification</h2>
+                    <p>This workspace documents my engineering contributions to <strong>Project REMUS</strong> under the Monash High Powered Rocketry team.</p>
+                    
+                    <div class="security-notice-box">
+                        <div class="security-notice-title">⚠️ INFORMATION ISOLATION TRIGGERED</div>
+                        <p>Because this high-powered aerospace project is actively under development, yet to be fully finished, and is considered proprietary/confidential team hardware, deep technical breakdowns, equations, and engineering specifics cannot be publicly indexed at this time.</p>
+                    </div>
+                    
+                    <p>To ensure alignment with safety guidelines and project clearance bounds, the comprehensive engineering logbook remains locked down until deployment validation is completed by the team.</p>
+                </div>
+
+                <div id="deck-pane-1" class="stage-pane">
+                    <div class="pane-routing-tag">PHASE_02 // SYSTEM_GEOMETRY</div>
+                    <h2 class="pane-headline-main">Work Completed Overview</h2>
+                    <p>While deep documentation parameters are hidden, here is a validated visual reference mapping out a look at the design and structural assembly work I have executed so far for the project framework:</p>
+                    
+                    <div class="image-container">
+                        <img src="Images/remus_work.jpg" alt="Project REMUS Design Progress Diagram">
+                        <figcaption>Validated CAD rendering / engineering snapshot tracking current structural layout progress.</figcaption>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <footer>
+            <p>© 2026 Oscar. Hardware system documentation logs.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function activateDeckStage(stageIndex) {
+            const plates = document.querySelectorAll('.deck-switch-plate');
+            const panes = document.querySelectorAll('.stage-pane');
+            const faderKnob = document.getElementById('fader-knob');
+            
+            plates.forEach(p => p.classList.remove('active'));
+            panes.forEach(pane => pane.classList.remove('active'));
+            
+            const targetedPlate = plates[stageIndex];
+            targetedPlate.classList.add('active');
+            document.getElementById(`deck-pane-${stageIndex}`).classList.add('active');
+            
+            const trackOffsetTop = targetedPlate.offsetTop;
+            const plateHeight = targetedPlate.offsetHeight;
+            
+            const optimalKnobPosition = trackOffsetTop + (plateHeight / 2) - 18; 
+            faderKnob.style.top = `${optimalKnobPosition}px`;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            activateDeckStage(0);
+        });
+    </script>
+
+</body>
+</html>
