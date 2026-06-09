@@ -1,0 +1,96 @@
+<div class="container">
+        
+        <a href="projects.html" class="back-registry">← back_to_registry</a>
+
+        <header>
+            <div class="header-meta">
+                <span class="sys-id-tag">PIPELINE // 3D_PRINTED_BOOKSHELF_LOGS</span>
+                <span class="sys-status">BUILD COMPLETED // ACTIVE</span>
+            </div>
+            <h1>FromSoftware Bookshelf</h1>
+        </header>
+
+        <div class="workspace">
+            
+            <aside class="control-deck">
+                <div class="fader-track-channel"></div>
+                <div class="mechanical-fader-block" id="fader-knob"></div>
+
+                <div class="deck-switch-stack" id="plate-group">
+                    
+                    <button class="deck-switch-plate active" onclick="activateDeckStage(0)">
+                        <span class="plate-timestamp">[LOG_01] OVERVIEW</span>
+                        <span class="plate-headline">Brainstorm & Design</span>
+                    </button>
+
+                    <button class="deck-switch-plate" onclick="activateDeckStage(1)">
+                        <span class="plate-timestamp">[LOG_02] MECHANICS</span>
+                        <span class="plate-headline">Joint Mechanism</span>
+                    </button>
+
+                    <button class="deck-switch-plate" onclick="activateDeckStage(2)">
+                        <span class="plate-timestamp">[LOG_03] REVIEW</span>
+                        <span class="plate-headline">Final Assembly</span>
+                    </button>
+
+                </div>
+            </aside>
+
+            <main class="data-display-bay">
+
+                <div id="deck-pane-0" class="stage-pane active">
+                    <div class="pane-routing-tag">PHASE_01 // SCOPE_&_IDEATION</div>
+                    <h2 class="pane-headline-main">Overview & Brainstorming</h2>
+                    <p>I bought about 1000 yuan (212 AUD) worth of FromSoftware Books, and I need a bookshelf for it. At the start, I was browsing online for cool bookshelves, but all of them were either too complicated for my old, not-so-high-quality second-hand Ender 3 Pro, too small, or I just didn't like the style.</p>
+                    <br>
+                    <p>I ended up designing a really simple bookshelf that is big enough to fit all my books. The bookshelf is split into two halves, with a simple joint mechanism to connect the two. Through this small project, I developed critical thinking through measurements and designing, and I also had an introduction to tolerance and joint mechanisms.</p>
+                    
+                    <div class="image-container">
+                        <img src="Images/bookshelfbrainstorm1.png" alt="Sketch 1">
+                        <img src="Images/bookshelfbrainstorm2.png" alt="Sketch 2">
+                        <figcaption>Rough brainstorm of the bookshelf design.</figcaption>
+                    </div>
+                </div>
+
+                <div id="deck-pane-1" class="stage-pane">
+                    <div class="pane-routing-tag">PHASE_02 // PROTOTYPING</div>
+                    <h2 class="pane-headline-main">Joint Mechanism Engineering</h2>
+                    <p>I took inspiration from a random bookshelf design on MakerWorld. It uses a specific joint mechanism, which I adapted into my bookshelf to be a lot simpler.</p>
+                    
+                    <div class="image-container">
+                        <img src="Images/joint1.png" alt="Inspiration Joint">
+                        <figcaption>This is the mechanism I took inspiration from.</figcaption>
+                    </div>
+
+                    <div class="image-container">
+                        <img src="Images/testjoint.jpg" alt="Test Print">
+                        <figcaption>Making sure it works first so I did a test print, and it worked well.</figcaption>
+                    </div>
+
+                    <h3>Infinite Expansion</h3>
+                    <div class="image-container">
+                        <img src="Images/middle.png" alt="Middle Joint">
+                        <figcaption>Now you can infinitely extend the bookshelf!</figcaption>
+                    </div>
+                </div>
+
+                <div id="deck-pane-2" class="stage-pane">
+                    <div class="pane-routing-tag">PHASE_03 // PERFORMANCE_VALIDATION</div>
+                    <h2 class="pane-headline-main">Final Bookshelf Assembly</h2>
+                    <p>The final printed components came together seamlessly. The tolerance testing paid off, and the structural integrity holds up perfectly under the weight of the books.</p>
+                    
+                    <div class="image-container">
+                        <img src="Images/finalbookshelf.jpg" alt="Final Bookshelf">
+                        <figcaption>Looked just as expected. The joint works, and after connection, it remains highly stable.</figcaption>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+        <footer>
+            <p>© 2026 Oscar. Hardware system documentation logs.</p>
+        </footer>
+
+    </div>
