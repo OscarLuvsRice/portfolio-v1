@@ -457,12 +457,12 @@
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(3)">
                         <span class="plate-timestamp">[LOG_04] FIRMWARE</span>
-                        <span class="plate-headline">State Loop Coding</span>
+                        <span class="plate-headline">Arduino IDE coding</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(4)">
                         <span class="plate-timestamp">[LOG_05] REVIEW</span>
-                        <span class="plate-headline">Demonstration & Metrics</span>
+                        <span class="plate-headline">Completion and Demonstration</span>
                     </button>
 
                 </div>
@@ -564,9 +564,11 @@
 
                 <div id="deck-pane-3" class="stage-pane">
                     <div class="pane-routing-tag">PHASE_04 // SOFTWARE_ARCHITECTURE</div>
-                    <h2 class="pane-headline-main">Firmware Pipeline & Range Check States</h2>
-                    <p>The code is structured as an interactive state routine written in C++. It constantly evaluates spatial feedback parameters before modifying active motor gate logic values.</p>
-                    
+                    <h2 class="pane-headline-main">Coding the logic in Arduino IDE</h2>
+                    <p>Unfortunately I only know some python and Arduino IDE is in C++, so what I did was I tried to find code written by other people online. I did find one but it was not exactly what I needed, like the angles, motor speed and runtime need to be calibrated, the logic needs to be fixed as well.</p>
+                    <br>
+                    <p>So I fed the code into Claude and asked it to teach me how to read the code and explain using python terminologies. After some learning I was able to change the code to my likings and is able to fully understand the code.</p>
+                    <h3>Here is the code</h3>
                     <div class="code-tray">
 <span class="code-comm">// Dynamic spatial evaluation algorithm</span>
 <span class="code-kw">void</span> <span class="code-v">lookAround</span>() {
@@ -582,8 +584,8 @@
 }
                     </div>
 
-                    <h3>Decision Logic Map</h3>
-                    <p>The main sequence monitors a continuous forward tracking thread. If an environmental boundary drops closer than 30 centimeters, a pause is flagged, motor loops cut out, the <code>lookAround()</code> routine runs diagnostic right/left sweeps, evaluates the max path gap variable, and spins the vehicle to clear the target.</p>
+                    <h3>Logic TLDR</h3>
+                    <p>If it detects something, reverse a bit, look right, look left, if right space more than left, go right, if not go left. Nothing detected -> move forward. To maintain battery health, a boolean variable and for loop is used. </p>
                 </div>
 
                 <div id="deck-pane-4" class="stage-pane">
