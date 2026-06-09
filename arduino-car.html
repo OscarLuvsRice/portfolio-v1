@@ -644,6 +644,97 @@ void loop() {
         moveForward();
     }
 }
+
+int lookRight()
+{
+    myservo.write(0); 
+    delay(1000);
+    distance = readPing(); // assigns the distance recorded to the variable distance
+    delay(1000);
+    myservo.write(90); 
+    delay(1000);
+    return distance; // essentially just return reading[0]
+}
+
+int lookLeft()
+{
+    myservo.write(180); 
+    delay(1000);
+    int distance = readPing(); // assigns the distance recorded to the variable distance
+    delay(1000);
+    myservo.write(90); 
+    delay(1000);
+    return distance; // essentially just return reading[0]
+}
+
+int readPing() { 
+  delay(70);
+  int cm = sonar.ping_cm(); // essentially just reading = board.sonar.read(trigger)
+  if(cm==0)
+  {
+    cm = 250; // 250 BECAUSE max distance was set as 200, so it will consider cm == 0 as an error
+  }
+  return cm; // returns the distance in cm 
+}
+
+void moveStop() {
+  motor1.run(RELEASE); // release in arduino IDE is just stop apparently.
+  motor2.run(RELEASE);
+  motor3.run(RELEASE);
+  motor4.run(RELEASE);
+  } 
+  
+void moveForward() {
+
+ if(!goesForward)        // 1st loop: goesForward is false, this runs, goesForward = true, speed gently goes up
+  {                      // 2nd loop: say that still no obstacle, because goesForward = true from 1st loop, skips if statement, car remains at smooth speed
+    goesForward=true;    // if this boolean didn't exist, everytime loop() is called (thousands of times/s), it will run moveForward (150--> 0,2,4 -> 150 --> 0,2,4) stutter!                                   
+    motor1.run(FORWARD);      
+    motor2.run(FORWARD);
+    motor3.run(FORWARD); 
+    motor4.run(FORWARD);     
+   for (speedSet = 0; speedSet < maxSpeed; speedSet +=2)  // initialisation, condition, interval
+   {                                                      // since speedSet = 0, it will always be less than max speed, it will run this for loop
+    motor1.setSpeed(speedSet);                            // what it does is that interval of 5ms, it will ramp up the speed by an interval of 2
+    motor2.setSpeed(speedSet);                            // gear motor accelerates at a steady pace, less stress on battery.
+    motor3.setSpeed(speedSet);
+    motor4.setSpeed(speedSet);
+    delay(5);
+   }
+  }
+}
+
+void moveBackward() {    // when moveBackward() is called, booleamn goesForward = false, and also gently deccelerates.
+    goesForward=false;   // Because it is false, when moveForward() is called again, it will accelerate gently, which is desired as the car is moving from stationary.
+    motor1.run(BACKWARD);      
+    motor2.run(BACKWARD);
+    motor3.run(BACKWARD);
+    motor4.run(BACKWARD);  
+  for (speedSet = 0; speedSet < maxSpeed; speedSet +=2) // slowly bring the speed up to avoid loading down the batteries too quickly (same logic as before)
+  {
+    motor1.setSpeed(speedSet);
+    motor2.setSpeed(speedSet);
+    motor3.setSpeed(speedSet);
+    motor4.setSpeed(speedSet);
+    delay(5);
+  }
+}  
+
+void turnRight() {
+  motor1.run(FORWARD);
+  motor2.run(BACKWARD);
+  motor3.run(BACKWARD);
+  motor4.run(FORWARD);     
+  delay(3000);     
+} 
+ 
+void turnLeft() {
+  motor1.run(BACKWARD);     
+  motor2.run(FORWARD);  
+  motor3.run(FORWARD);
+  motor4.run(BACKWARD);   
+  delay(3000);
+}  
 </code></pre>
 </div>
                     </div>
