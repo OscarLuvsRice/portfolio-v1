@@ -4,10 +4,10 @@
 
         <header>
             <div class="header-meta">
-                <span class="sys-id-tag">PIPELINE // RC_CAR_FABRICATION_LOGS</span>
-                <span class="sys-status">BUILD COMPLETED // ACTIVE</span>
+                <span class="sys-id-tag">PIPELINE // PROJECT_LOGS</span>
+                <span class="sys-status">ACTIVE</span>
             </div>
-            <h1>Remote Control Car Project</h1>
+            <h1>Remote Control Car Project 🚗🔧</h1>
         </header>
 
         <div class="workspace">
@@ -19,23 +19,23 @@
                 <div class="deck-switch-stack" id="plate-group">
                     
                     <button class="deck-switch-plate active" onclick="activateDeckStage(0)">
-                        <span class="plate-timestamp">[LOG_01] OBJECTIVE</span>
+                        <span class="plate-timestamp">[LOG_01]</span>
                         <span class="plate-headline">Overview & Materials</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(1)">
-                        <span class="plate-timestamp">[LOG_02] MECHANICAL</span>
-                        <span class="plate-headline">Steering Iterations</span>
+                        <span class="plate-timestamp">[LOG_02]</span>
+                        <span class="plate-headline">Steering System</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(2)">
-                        <span class="plate-timestamp">[LOG_03] DEBUGGING</span>
-                        <span class="plate-headline">Troubleshooting</span>
+                        <span class="plate-timestamp">[LOG_03]</span>
+                        <span class="plate-headline">Challenges Faced</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(3)">
-                        <span class="plate-timestamp">[LOG_04] REVIEW</span>
-                        <span class="plate-headline">Demo & Validation</span>
+                        <span class="plate-timestamp">[LOG_04]</span>
+                        <span class="plate-headline">Demo Video</span>
                     </button>
 
                 </div>
@@ -44,85 +44,101 @@
             <main class="data-display-bay">
 
                 <div id="deck-pane-0" class="stage-pane active">
-                    <div class="pane-routing-tag">PHASE_01 // SCOPE_&_BOM</div>
-                    <h2 class="pane-headline-main">Project Scope & Components</h2>
-                    <p>My friend and I like thingies that move, so it became natural for us to build an RC car. This project fulfilled our interest and improved our problem solving and creative thinking, especially in the engineering field. It also enhanced our hands-on experience with tools.</p>
-                    <p>The RC car is controlled via a 27 MHz 4CH RC module, with a wood chassis, plastic cover, and uses double batteries to power 2 DC motors. We explored circuit wiring, steering design, sketching, experimental design, and hardware troubleshooting.</p>
+                    <div class="pane-routing-tag">PHASE_01 // SCOPE</div>
+                    <h2 class="pane-headline-main">📌 Overview</h2>
+                    <p>Me and my friend like thingies that move, so it becomes natural for us to build a RC car. This project fulfilled our interest and also improved our problem solving and creative thinking, especially in the engineering field. it also enchanced our hands-on experience with tools.</p>
+                    <br>
+                    <p>The RC car is controlled via an 27 MHz 4CH RC module(transmitter and receiver), with a wood chassis, plastic cover and used double batteries to power 2 dc motors. Through this project, we explored <strong>circuit wiring, steering design, sketching, experimenting design and troubleshooting hardware problems</strong>.</p>
+                    <br>
+                    <p><strong>Outcome:</strong> A fully functional RC car capable of forward/reverse driving, turning.</p>
                     
-                    <h3>Bill of Materials (BOM)</h3>
-                    <table class="spec-table">
-                        <tr>
-                            <th>Category</th>
-                            <th>Components</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Electronics</strong></td>
-                            <td>27Mhz 4CH RC Tx/Rx, 3-6V DC motors, Wires, AA Batteries</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Mechanical</strong></td>
-                            <td>Wood Chassis, Cardboard, Plastic Cover, 4× Wheels, Axles, Heat shrink, Screws/Nuts/Nails</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tools</strong></td>
-                            <td>Soldering iron, Hot glue gun, Pliers, Wire stripper, Scissors</td>
-                        </tr>
-                    </table>
+                    <hr>
+                    
+                    <h2>🛠️ Materials & Components</h2>
+                    <h3>Electronics</h3>
+                    <ul>
+                        <li>27Mhz 4CH RC transmitter</li>
+                        <li>27Mhz 4CH RC receiver</li>
+                        <li>3-6V DC motors</li>
+                        <li>Wires</li>
+                        <li>AA Batteries</li>
+                    </ul>
+                    <h3>Mechanical</h3>
+                    <ul>
+                        <li>Wood Chasis</li>
+                        <li>Cardboard</li>
+                        <li>Plastic Cover</li>
+                        <li>4 × Wheels with rubber tires</li>
+                        <li>Axles</li>
+                        <li>Heat shrink tubing</li>
+                        <li>Screws, nuts, and nails</li>
+                    </ul>
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Soldering iron</li>
+                        <li>Hot glue gun</li>
+                        <li>Pliers</li>
+                        <li>Multipurpose wire stripper.</li>
+                        <li>Scissor</li>
+                        <li>Pencil</li>
+                        <li>Sketching book</li>
+                    </ul>
                 </div>
 
                 <div id="deck-pane-1" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_02 // KINEMATICS_&_CHASSIS</div>
-                    <h2 class="pane-headline-main">Steering System Evolution</h2>
-                    <p>Designing a reliable steering mechanism from scratch required multiple design iterations and rapid prototyping to get the geometry right.</p>
-
+                    <div class="pane-routing-tag">PHASE_02 // DESIGN_EVOLUTION</div>
+                    <h2 class="pane-headline-main">Steering Design</h2>
                     <div class="image-container">
-                        <img src="Images/sketch.jpg" alt="Rough Sketches">
-                        <figcaption>Rough sketches of steering system designs.</figcaption>
+                        <img src="Images/sketch.jpg" alt="Sketch">
+                        <figcaption>rough sketches of steering system designs.</figcaption>
                     </div>
-                    
+                    <br>
                     <div class="image-container">
-                        <img src="Images/v1.jpg" alt="Steering V1">
-                        <figcaption><strong>Version 1:</strong> Failed due to invalid dimensions and insufficient space to implement.</figcaption>
+                        <img src="Images/v1.jpg" alt="steering v1">
+                        <figcaption>version 1 of steering system, failed due to invalid dimensions and not enough space to implement.</figcaption>
                     </div>
-
+                    <br>
                     <div class="image-container">
-                        <img src="Images/v2.jpg" alt="Steering V2">
-                        <figcaption><strong>Version 2:</strong> Improved with more space, but failed due to the motor being unable to produce enough torque when placed too far back.</figcaption>
+                        <img src="Images/v2.jpg" alt="steering v2">
+                        <figcaption>version 2 of steering system, improved with more space and easy to implement, howver failed due to motor unable to produce enough torque when being placed too far in the back.</figcaption>
                     </div>
-
+                    <br>
                     <div class="image-container">
-                        <img src="Images/v3.jpg" alt="Steering V3">
-                        <figcaption><strong>Version 3 (Final):</strong> Added supports, made everything more compact and efficient, and moved the motor closer to ensure sufficient torque transfer.</figcaption>
+                        <img src="Images/v3.jpg" alt="steering v3">
+                        <figcaption>version 3 of steering system, improved from v2, added supports, made everything more compact and effcicient, put motor closer to ensure enough torque.</figcaption>
                     </div>
                 </div>
 
                 <div id="deck-pane-2" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_03 // QA_&_HARDWARE_DEBUG</div>
-                    <h2 class="pane-headline-main">Challenges & Problem Solving</h2>
-                    <p>During the build process, we encountered physical constraints and electrical faults. Each problem required targeted troubleshooting.</p>
-
-                    <ul class="discord-channel-logs">
-                        <li class="discord-log-row"><strong>Steering Torque Issue:</strong> The steering motor was unable to produce enough torque to overcome friction.</li>
-                        <li class="discord-log-row"><strong>Root Cause:</strong> 2 AA batteries did not produce enough voltage.</li>
-                        <li class="discord-log-row"><strong>Solution:</strong> Soldered two battery holders in series. The car now runs on 4 AA batteries (6V), maxing out the motors' potential. This was highly successful.</li>
+                    <div class="pane-routing-tag">PHASE_03 // TROUBLESHOOTING</div>
+                    <h2 class="pane-headline-main">🧩 Challenges & Problems Faced</h2>
+                    <p>During the build process, we encountered some challenges. Each problem required troubleshooting and iteration, which provided valuable hands-on learning.</p>
+                    
+                    <br>
+                    <h3>⚡ Steering Issues</h3>
+                    <ul>
+                        <li><strong>Problem:</strong> The steering motor unable to produce enough torque to overcome friction.</li>
+                        <li><strong>Cause:</strong> 2 AA battery does not produce enough voltage.</li>
+                        <li><strong>Solution:</strong> Soldered two battery holders in series, so that the car has 4 AA batteries (6V), which maxes out the motors potential, which turned out to be successful.</li>
                     </ul>
 
-                    <ul class="discord-channel-logs">
-                        <li class="discord-log-row"><strong>Power Failure:</strong> The receiver failed to turn on.</li>
-                        <li class="discord-log-row"><strong>Root Cause:</strong> Found a poor connection on the V+ wire after continuity testing.</li>
-                        <li class="discord-log-row"><strong>Solution:</strong> Resoldered the V+ wire and ensured all lines had proper protection and mechanical strain relief.</li>
+                    <hr>
+
+                    <h3>🖥️ Unable to turn on</h3>
+                    <ul>
+                        <li><strong>Problem:</strong> The receiver fails to turn on.</li>
+                        <li><strong>Cause:</strong> After checking all related conections, we found out that the V+ wire had poor connection.</li>
+                        <li><strong>Solution:</strong> We resoldered the V+ wire and made sure all wires had proper protection and are well secured.</li>
                     </ul>
                 </div>
 
                 <div id="deck-pane-3" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_04 // PERFORMANCE_VALIDATION</div>
-                    <h2 class="pane-headline-main">Final Demonstration</h2>
-                    <p>The outcome is a fully functional RC car capable of forward/reverse driving and accurate steering.</p>
-                    
+                    <div class="pane-routing-tag">PHASE_04 // DEMO</div>
+                    <h2 class="pane-headline-main">🎥 Demo Video</h2>
                     <div class="check-grid">
                         <div class="check-card">
-                            <span class="check-status-indicator">SYSTEM ONLINE</span>
-                            <span class="check-text"><a href="https://www.youtube.com/watch?v=2iG5XZ101lU" target="_blank" style="color: var(--accent-purple); text-decoration: none;">▶️ Watch the full test drive on YouTube</a></span>
+                            <span class="check-status-indicator">EXTERNAL LINK</span>
+                            <span class="check-text"><a href="https://www.youtube.com/watch?v=2iG5XZ101lU" target="_blank" style="color: var(--accent-purple); text-decoration: none;">▶️ Watch on YouTube</a></span>
                         </div>
                     </div>
                 </div>
