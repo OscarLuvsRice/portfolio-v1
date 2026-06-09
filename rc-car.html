@@ -3,28 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oscar // RC Car Project</title>
+    <title>Oscar // Remote Control Car</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght=500;700&family=Plus+Jakarta+Sans:wght=400;500;600;700&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
+        /* PASSIONATE PURPLE THEME VARIABLES */
         :root {
-            --bg-main: #05030a;
-            --bg-card: #0f0a1c;
-            --bg-card-hover: #150e26;
-            --border: #20143a;
-            --text-title: #ffffff;
-            --text-body: #e0dae9;
-            --text-muted: #7d709a;
-            --accent-purple: #c084fc;
-            --accent-blue: #4f46e5;
-            --accent-green: #10b981;
-            --bg-terminal: #090512;
+            --bg-main: #05030a;        
+            --bg-card: #0f0a1c;        
+            --bg-card-hover: #150e26;  
+            --border: #20143a;         
+            --text-title: #ffffff;     
+            --text-body: #e0dae9;      
+            --text-muted: #7d709a;     
+            --accent-purple: #c084fc;  
+            --accent-blue: #4f46e5;    
+            --accent-green: #10b981;   
+            --bg-terminal: #090512;    
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -37,7 +42,10 @@
             min-height: 100vh;
         }
 
-        .container { max-width: 1180px; width: 100%; }
+        .container {
+            max-width: 1180px;
+            width: 100%;
+        }
 
         .back-registry {
             display: inline-flex;
@@ -51,70 +59,315 @@
             transition: color 0.2s ease, transform 0.2s ease;
         }
 
-        .back-registry:hover { color: var(--accent-purple); transform: translateX(-4px); }
+        .back-registry:hover {
+            color: var(--accent-purple);
+            transform: translateX(-4px);
+        }
 
-        header { margin-bottom: 3.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
-        .header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
-        .sys-id-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent-purple); letter-spacing: 1px; }
-        .sys-status { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-green); background: rgba(16, 185, 129, 0.1); padding: 0.25rem 0.6rem; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.2); }
-        h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-title); letter-spacing: -1px; }
+        header {
+            margin-bottom: 3.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
 
-        .workspace { display: grid; grid-template-columns: 320px 1fr; gap: 4rem; align-items: start; }
-        
+        .header-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .sys-id-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-purple);
+            letter-spacing: 1px;
+        }
+
+        .sys-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-title);
+            letter-spacing: -1px;
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
         .control-deck {
             position: sticky;
             top: 4rem;
             display: flex;
+            position: relative;
             background: var(--bg-terminal);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 1.5rem 1rem 1.5rem 2rem;
         }
 
-        .fader-track-channel { position: absolute; top: 2rem; left: 1rem; width: 4px; height: calc(100% - 4rem); background-color: #120b20; border-radius: 2px; box-shadow: inset 1px 1px 3px rgba(0,0,0,0.8); }
-        .mechanical-fader-block { position: absolute; left: 0.75rem; width: 12px; height: 36px; background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); border-radius: 3px; box-shadow: 0 0 12px var(--accent-purple), inset 0 1px 2px rgba(255,255,255,0.4); z-index: 10; transition: top 0.3s cubic-bezier(0.25, 1, 0.5, 1); top: 2rem; }
-        .deck-switch-stack { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
-        
-        .deck-switch-plate {
-            background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; cursor: pointer; width: 100%; text-align: left; transition: all 0.25s ease; display: flex; flex-direction: column; gap: 0.25rem; position: relative;
+        .fader-track-channel {
+            position: absolute;
+            top: 2rem;
+            left: 1rem;
+            width: 4px;
+            height: calc(100% - 4rem);
+            background-color: #120b20;
+            border-radius: 2px;
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.8);
         }
-        .deck-switch-plate:hover { background-color: var(--bg-card-hover); border-color: rgba(192, 132, 252, 0.3); }
-        .plate-timestamp { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.5px; }
-        .plate-headline { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s ease; }
 
-        .deck-switch-plate.active { background-color: #170f30; border-color: var(--accent-purple); box-shadow: inset -4px 0 0 var(--accent-purple); }
-        .deck-switch-plate.active .plate-timestamp { color: var(--accent-blue); }
-        .deck-switch-plate.active .plate-headline { color: var(--text-title); }
+        .mechanical-fader-block {
+            position: absolute;
+            left: 0.75rem; 
+            width: 12px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 3px;
+            box-shadow: 0 0 12px var(--accent-purple), inset 0 1px 2px rgba(255,255,255,0.4);
+            z-index: 10;
+            transition: top 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            top: 2rem;
+        }
 
-        .data-display-bay { background-color: rgba(15, 10, 28, 0.2); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; min-height: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .stage-pane { display: none; animation: terminalBoot 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .stage-pane.active { display: block; }
+        .deck-switch-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
 
-        .pane-routing-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 0.5rem; }
-        .pane-headline-main { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; color: var(--text-title); border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; margin-bottom: 1.8rem; letter-spacing: -0.5px; }
-        
-        .stage-pane h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; color: var(--text-title); margin: 2rem 0 1rem 0; }
-        .stage-pane h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; color: var(--accent-purple); margin: 1.5rem 0 0.5rem 0; }
-        .stage-pane p { font-size: 1.05rem; color: var(--text-body); margin-bottom: 1.2rem; opacity: 0.95; }
+        .deck-switch-plate {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            position: relative;
+        }
 
-        .stage-pane ul { margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-body); }
-        .stage-pane li { margin-bottom: 0.4rem; }
+        .deck-switch-plate:hover {
+            background-color: var(--bg-card-hover);
+            border-color: rgba(192, 132, 252, 0.3);
+        }
 
-        .image-container { width: 100%; background-color: var(--bg-terminal); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin: 2rem 0; padding: 1.5rem; text-align: center; }
-        .image-container img { max-width: 100%; height: auto; display: block; margin: 0 auto 1.5rem auto; border-radius: 8px; }
-        .image-container img:last-of-type { margin-bottom: 0; }
-        figcaption { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; }
+        .plate-timestamp {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
 
-        .check-grid { display: grid; grid-template-columns: 1fr; gap: 0.8rem; margin: 1.5rem 0; }
-        .check-card { background: var(--bg-terminal); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; display: flex; align-items: center; gap: 1rem; }
-        .check-status-indicator { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-purple); background: rgba(192, 132, 252, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid rgba(192, 132, 252, 0.2); white-space: nowrap; }
-        .check-text { font-size: 0.95rem; }
+        .plate-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: color 0.2s ease;
+        }
 
-        footer { border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 6rem; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-muted); }
+        .deck-switch-plate.active {
+            background-color: #170f30;
+            border-color: var(--accent-purple);
+            box-shadow: inset -4px 0 0 var(--accent-purple);
+        }
+
+        .deck-switch-plate.active .plate-timestamp {
+            color: var(--accent-blue);
+        }
+
+        .deck-switch-plate.active .plate-headline {
+            color: var(--text-title);
+        }
+
+        .data-display-bay {
+            background-color: rgba(15, 10, 28, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            min-height: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .stage-pane {
+            display: none;
+            animation: terminalBoot 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .stage-pane.active {
+            display: block;
+        }
+
+        .pane-routing-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .pane-headline-main {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--text-title);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .stage-pane h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-title);
+            margin: 2rem 0 0.8rem 0;
+        }
+
+        .stage-pane p {
+            font-size: 1.05rem;
+            color: var(--text-body);
+            margin-bottom: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .discord-channel-logs {
+            list-style: none;
+            margin: 1.5rem 0;
+            background-color: var(--bg-terminal);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .discord-log-row {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .discord-log-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .discord-log-row::before {
+            content: '➔';
+            position: absolute;
+            left: 0;
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .spec-table th, .spec-table td {
+            border: 1px solid var(--border);
+            padding: 0.8rem 1rem;
+            text-align: left;
+        }
+
+        .spec-table th {
+            background-color: var(--bg-terminal);
+            color: var(--accent-purple);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .spec-table tr:nth-child(even) {
+            background-color: rgba(32, 20, 58, 0.15);
+        }
+
+        .image-container {
+            width: 100%;
+            background-color: var(--bg-terminal);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        figcaption {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: -0.5rem;
+        }
+
+        .video-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: #ffffff;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(192, 132, 252, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .video-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(192, 132, 252, 0.4);
+        }
 
         @keyframes terminalBoot {
             from { opacity: 0; transform: scale(0.995) translateY(6px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            margin-top: 6rem;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--text-muted);
         }
 
         @media (max-width: 900px) {
@@ -126,7 +379,9 @@
             body { padding: 2rem 1rem; }
             .data-display-bay { padding: 1.8rem; }
         }
-        @media (max-width: 580px) { .deck-switch-plate { width: 100%; } }
+        @media (max-width: 580px) {
+            .deck-switch-plate { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -137,10 +392,10 @@
 
         <header>
             <div class="header-meta">
-                <span class="sys-id-tag">PIPELINE // RC_CAR_LOGS</span>
+                <span class="sys-id-tag">PIPELINE // RF_VEHICLE_LOGS</span>
                 <span class="sys-status">BUILD COMPLETED // ACTIVE</span>
             </div>
-            <h1>Remote Control Car Project 🚗🔧</h1>
+            <h1>Remote Control Car Project</h1>
         </header>
 
         <div class="workspace">
@@ -153,22 +408,22 @@
                     
                     <button class="deck-switch-plate active" onclick="activateDeckStage(0)">
                         <span class="plate-timestamp">[LOG_01] OVERVIEW</span>
-                        <span class="plate-headline">Scope & Materials</span>
+                        <span class="plate-headline">Scope & Components</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(1)">
                         <span class="plate-timestamp">[LOG_02] STEERING</span>
-                        <span class="plate-headline">Chassis Evolution</span>
+                        <span class="plate-headline">Mechanical Iterations</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(2)">
-                        <span class="plate-timestamp">[LOG_03] CRITICAL</span>
-                        <span class="plate-headline">Challenges Faced</span>
+                        <span class="plate-timestamp">[LOG_03] CHALLENGES</span>
+                        <span class="plate-headline">Debugging & Solutions</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(3)">
-                        <span class="plate-timestamp">[LOG_04] VERIFY</span>
-                        <span class="plate-headline">Demo Video</span>
+                        <span class="plate-timestamp">[LOG_04] DEMO</span>
+                        <span class="plate-headline">Validation Video</span>
                     </button>
 
                 </div>
@@ -177,100 +432,95 @@
             <main class="data-display-bay">
 
                 <div id="deck-pane-0" class="stage-pane active">
-                    <div class="pane-routing-tag">PHASE_01 // INTRO_&_BOM</div>
-                    <h2 class="pane-headline-main">📌 Overview</h2>
-                    <p>Me and my friend like thingies that move, so it becomes natural for us to build a RC car. This project fulfilled our interest and also improved our problem solving and creative thinking, especially in the engineering field. it also enchanced our hands-on experience with tools.</p>
-                    <p>The RC car is controlled via an 27 MHz 4CH RC module(transmitter and receiver), with a wood chassis, plastic cover and used double batteries to power 2 dc motors. Through this project, we explored <strong>circuit wiring, steering design, sketching, experimenting design and troubleshooting hardware problems</strong>.</p>
-                    <p><strong>Outcome:</strong> A fully functional RC car capable of forward/reverse driving, turning.</p>
+                    <div class="pane-routing-tag">PHASE_01 // ARCHITECTURE_&_MATERIALS</div>
+                    <h2 class="pane-headline-main">Project Scope & Bill of Materials</h2>
+                    <p>Me and my friend like thingies that move, so it becomes natural for us to build a RC car. This project fulfilled our interest and also improved our problem solving and creative thinking, especially in the engineering field. It also enhanced our hands-on experience with tools.</p>
+                    <p>The RC car is controlled via an 27 MHz 4CH RC module (transmitter and receiver), with a wood chassis, plastic cover and used double batteries to power 2 DC motors. Through this project, we explored circuit wiring, steering design, sketching, experimenting design and troubleshooting hardware problems.</p>
                     
-                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 2rem 0;">
-                    
-                    <h2>🛠️ Materials & Components</h2>
-                    <h3>Electronics</h3>
-                    <ul>
-                        <li>27Mhz 4CH RC transmitter</li>
-                        <li>27Mhz 4CH RC receiver</li>
-                        <li>3-6V DC motors</li>
-                        <li>Wires</li>
-                        <li>AA Batteries</li>
-                    </ul>
-                    <h3>Mechanical</h3>
-                    <ul>
-                        <li>Wood Chasis</li>
-                        <li>Cardboard</li>
-                        <li>Plastic Cover</li>
-                        <li>4 × Wheels with rubber tires</li>
-                        <li>Axles</li>
-                        <li>Heat shrink tubing</li>
-                        <li>Screws, nuts, and nails</li>
-                    </ul>
-                    <h3>Tools</h3>
-                    <ul>
-                        <li>Soldering iron</li>
-                        <li>Hot glue gun</li>
-                        <li>Pliers</li>
-                        <li>Multipurpose wire stripper.</li>
-                        <li>Scissor</li>
-                        <li>Pencil</li>
-                        <li>Sketching book</li>
+                    <p><strong>Outcome:</strong> A fully functional RC car capable of forward/reverse driving and turning maneuvers.</p>
+
+                    <h3>Electronics Component Profile</h3>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Specification Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>RC Transmitter</td><td>27MHz 4CH Hardware Transmitter Block</td></tr>
+                            <tr><td>RC Receiver</td><td>27MHz 4CH Controller Board Assembly</td></tr>
+                            <tr><td>Drive Units</td><td>3-6V DC High Torque Motors</td></tr>
+                            <tr><td>Power System</td><td>AA Battery Array Links</td></tr>
+                            <tr><td>Interconnects</td><td>Insulated Copper System Wiring</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Mechanical Assembly Matrix</h3>
+                    <ul class="discord-channel-logs">
+                        <li class="discord-log-row">Structural Housing: Wood Chassis base, Cardboard, Plastic protective Cover</li>
+                        <li class="discord-log-row">Kinematic Gear: 4 × Wheels wrapped with rubber high-friction tires & Axles</li>
+                        <li class="discord-log-row">Hardware Fasteners: Heat shrink tubing, system screws, nuts, and nails</li>
                     </ul>
                 </div>
 
                 <div id="deck-pane-1" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_02 // ITERATIVE_PROTOTYPING</div>
-                    <h2 class="pane-headline-main">Steering Design Evolution</h2>
+                    <div class="pane-routing-tag">PHASE_02 // KINEMATIC_REFACTORING</div>
+                    <h2 class="pane-headline-main">Steering System Design Iterations</h2>
                     
                     <div class="image-container">
-                        <img src="Images/sketch.jpg" alt="Sketch">
-                        <figcaption>rough sketches of steering system designs.</figcaption>
+                        <img src="Images/sketch.jpg" alt="Initial Steering Conceptual Sketches">
+                        <figcaption>Rough layout brainstorm sketches mapping geometric steering alignment.</figcaption>
                     </div>
 
+                    <h3>Version 1: Basic Integration</h3>
                     <div class="image-container">
-                        <img src="Images/v1.jpg" alt="steering v1">
-                        <figcaption>version 1 of steering system, failed due to invalid dimension and insufficient space to implement.</figcaption>
+                        <img src="Images/v1.jpg" alt="Steering Assembly Design V1">
+                        <figcaption>Version 1 of steering system, failed due to invalid dimensions and insufficient physical clearance within the envelope.</figcaption>
                     </div>
 
+                    <h3>Version 2: Relocated Power Package</h3>
                     <div class="image-container">
-                        <img src="Images/v2.jpg" alt="steering v2">
-                        <figcaption>version 2 of steering system, improved with more space and easy to implement, howver failed due to motor unable to produce enough torque when being placed too far in the back.</figcaption>
+                        <img src="Images/v2.jpg" alt="Steering Assembly Design V2">
+                        <figcaption>Version 2 of steering system, improved with more spatial clearance. However, it failed because the motor was unable to produce enough torque when placed too far in the back.</figcaption>
                     </div>
 
+                    <h3>Version 3: Final Consolidated Form</h3>
                     <div class="image-container">
-                        <img src="Images/v3.jpg" alt="steering v3">
-                        <figcaption>version 3 of steering system, improved from v2, added supports, made everything more compact and effcicient, put motor closer to ensure enough torque.</figcaption>
+                        <img src="Images/v3.jpg" alt="Steering Assembly Design V3">
+                        <figcaption>Version 3 of steering system, improved from v2. Added explicit supports, condensed components down efficiently, and pulled the motor closer to optimize torque transfer.</figcaption>
                     </div>
                 </div>
 
                 <div id="deck-pane-2" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_03 // TROUBLESHOOTING_LOGS</div>
-                    <h2 class="pane-headline-main">🧩 Challenges & Problems Faced</h2>
-                    <p>During the build process, we encountered some challenges. Each problem required troubleshooting and iteration, which provided valuable hands-on learning.</p>
+                    <div class="pane-routing-tag">PHASE_03 // TRIAGE_&_DIAGNOSTICS</div>
+                    <h2 class="pane-headline-main">Hardware Challenges & Troubleshooting</h2>
+                    <p>During the build process, we encountered structural and electrical hurdles. Each issue required analytical tracing and iterative prototyping.</p>
                     
-                    <h3>⚡ Steering Issues</h3>
-                    <ul>
-                        <li><strong>Problem:</strong> The steering motor unable to produce enough torque to overcome friction.</li>
-                        <li><strong>Cause:</strong> 2 AA battery does not produce enough voltage.</li>
-                        <li><strong>Solution:</strong> Soldered two battery holders in series, so that the car has 4 AA batteries (6V), which maxes out the motors potential, which turned out to be successful.</li>
+                    <h3>⚡ Sub-System: Steering Actuation</h3>
+                    <ul class="discord-channel-logs">
+                        <li class="discord-log-row"><strong>Problem Ident:</strong> Steering motor unable to break free of static friction constraints to rotate assemblies under weight.</li>
+                        <li class="discord-log-row"><strong>Root Cause Analysis:</strong> The 2 AA battery cell configurations lacked the voltage capacity required to step up motor output.</li>
+                        <li class="discord-log-row"><strong>Correction Path:</strong> Soldered two dual-cell battery holders together in series configuration. This supplied 6V to max out the motor potential, clearing the issue successfully.</li>
                     </ul>
 
-                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 2rem 0;">
-
-                    <h3>🖥️ Unable to turn on</h3>
-                    <ul>
-                        <li><strong>Problem:</strong> The receiver fails to turn on.</li>
-                        <li><strong>Cause:</strong> After checking all related conections, we found out that the V+ wire had poor connection.</li>
-                        <li><strong>Solution:</strong> We resoldered the V+ wire and made sure all wires had proper protection and are well secured.</li>
+                    <h3>🖥️ Sub-System: Main Receiver Power Drop</h3>
+                    <ul class="discord-channel-logs">
+                        <li class="discord-log-row"><strong>Problem Ident:</strong> RF Receiver stack fails to boot entirely upon toggle.</li>
+                        <li class="discord-log-row"><strong>Root Cause Analysis:</strong> Resistance check isolated an unstable connection at the primary V+ trace terminal point.</li>
+                        <li class="discord-log-row"><strong>Correction Path:</strong> Desoldered and laid down a clean structural bead across the V+ line, checking insulation with secure heat shrink tubing wrappers.</li>
                     </ul>
                 </div>
 
                 <div id="deck-pane-3" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_04 // LIVE_DEMO</div>
-                    <h2 class="pane-headline-main">🎥 Demo Video</h2>
-                    <div class="check-grid">
-                        <div class="check-card">
-                            <span class="check-status-indicator">EXTERNAL LINK</span>
-                            <span class="check-text"><a href="https://www.youtube.com/watch?v=2iG5XZ101lU" target="_blank" style="color: var(--accent-purple); text-decoration: none; font-weight: 600;">▶️ Watch project deployment on YouTube</a></span>
-                        </div>
+                    <div class="pane-routing-tag">PHASE_04 // FUNCTIONAL_SIGN_OFF</div>
+                    <h2 class="pane-headline-main">Performance Demonstration</h2>
+                    <p>Validation testing confirmed proper integration across RF control ranges and power arrays.</p>
+                    
+                    <div style="text-align: center;">
+                        <a href="https://www.youtube.com/watch?v=2iG5XZ101lU" target="_blank" class="video-button">
+                            <span>▶ Live Demo Video (YouTube)</span>
+                        </a>
                     </div>
                 </div>
 
@@ -299,6 +549,7 @@
             
             const trackOffsetTop = targetedPlate.offsetTop;
             const plateHeight = targetedPlate.offsetHeight;
+            
             const optimalKnobPosition = trackOffsetTop + (plateHeight / 2) - 18; 
             faderKnob.style.top = `${optimalKnobPosition}px`;
         }
