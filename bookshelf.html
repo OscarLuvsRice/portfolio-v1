@@ -1,11 +1,135 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar // Bookshelf Project</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght=500;700&family=Plus+Jakarta+Sans:wght=400;500;600;700&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #05030a;
+            --bg-card: #0f0a1c;
+            --bg-card-hover: #150e26;
+            --border: #20143a;
+            --text-title: #ffffff;
+            --text-body: #e0dae9;
+            --text-muted: #7d709a;
+            --accent-purple: #c084fc;
+            --accent-blue: #4f46e5;
+            --accent-green: #10b981;
+            --bg-terminal: #090512;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            line-height: 1.6;
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1180px; width: 100%; }
+
+        .back-registry {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            margin-bottom: 2rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .back-registry:hover { color: var(--accent-purple); transform: translateX(-4px); }
+
+        header { margin-bottom: 3.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+        .header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+        .sys-id-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent-purple); letter-spacing: 1px; }
+        .sys-status { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-green); background: rgba(16, 185, 129, 0.1); padding: 0.25rem 0.6rem; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.2); }
+        h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-title); letter-spacing: -1px; }
+
+        .workspace { display: grid; grid-template-columns: 320px 1fr; gap: 4rem; align-items: start; }
+        
+        .control-deck {
+            position: sticky;
+            top: 4rem;
+            display: flex;
+            background: var(--bg-terminal);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 1rem 1.5rem 2rem;
+        }
+
+        .fader-track-channel { position: absolute; top: 2rem; left: 1rem; width: 4px; height: calc(100% - 4rem); background-color: #120b20; border-radius: 2px; box-shadow: inset 1px 1px 3px rgba(0,0,0,0.8); }
+        .mechanical-fader-block { position: absolute; left: 0.75rem; width: 12px; height: 36px; background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); border-radius: 3px; box-shadow: 0 0 12px var(--accent-purple), inset 0 1px 2px rgba(255,255,255,0.4); z-index: 10; transition: top 0.3s cubic-bezier(0.25, 1, 0.5, 1); top: 2rem; }
+        .deck-switch-stack { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
+        
+        .deck-switch-plate {
+            background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; cursor: pointer; width: 100%; text-align: left; transition: all 0.25s ease; display: flex; flex-direction: column; gap: 0.25rem; position: relative;
+        }
+        .deck-switch-plate:hover { background-color: var(--bg-card-hover); border-color: rgba(192, 132, 252, 0.3); }
+        .plate-timestamp { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.5px; }
+        .plate-headline { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s ease; }
+
+        .deck-switch-plate.active { background-color: #170f30; border-color: var(--accent-purple); box-shadow: inset -4px 0 0 var(--accent-purple); }
+        .deck-switch-plate.active .plate-timestamp { color: var(--accent-blue); }
+        .deck-switch-plate.active .plate-headline { color: var(--text-title); }
+
+        .data-display-bay { background-color: rgba(15, 10, 28, 0.2); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; min-height: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .stage-pane { display: none; animation: terminalBoot 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .stage-pane.active { display: block; }
+
+        .pane-routing-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 0.5rem; }
+        .pane-headline-main { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; color: var(--text-title); border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; margin-bottom: 1.8rem; letter-spacing: -0.5px; }
+        
+        .stage-pane h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; color: var(--text-title); margin: 2rem 0 0.8rem 0; }
+        .stage-pane p { font-size: 1.05rem; color: var(--text-body); margin-bottom: 1.2rem; opacity: 0.95; }
+
+        .image-container { width: 100%; background-color: var(--bg-terminal); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin: 2rem 0; padding: 1.5rem; text-align: center; }
+        .image-container img { max-width: 100%; height: auto; display: block; margin: 0 auto 1.5rem auto; border-radius: 8px; }
+        .image-container img:last-of-type { margin-bottom: 0; }
+        figcaption { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; }
+
+        footer { border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 6rem; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-muted); }
+
+        @keyframes terminalBoot {
+            from { opacity: 0; transform: scale(0.995) translateY(6px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @media (max-width: 900px) {
+            .workspace { grid-template-columns: 1fr; gap: 2rem; }
+            .control-deck { position: static; padding: 1rem; }
+            .fader-track-channel, .mechanical-fader-block { display: none; }
+            .deck-switch-stack { flex-direction: row; flex-wrap: wrap; }
+            .deck-switch-plate { width: calc(50% - 0.5rem); }
+            body { padding: 2rem 1rem; }
+            .data-display-bay { padding: 1.8rem; }
+        }
+        @media (max-width: 580px) { .deck-switch-plate { width: 100%; } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
         
         <a href="projects.html" class="back-registry">← back_to_registry</a>
 
         <header>
             <div class="header-meta">
-                <span class="sys-id-tag">PIPELINE // PROJECT_LOGS</span>
-                <span class="sys-status">ACTIVE</span>
+                <span class="sys-id-tag">PIPELINE // BOOKSHELF_LOGS</span>
+                <span class="sys-status">BUILD COMPLETED // ACTIVE</span>
             </div>
             <h1>Bookshelf for my Fromsoftware books 📚💪</h1>
         </header>
@@ -19,17 +143,17 @@
                 <div class="deck-switch-stack" id="plate-group">
                     
                     <button class="deck-switch-plate active" onclick="activateDeckStage(0)">
-                        <span class="plate-timestamp">[LOG_01]</span>
-                        <span class="plate-headline">Overview</span>
+                        <span class="plate-timestamp">[LOG_01] OVERVIEW</span>
+                        <span class="plate-headline">Overview & Scope</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(1)">
-                        <span class="plate-timestamp">[LOG_02]</span>
+                        <span class="plate-timestamp">[LOG_02] MECHANICS</span>
                         <span class="plate-headline">Joint Mechanism</span>
                     </button>
 
                     <button class="deck-switch-plate" onclick="activateDeckStage(2)">
-                        <span class="plate-timestamp">[LOG_03]</span>
+                        <span class="plate-timestamp">[LOG_03] VALIDATION</span>
                         <span class="plate-headline">FINAL</span>
                     </button>
 
@@ -39,15 +163,12 @@
             <main class="data-display-bay">
 
                 <div id="deck-pane-0" class="stage-pane active">
-                    <div class="pane-routing-tag">PHASE_01 // OVERVIEW</div>
+                    <div class="pane-routing-tag">PHASE_01 // DESIGN_&_BRAINSTORM</div>
                     <h2 class="pane-headline-main">📌 Overview</h2>
                     <p>I bought about 1000 yuan (212 aud) worth of Fromsoftware Books, and i need a bookshelf for it. At the start i was browsing online for cool bookshelf, but all of them are either too complicated for my old, not so high quality seconded handed ender 3 pro, too small or i just dont like the style. So i just ended designing a really simple book shelf that is also big enough to fit all my books. The bookshelf is split into two halves, with a simple joint mechanism to connect the two.</p>
-                    <br>
                     <p>Through this small project, I developed critical thinking through measurements and designing, I also had an introduction on tolerance and joint mechanism.</p>
-                    <br>
                     <p><strong>Outcome:</strong> A bookshelf that is big enough for my books!</p>
                     
-                    <hr>
                     <div class="image-container">
                         <img src="Images/bookshelfbrainstorm1.png" alt="Sketch">
                         <img src="Images/bookshelfbrainstorm2.png" alt="Sketch">
@@ -56,7 +177,7 @@
                 </div>
 
                 <div id="deck-pane-1" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_02 // MECHANICS</div>
+                    <div class="pane-routing-tag">PHASE_02 // MIGRATION_&_TOLERANCE</div>
                     <h2 class="pane-headline-main">🛠️ Joint Mechanism</h2>
                     <p>I took inspiration of this random bookshelf design on makerworld, it uses this joint mechanism (i dont know the name of this)</p>
                     
@@ -80,11 +201,11 @@
                 </div>
 
                 <div id="deck-pane-2" class="stage-pane">
-                    <div class="pane-routing-tag">PHASE_03 // VALIDATION</div>
+                    <div class="pane-routing-tag">PHASE_03 // ASSEMBLED_HARDWARE</div>
                     <h2 class="pane-headline-main">🏁 FINAL</h2>
                     <div class="image-container">
                         <img src="Images/finalbookshelf.jpg" alt="Sketch">
-                        <figcaption>Looked just as expected, the joint works and after connection it remains highly stable.</figcaption>
+                        <figcaption>Looked just as expected, the joint still works, after connection it remains stable.</figcaption>
                     </div>
                 </div>
 
@@ -97,3 +218,30 @@
         </footer>
 
     </div>
+
+    <script>
+        function activateDeckStage(stageIndex) {
+            const plates = document.querySelectorAll('.deck-switch-plate');
+            const panes = document.querySelectorAll('.stage-pane');
+            const faderKnob = document.getElementById('fader-knob');
+            
+            plates.forEach(p => p.classList.remove('active'));
+            panes.forEach(pane => pane.classList.remove('active'));
+            
+            const targetedPlate = plates[stageIndex];
+            targetedPlate.classList.add('active');
+            document.getElementById(`deck-pane-${stageIndex}`).classList.add('active');
+            
+            const trackOffsetTop = targetedPlate.offsetTop;
+            const plateHeight = targetedPlate.offsetHeight;
+            const optimalKnobPosition = trackOffsetTop + (plateHeight / 2) - 18; 
+            faderKnob.style.top = `${optimalKnobPosition}px`;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            activateDeckStage(0);
+        });
+    </script>
+
+</body>
+</html>
